@@ -1,5 +1,8 @@
 .search{
 
+  display:block;
+  width:100%;
+
   input[type="search"]{
     display:block;
     width:100%;
@@ -8,7 +11,7 @@
     border:1px solid #666;
     border-radius:0.25em;
     color:#333;
-    background-color:#E1E1E1;
+    background-color:#EEE;
   }
 }
 
