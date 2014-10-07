@@ -1,5 +1,7 @@
 .search{
 
+  $border-radius: 0.5em;
+
   display:block;
   width:100%;
 
@@ -9,9 +11,19 @@
     font-size:2em;
     padding:0.5em 1em;
     border:1px solid #666;
-    border-radius:0.25em;
+    border-radius:$border-radius;
     color:#333;
     background-color:#EEE;
+  }
+
+  &.suggesting{
+    border-radius:$border-radius $border-radius 0 0;
+  }
+
+  .suggestions{
+    margin:0;
+    padding:0;
+    background-color: #666;
   }
 }
 
