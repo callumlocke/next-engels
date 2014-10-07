@@ -1,4 +1,3 @@
-// TODO - Make sure this is defined by the ft-api-client - shouldn't be needed here
 require('es6-promise').polyfill();
 var express = require('express');
 var swig = require('swig');
