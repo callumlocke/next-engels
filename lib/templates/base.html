@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules=o-fonts@^1.4.1,o-grid@^2.1.5"/>
+        <link rel="stylesheet" href="/styles.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Financial Times</title>
+    </head>
+    <div class="home">
+    	<h1>Financial Times</h1>
+	<form class="search" action="/search">
+		<input type="search" name="q"  />
+	</form>
+    </div>
+    <div class="stories">
+	<ul>
+	{% for article in articles %}
+		<li data-o-grid-colspan="{% if loop.first %}12 M12 L12 XL12{% else %}6 M6 L6 XL6{% endif %}">
+			<a class="tile" href="/{{ article.uuid }}">
+				<div class="tile__title">{{ article.raw.item.title.title }}</div>
+				<div class="tile__snippet">{{ article.raw.item.editorial.standFirst }}</div>
+			</a>
+		</li>
+	{% endfor %}
+	</ul>
+    </div>
+    <div>
+</html>
