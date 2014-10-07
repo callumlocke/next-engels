@@ -11,3 +11,4 @@ deploy:
   app: ft-next-engels
   on:
     repo: Financial-Times/next-engels
+    node: '0.10'
