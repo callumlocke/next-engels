@@ -1,0 +1,25 @@
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+.tile {
+	background: #EEEEEE;
+	font-family: Metric, Arial, sans-serif;
+	padding: 10px;
+	display: block;
+	text-decoration: none;
+	color: #000000;
+	margin-bottom: 10px;
+}
+
+.tile__title {
+	font-size: 20px;
+
+	a:hover & {
+		text-decoration: underline;	
+	}
+}
+
+.tile__snippet {
+	font-size: 14px;
+}
