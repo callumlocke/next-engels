@@ -2,5 +2,11 @@
   "dependencies": {
     "express": "^4.9.5",
     "forever": "^0.11.1"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "devDependencies": {
+    "jshint": "^2.5.6"
   }
 }
