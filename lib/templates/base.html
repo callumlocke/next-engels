@@ -12,20 +12,41 @@
 	</form>
     </div>
     <div class="container">
-	<ul>
-	{% for article in articles %}
-		<li data-o-grid-colspan="{% if loop.first %}12 M12 L6 XL6{% else %}6 M3 L3 XL3{% endif %}">
-		<a class="tile{% if (loop.first) %} tile--large{% else %} tile--small{% endif %}" href="/{{ article.id }}">
-				<div class="tile__label">Top Story</div>
-				{% if (article.largestImage) %}
-				<img class="tile__image" src="{{ article.largestImage.url|resize(600, 338) }}" />
-				{% endif %}
-				<div class="tile__title">{{ article.raw.item.title.title }}</div>
-				<time data-o-component="o-date" class="o-date tile__date" datetime="{{ article.raw.item.lifecycle.lastPublishDateTime }}">{{ article.lastUpdated|date('l, j F, Y') }}</time>
-			</a>
-		</li>
-	{% endfor %}
-	</ul>
+	    <div class="marketing-card marketing-card--news">
+		<h2>1. Distilled News</h2>
+		<ul>
+		{% for article in articles %}
+			<li data-o-grid-colspan="{% if loop.first %}12 M12 L6 XL6{% else %}6 M3 L3 XL3{% endif %}">
+			<a class="tile{% if (loop.first) %} tile--large{% else %} tile--small{% endif %}" href="/{{ article.id }}">
+					<div class="tile__label">Top Story</div>
+					{% if (article.largestImage) %}
+					<img class="tile__image" src="{{ article.largestImage.url|resize(600, 338) }}" />
+					{% endif %}
+					<div class="tile__title">{{ article.raw.item.title.title }}</div>
+					<time data-o-component="o-date" class="o-date tile__date" datetime="{{ article.raw.item.lifecycle.lastPublishDateTime }}">{{ article.lastUpdated|date('l, j F, Y') }}</time>
+				</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+	<div class="marketing-card marketing-card--analysis">
+		<h2>2. Informed analysis</h2>
+	</div>
+	<div class="marketing-card marketing-card--comment">
+		<h2>3. Comment</h2>
+	</div>
+	<div class="marketing-card marketing-card--themes">
+		<h2>4. Significant Themes</h2>
+          <ul class="themes">
+            {% for theme in themes %}
+              <li class="themes__card">
+
+                {{ theme }}
+
+              </li>
+            {% endfor %}
+          </ul>
+	</div>
     </div>
     <div>
     <script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0"></script>
