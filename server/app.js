@@ -14,6 +14,10 @@ app.set('views', __dirname + '/../lib/templates');
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
+swig.setFilter('resize', function(input, width) {
+	return 'http://image.webservices.ft.com/v1/images/raw/' + encodeURIComponent(input) + '?width=' + width + '&source=docs&fit=scale-down';
+});
+
 app.use('/', express.static(__dirname + '/../src'));
 
 // Appended to all successful responeses
