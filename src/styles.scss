@@ -2,9 +2,24 @@
 	box-sizing: border-box;
 }
 
+body {
+	margin: 0;
+	padding: 0;
+}
+
 @import "search";
 @import "tiles";
+@import "advert";
 
+h1 {
+	text-align: center;
+	padding: 30px;
+
+	img {
+		max-width: 600px;
+		width: 100%;
+	}
+}
 .container {
 	max-width: 1170px;
 	margin: 0 auto 0 auto;
