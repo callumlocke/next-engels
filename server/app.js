@@ -14,8 +14,8 @@ app.set('views', __dirname + '/../templates');
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
-swig.setFilter('resize', function(input, width) {
-	return 'http://image.webservices.ft.com/v1/images/raw/' + encodeURIComponent(input) + '?width=' + width + '&source=docs&fit=scale-down';
+swig.setFilter('resize', function(input, width, height) {
+	return 'http://image.webservices.ft.com/v1/images/raw/' + encodeURIComponent(input) + '?width=' + width + '&height=' + height + '&source=docs&fit=cover';
 });
 
 app.use('/engels', express.static(__dirname + '/../static'));
@@ -40,6 +40,7 @@ app.get('/', function(req, res) {
 		    } else {
 			ids = articles;
 		    }
+
 
 		    ft
 			.get(ids)

@@ -1,0 +1,27 @@
+.advert {
+	background: #EEE;
+	padding: 14px;
+}
+
+.advert__text {
+	padding-top: 3px;
+	font-family: metric;
+	font-size: 13px;
+	&:before {
+		content: "▲ ";
+		display: inline-block;
+		width: 11px;
+		height: 13px;
+		font-size: 9px;
+	}
+}
+
+.advert__text, .advert__image {
+	margin: 0 auto 0 auto;
+	max-width: 728px;
+
+}
+
+.advert__image img {
+	width: 100%;
+}

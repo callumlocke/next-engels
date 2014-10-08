@@ -12,9 +12,25 @@ ul, li {
 	position: relative;
 }
 
+.tile--small {
+	height: 250px;
+}
+
+@media screen and (max-width: 1400px) and (min-width: 1001px) {
+	.tile--large {
+		height: 520px;
+	}
+}
+
 .tile__title {
+	font-weight: bold;
 	font-size: 20px;
 	padding: 10px 10px 0 10px;
+
+	.tile--small & {
+		position: absolute;
+		bottom: 35px;
+	}
 
 	a:hover & {
 		text-decoration: underline;	
@@ -39,6 +55,18 @@ ul, li {
 .tile__date {
 	display: block;
 	padding: 10px;
+
+	.tile--large & {
+		@media screen and (max-width: 1400px) and (min-width: 1001px) {
+			position: absolute;
+			bottom: 0;
+		}
+	}
+
+	.tile--small & {
+		position: absolute;
+		bottom: 0;
+	}
 }
 
 .tile__date::before {
