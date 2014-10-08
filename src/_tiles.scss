@@ -12,6 +12,14 @@ ul, li {
 	position: relative;
 }
 
+.tile--small {
+	height: 250px;
+}
+
+.tile--large {
+	height: 520px;
+}
+
 .tile__title {
 	font-size: 20px;
 	padding: 10px 10px 0 10px;
