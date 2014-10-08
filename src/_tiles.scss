@@ -14,7 +14,7 @@ ul, li {
 
 .tile__title {
 	font-size: 20px;
-	padding: 10px;
+	padding: 10px 10px 0 10px;
 
 	a:hover & {
 		text-decoration: underline;	
@@ -34,4 +34,9 @@ ul, li {
 	text-transform: uppercase;
 	font-weight: bold;
 	font-size: 20px;
+}
+
+.tile__date {
+	display: block;
+	padding: 10px;
 }
