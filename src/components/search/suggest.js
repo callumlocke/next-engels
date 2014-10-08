@@ -59,6 +59,7 @@ Suggest.prototype.onDownArrow = function onDownArrow(){
 };
 
 Suggest.prototype.onSuggestionKey = function onSuggestionKey(e){
+	var $li;
 	if(e.which === 13){ // Enter pressed
 		e.preventDefault();
 		this.chooseSuggestion($(document.activeElement).text());
@@ -66,7 +67,7 @@ Suggest.prototype.onSuggestionKey = function onSuggestionKey(e){
 	}
 
 	if(e.which === 40){ // down arrow pressed
-		var $li = $(document.activeElement).parent().next('li');
+		$li = $(document.activeElement).parent().next('li');
 		if($li.length){
 			$li.find('a').focus();
 		}
@@ -74,7 +75,7 @@ Suggest.prototype.onSuggestionKey = function onSuggestionKey(e){
 	}
 
 	if(e.which === 38){ // up arrow pressed
-		var $li = $(document.activeElement).parent().prev('li');
+		$li = $(document.activeElement).parent().prev('li');
 		if($li.length){
 			$li.find('a').focus();
 		}
@@ -91,7 +92,7 @@ Suggest.prototype.chooseSuggestion = function chooseSuggestion(suggestion){
 	this.$el.val(suggestion);
 	this.$suggestions.hide();
 	this.$el[0].focus();
-}
+};
 
 
 Suggest.prototype.getSuggestions = function getSuggestions(text){
