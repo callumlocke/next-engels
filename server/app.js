@@ -30,7 +30,7 @@ app.get('/__gtg', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-	ft.search('page:Front page')
+	ft.search('page:Front page', 10)
 		.then(function(articles) {
 		    var ids;
 		    if (articles[0] instanceof Object) {
