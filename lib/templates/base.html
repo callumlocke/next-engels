@@ -17,7 +17,9 @@
 		<li data-o-grid-colspan="{% if loop.first %}12 M12 L6 XL6{% else %}6 M3 L3 XL3{% endif %}">
 		<a class="tile{% if (loop.first) %} tile--large{% else %} tile--small{% endif %}" href="/{{ article.id }}">
 				<div class="tile__label">Top Story</div>
-				<img class="tile__image" src="{{ article.largestImage.url|resize(600) }}" />
+				{% if (article.largestImage) %}
+				<img class="tile__image" src="{{ article.largestImage.url|resize(600, 338) }}" />
+				{% endif %}
 				<div class="tile__title">{{ article.raw.item.title.title }}</div>
 				<time data-o-component="o-date" class="o-date tile__date" datetime="{{ article.raw.item.lifecycle.lastPublishDateTime }}">{{ article.lastUpdated|date('l, j F, Y') }}</time>
 			</a>
