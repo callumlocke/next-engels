@@ -23,6 +23,8 @@ ul, li {
 .tile__title {
 	font-size: 20px;
 	padding: 10px 10px 0 10px;
+	position: absolute;
+	bottom: 30px;
 
 	a:hover & {
 		text-decoration: underline;	
@@ -47,6 +49,8 @@ ul, li {
 .tile__date {
 	display: block;
 	padding: 10px;
+	position: absolute;
+	bottom: 0;
 }
 
 .tile__date::before {
