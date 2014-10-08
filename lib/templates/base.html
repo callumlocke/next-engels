@@ -19,10 +19,12 @@
 				<div class="tile__label">Top Story</div>
 				<img class="tile__image" src="{{ article.largestImage.url|resize(600) }}" />
 				<div class="tile__title">{{ article.raw.item.title.title }}</div>
+				<time data-o-component="o-date" class="o-date tile__date" datetime="{{ article.raw.item.lifecycle.lastPublishDateTime }}">{{ article.lastUpdated|date('l, j F, Y') }}</time>
 			</a>
 		</li>
 	{% endfor %}
 	</ul>
     </div>
     <div>
+    <script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0"></script>
 </html>
