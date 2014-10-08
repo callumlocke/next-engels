@@ -60,6 +60,7 @@ Suggest.prototype.onDownArrow = function onDownArrow(){
 
 Suggest.prototype.onSuggestionKey = function onSuggestionKey(e){
 	if(e.which === 13){ // Enter pressed
+		e.preventDefault();
 		this.chooseSuggestion($(document.activeElement).text());
 		return;
 	}
@@ -82,6 +83,7 @@ Suggest.prototype.onSuggestionKey = function onSuggestionKey(e){
 };
 
 Suggest.prototype.onSuggestionClick = function onSuggestionClick(e){
+	e.preventDefault();
 	this.chooseSuggestion($(e.target).text());
 };
 
