@@ -32,6 +32,10 @@ ul, li {
 		bottom: 35px;
 	}
 
+	.tile--large & {
+		font-size: 40px;
+	}
+
 	a:hover & {
 		text-decoration: underline;	
 	}
