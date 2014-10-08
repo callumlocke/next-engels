@@ -1,0 +1,37 @@
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+.tile {
+	background: #EEEEEE;
+	font-family: Metric, Arial, sans-serif;
+	display: block;
+	text-decoration: none;
+	color: #000000;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.tile__title {
+	font-size: 20px;
+	padding: 10px;
+
+	a:hover & {
+		text-decoration: underline;	
+	}
+}
+
+.tile__image {
+	max-width: 100%;
+}
+
+.tile__label {
+	position: absolute;
+	display: inline-block;
+	background: rgba(0,0,0,0.4);
+	color: #FFF;
+	padding: 8px 8px 0px 8px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 20px;
+}

@@ -1,8 +1,11 @@
 {
   "dependencies": {
+    "es6-promise": "^1.0.0",
     "express": "^4.9.5",
     "forever": "^0.11.1",
-    "node-sass": "^0.9.6"
+    "ft-api-client": "https://github.com/Financial-Times/ft-api-client/archive/v3.0.25.tar.gz",
+    "node-sass": "^0.9.6",
+    "swig": "^1.4.2"
   },
   "scripts": {
     "test": "make test"

@@ -5,5 +5,5 @@ test:
 build:
 	@./node_modules/.bin/node-sass src/styles.scss --stdout > src/styles.css
 
-run:
+run: build
 	@export apikey=`cat ~/.ftapi` ; nodemon server/app.js
