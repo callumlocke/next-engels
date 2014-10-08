@@ -17,7 +17,6 @@
 		<li data-o-grid-colspan="{% if loop.first %}12 M12 L12 XL12{% else %}6 M6 L6 XL6{% endif %}">
 			<a class="tile" href="/{{ article.id }}">
 				<div class="tile__title">{{ article.raw.item.title.title }}</div>
-				<div class="tile__snippet">{{ article.raw.item.editorial.standFirst }}</div>
 			</a>
 		</li>
 	{% endfor %}
