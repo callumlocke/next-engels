@@ -9,6 +9,7 @@ ul, li {
 	text-decoration: none;
 	color: #000000;
 	margin-bottom: 20px;
+	position: relative;
 }
 
 .tile__title {
@@ -22,4 +23,15 @@ ul, li {
 
 .tile__image {
 	max-width: 100%;
+}
+
+.tile__label {
+	position: absolute;
+	display: inline-block;
+	background: rgba(0,0,0,0.4);
+	color: #FFF;
+	padding: 8px 8px 0px 8px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 20px;
 }
