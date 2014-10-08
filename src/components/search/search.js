@@ -6,8 +6,13 @@ function getData(){
 }
 
 function parseData(d){
-	var result = [];
+	var titles = Object.keys(d.data.titles),
+		result = [];
+	titles.forEach(function(title){
+		result.push({key:title.toLowerCase(), value:title});
+	});
 
+	return result;
 }
 
 function setupAutocomplete(data){
@@ -20,7 +25,9 @@ function fail(e){
 }
 
 function init(){
-	getData().then(setupAutocomplete, fail);
+	getData().then(function(data){
+		setupAutocomplete(parseData(data));
+	}, fail);
 }
 
 exports.init = init;
