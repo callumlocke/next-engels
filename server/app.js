@@ -41,6 +41,7 @@ app.get('/', function(req, res) {
 			ids = articles;
 		    }
 
+
 		    ft
 			.get(ids)
 			.then(function(articles) {

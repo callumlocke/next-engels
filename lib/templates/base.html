@@ -11,11 +11,11 @@
 		<input type="search" name="q"  />
 	</form>
     </div>
-    <div class="stories">
+    <div class="container">
 	<ul>
 	{% for article in articles %}
-		<li data-o-grid-colspan="{% if loop.first %}12 M12 L12 XL12{% else %}6 M6 L6 XL6{% endif %}">
-			<a class="tile" href="/{{ article.id }}">
+		<li data-o-grid-colspan="{% if loop.first %}12 M12 L6 XL6{% else %}6 M3 L3 XL3{% endif %}">
+		<a class="tile{% if (loop.first) %} tile--large{% else %} tile--small{% endif %}" href="/{{ article.id }}">
 				<div class="tile__label">Top Story</div>
 				<img class="tile__image" src="{{ article.largestImage.url|resize(600) }}" />
 				<div class="tile__title">{{ article.raw.item.title.title }}</div>
