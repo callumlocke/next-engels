@@ -66,13 +66,13 @@ app.get('/', function(req, res) {
 		});
 });
 
-app.use('/recommended', cookieParser(), function(req, res) {
-	if (req.cookies['FT_U']) {
-		request('http://79.125.2.81/focus/api?method=getrec&uid='+req.cookies['FT_U'].match(/_EID=([0-9]+)_/)[1], function(error, resp, body) {
+app.use('/engels/recommended', cookieParser(), function(req, res) {
+	if (req.cookies.FT_U) {
+		request('http://79.125.2.81/focus/api?method=getrec&uid='+req.cookies.FT_U.match(/_EID=([0-9]+)_/)[1], function(error, resp, body) {
 			parseString(body, function(err, result) {
 				var recommended = result.rsp.item.map(function(item) {
 					return {
-						id: item['$'].id,
+						id: item.$.id,
 						headline: item.headline[0]
 					};
 				});
