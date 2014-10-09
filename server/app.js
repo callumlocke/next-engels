@@ -1,5 +1,6 @@
 require('es6-promise').polyfill();
 var express = require('express');
+var cors = require('cors');
 var cookieParser = require('cookie-parser');
 var swig = require('swig');
 var ft = require('ft-api-client')(process.env.apikey);
@@ -69,7 +70,7 @@ app.get('/', function(req, res) {
 		});
 });
 
-app.use('/engels/recommended', cookieParser(), function(req, res) {
+app.use('/engels/recommended', cors(), cookieParser(), function(req, res) {
 	if (req.cookies.FT_U) {
 		request('http://79.125.2.81/focus/api?method=getrec&uid='+req.cookies.FT_U.match(/_EID=([0-9]+)_/)[1], function(error, resp, body) {
 			parseString(body, function(err, result) {
