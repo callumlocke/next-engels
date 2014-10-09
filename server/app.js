@@ -1,7 +1,10 @@
 require('es6-promise').polyfill();
 var express = require('express');
+var cookieParser = require('cookie-parser');
 var swig = require('swig');
 var ft = require('ft-api-client')(process.env.apikey);
+var request = require('request');
+var parseString = require('xml2js').parseString;
 
 var port = process.env.PORT || 3001;
 var app = module.exports = express();
@@ -61,6 +64,24 @@ app.get('/', function(req, res) {
 				res.status(404).end();
 			});
 		});
+});
+
+app.use('/recommended', cookieParser(), function(req, res) {
+	if (req.cookies['FT_U']) {
+		request('http://79.125.2.81/focus/api?method=getrec&uid='+req.cookies['FT_U'].match(/_EID=([0-9]+)_/)[1], function(error, resp, body) {
+			parseString(body, function(err, result) {
+				var recommended = result.rsp.item.map(function(item) {
+					return {
+						id: item['$'].id,
+						headline: item.headline[0]
+					};
+				});
+				res.json(recommended);
+			});
+		});
+	} else {
+		res.json([]);
+	}
 });
 
 app.listen(port, function() {
