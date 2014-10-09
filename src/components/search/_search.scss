@@ -10,7 +10,6 @@
   position:relative;
   display:block;
   width:100%;
-  max-width:450px;
   padding:0 1em;
 
 
@@ -25,7 +24,7 @@
     color:#333;
     background-color: rgb(254, 254, 254);
     -webkit-appearance:none;
-    background: $ft-pink url(http://image.webservices.ft.com/v1/images/raw/fticon:search?source=docs&tint=fffff) 5px center no-repeat;
+    background: rgb(254, 254, 254) url(http://image.webservices.ft.com/v1/images/raw/fticon:search?source=docs&tint=fffff) 5px center no-repeat;
     background-size:20px;
 
     &:focus{
@@ -64,13 +63,5 @@
     }
   }
 
-  @include respond($breakpoint-small){
-    position: absolute;
-    right:1em;
-    top:0;
-
-
-
-  }
 }
 
