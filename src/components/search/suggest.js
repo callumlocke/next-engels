@@ -92,6 +92,7 @@ Suggest.prototype.chooseSuggestion = function chooseSuggestion(suggestion){
 	this.$el.val(suggestion);
 	this.$suggestions.hide();
 	this.$el[0].focus();
+	this.$el.closest('form').submit();
 };
 
 
