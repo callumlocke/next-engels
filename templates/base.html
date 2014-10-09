@@ -45,11 +45,9 @@
 		<h2>4. Significant Themes</h2>
           <ul class="themes">
             {% for theme in themes %}
-              <li class="themes__card">
-
-                {{ theme }}
-
-              </li>
+		<li data-o-grid-colspan="6 M3 L3 XL3">
+			<a href="#" class="themes__card">{{theme }}</a>
+		</li>
             {% endfor %}
           </ul>
 	</div>
