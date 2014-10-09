@@ -1,7 +1,9 @@
-var $ = require('jquery-browserify');
 var search = require('../components/search/search.js');
+var header = require('../components/header/main.js');
+var splash = require('../components/splash/main.js');
+var $ = require('jquery-browserify');
 
-function getData(){
+function getData() {
 	return $.getJSON('engels/recommended');
 }
 
