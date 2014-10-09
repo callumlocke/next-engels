@@ -8,7 +8,7 @@ var app = module.exports = express();
 
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
-app.set('views', __dirname + '/../lib/templates');
+app.set('views', __dirname + '/../templates');
 
 // not for production
 app.set('view cache', false);
@@ -18,7 +18,7 @@ swig.setFilter('resize', function(input, width, height) {
 	return 'http://image.webservices.ft.com/v1/images/raw/' + encodeURIComponent(input) + '?width=' + width + '&height=' + height + '&source=docs&fit=cover';
 });
 
-app.use('/engels', express.static(__dirname + '/../src'));
+app.use('/engels', express.static(__dirname + '/../static'));
 
 // Appended to all successful responeses
 var responseHeaders = {
