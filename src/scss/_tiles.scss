@@ -25,7 +25,14 @@ ul, li {
 .tile__title {
 	font-weight: bold;
 	font-size: 20px;
-	padding: 10px 10px 0 10px;
+	margin: 10px 10px 0 10px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	text-overflow: ellipsis;
+	line-height: 25px;
+	height: 50px;
+	overflow: hidden;
 
 	.tile--small & {
 		position: absolute;
