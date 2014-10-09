@@ -57,6 +57,45 @@ h2 {
 }
 
 .marketing-card--themes {
-	background: url(/engels/militants.jpg) no-repeat;
-	background-attachment: fixed;
+	h2 {
+		color: #FFFFFF;
+	}
+	background: url(/engels/militants.jpg) fixed no-repeat;
+}
+
+.marketing-card--comment {
+}
+
+.marketing-card--analysis {
+	h2 {
+		color: #FFFFFF;
+	}
+	background: url(/engels/referendum.jpg) fixed no-repeat;
+}
+
+@media screen and (min-width: 900px) {
+	.comment {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		> * {
+			flex-grow: 1;
+			flex-shrink: 0;
+			width: 33%;
+		}
+	}
+}
+
+.comment__quote {
+	font-family: FinancierDisplay;
+	font-size: 50px;
+	text-align: center;
+	font-style: italic;
+}
+
+.comment__text {
+	font-family: Metric;
+	font-size: 20px;
+	line-height: 24px;
 }
