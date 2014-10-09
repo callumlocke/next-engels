@@ -94,6 +94,7 @@ ul, li {
 
 .recommended {
 	font-family: Metric;
+	text-align: center;
 
 	ul, li {
 		list-style: none;
@@ -105,6 +106,8 @@ ul, li {
 		color: #000000;
 		text-decoration: none;
 		font-size: 20px;
+		padding: 5px;
+		display: block;
 
 		&:hover {
 			text-decoration: underline;

@@ -8,7 +8,7 @@ function getData(){
 $.getJSON('/engels/recommended')
 	.then(function(data) {
 		var el = document.querySelector('.recommended');
-		el.innerHTML = '<h3>Recommended reads</h3><ul>' + renderAllRecommended(data) + '</ul>';
+		el.innerHTML = '<ul>' + renderAllRecommended(data) + '</ul>';
 
 	});
 
