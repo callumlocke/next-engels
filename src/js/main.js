@@ -3,7 +3,7 @@ var header = require('../components/header/main.js');
 var splash = require('../components/splash/main.js');
 var $ = require('jquery-browserify');
 
-$.getJSON('http://ft-next-engels.herokuapp.com/engels/recommended')
+$.getJSON('/engels/recommended?eid='+document.cookie.match(/_EID=([0-9]+)_/)[1])
 	.then(function(data) {
 		var el = document.querySelector('.recommended');
 		el.innerHTML = '<ul>' + renderAllRecommended(data) + '</ul>';
