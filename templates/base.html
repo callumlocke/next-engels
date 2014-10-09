@@ -12,12 +12,12 @@
 
         <div class="container">
 	    <div class="marketing-card marketing-card--news">
-		<h2>1. Distilled News</h2>
+		<h2>1. Top Stories</h2>
 		<ul>
 		{% for article in articles %}
 			<li data-o-grid-colspan="{% if loop.first %}12 M12 L6 XL6{% else %}6 M3 L3 XL3{% endif %}">
 			<a class="tile{% if (loop.first) %} tile--large{% else %} tile--small{% endif %}" href="/{{ article.id }}">
-					<div class="tile__label">Top Story</div>
+				<div class="tile__label">{{ article.primarySection.name }}</div>
 					{% if (article.largestImage) %}
 					<img class="tile__image" src="{{ article.largestImage.url|resize(600, 338) }}" />
 					{% endif %}
@@ -27,6 +27,11 @@
 			</li>
 		{% endfor %}
 		</ul>
+	</div>
+	<div class="marketing-card marketing-card--recommended">
+		<h2>2. Recommended for you</h2>
+		<div class="recommended">
+		</div>
 	</div>
 	<div class="marketing-card marketing-card--analysis">
 		<h2>2. Informed analysis</h2>

@@ -27,6 +27,9 @@ app.use('/engels', express.static(__dirname + '/../static'));
 var responseHeaders = {
     'Cache-Control': 'max-age=120, public'
 };
+var noCacheResponseHeaders = {
+	'Cache-Control': 'no-cache, private, no-store, must-revalidate'
+};
 
 app.get('/__gtg', function(req, res) {
 	res.status(200).end();
@@ -66,16 +69,17 @@ app.get('/', function(req, res) {
 		});
 });
 
-app.use('/recommended', cookieParser(), function(req, res) {
-	if (req.cookies['FT_U']) {
-		request('http://79.125.2.81/focus/api?method=getrec&uid='+req.cookies['FT_U'].match(/_EID=([0-9]+)_/)[1], function(error, resp, body) {
+app.use('/engels/recommended', cookieParser(), function(req, res) {
+	if (req.cookies.FT_U) {
+		request('http://79.125.2.81/focus/api?method=getrec&uid='+req.cookies.FT_U.match(/_EID=([0-9]+)_/)[1], function(error, resp, body) {
 			parseString(body, function(err, result) {
 				var recommended = result.rsp.item.map(function(item) {
 					return {
-						id: item['$'].id,
+						id: item.$.id,
 						headline: item.headline[0]
 					};
 				});
+				res.set(noCacheResponseHeaders);
 				res.json(recommended);
 			});
 		});

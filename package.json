@@ -9,7 +9,6 @@
     "jquery-browserify": "^1.8.1",
     "node-sass": "^0.9.6",
     "request": "^2.45.0",
-    "reqwest": "^1.1.2",
     "swig": "^1.4.2",
     "xml2js": "^0.4.4"
   },
