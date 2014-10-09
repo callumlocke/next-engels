@@ -30,7 +30,7 @@ app.get('/__gtg', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-	ft.search('page:Front page', 10)
+	ft.search('page:Front page', 8)
 		.then(function(articles) {
 		    var ids;
 		    if (articles[0] instanceof Object) {
@@ -47,7 +47,15 @@ app.get('/', function(req, res) {
 			.then(function(articles) {
 				res.set(responseHeaders);
 				res.render('base', {
-					articles: articles
+					articles: articles,
+					themes: [
+						'Scottish Independence',
+						'Falling UK Inflation',
+						'The War Against ISIS',
+						'European Central Bank Rates',
+						'EPA Carbon Ruling',
+						'The Crisis In Ukraine'
+					]
 				});
 			}, function(err) {
 				res.status(404).end();
