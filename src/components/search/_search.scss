@@ -1,10 +1,18 @@
+.search_container{
+  margin-top:0;
+  background-color: $next-black;
+}
+
 .search{
+
+
   font-family:$font-family-metric;
-
-
+  position:relative;
   display:block;
   width:100%;
+  max-width:450px;
   padding:0 1em;
+
 
   input[type="search"]{
     font-family:$font-family-metric;
@@ -17,6 +25,8 @@
     color:#333;
     background-color: rgb(254, 254, 254);
     -webkit-appearance:none;
+    background: $ft-pink url(http://image.webservices.ft.com/v1/images/raw/fticon:search?source=docs&tint=fffff) 5px center no-repeat;
+    background-size:20px;
 
     &:focus{
       outline:none;
@@ -27,6 +37,8 @@
     margin:0;
     padding:0;
     list-style-type:none;
+    position:relative;
+    z-index:1;
 
     li{
       display: block;
@@ -37,7 +49,7 @@
     a{
       font-size:1.2em;
       color:#FEFEFE;
-      background-color: rgba(51, 51, 51, 0.7);
+      background-color: rgba(51, 51, 51, 0.9);
       display:block;
       margin:0;
       padding:0.2em 1em 0 1em;
@@ -46,10 +58,19 @@
     }
 
     a:hover, a:focus{
-      background-color: rgba(254, 254, 254, 0.7);
+      background-color: rgba(254, 254, 254, 0.9);
       color:#333;
       outline:none;
     }
+  }
+
+  @include respond($breakpoint-small){
+    position: absolute;
+    right:1em;
+    top:0;
+
+
+
   }
 }
 
