@@ -7,4 +7,4 @@ build:
 	@./node_modules/.bin/browserify src/js/main.js > static/bundle.js
 
 run: build
-	export apikey=`cat ~/.ftapi` ; nodemon server/app.js
+	@export apikey=`cat ~/.ftapi` ; nodemon server/app.js
