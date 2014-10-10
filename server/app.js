@@ -1,6 +1,5 @@
 require('es6-promise').polyfill();
 var express = require('express');
-var cors = require('cors');
 var swig = require('swig');
 var ft = require('ft-api-client')(process.env.apikey);
 var request = require('request');
