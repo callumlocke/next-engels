@@ -4,6 +4,7 @@ var swig = require('swig');
 var ft = require('ft-api-client')(process.env.apikey);
 var request = require('request');
 var parseString = require('xml2js').parseString;
+var resize = require('../src/js/resize');
 
 var port = process.env.PORT || 3001;
 var app = module.exports = express();
@@ -16,9 +17,7 @@ app.set('views', __dirname + '/../templates');
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
-swig.setFilter('resize', function(input, width, height) {
-	return 'http://image.webservices.ft.com/v1/images/raw/' + encodeURIComponent(input) + '?width=' + width + '&height=' + height + '&source=docs&fit=cover';
-});
+swig.setFilter('resize', resize);
 
 app.use('/engels', express.static(__dirname + '/../static'));
 
@@ -69,17 +68,25 @@ app.get('/', function(req, res) {
 });
 
 app.use('/engels/recommended', function(req, res) {
+	res.set(noCacheResponseHeaders);
 	if (req.query && req.query.eid) {
 		request('http://79.125.2.81/focus/api?method=getrec&uid='+req.query.eid, function(error, resp, body) {
 			parseString(body, function(err, result) {
-				var recommended = result.rsp.item.map(function(item) {
-					return {
-						id: item.$.id,
-						headline: item.headline[0]
-					};
+				var ids = result.rsp.item.map(function(item) {
+					return item.$.id;
 				});
-				res.set(noCacheResponseHeaders);
-				res.json(recommended);
+				ft.get(ids)
+					.then(function(recommended) {
+						recommended = recommended.map(function(item) {
+							return {
+								id: item.id,
+								headline: item.raw.item && item.raw.item.title && item.raw.item.title.title,
+								largestImage: item.largestImage && item.largestImage.url,
+								lastPublishDateTime: item.raw.item.lifecycle.lastPublishDateTime
+							};
+						});
+						res.json(recommended);
+					});
 			});
 		});
 	} else {
