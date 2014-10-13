@@ -7,8 +7,11 @@ body {
 	padding: 0;
 }
 
-@import "components/search/search";
+@import "variables";
+@import "../components/search/search";
+@import "../components/header/style";
 @import "tiles";
+@import "uber-nav";
 
 h1 {
 	text-align: center;
@@ -129,4 +132,10 @@ h2 {
 	font-family: Metric;
 	font-size: 20px;
 	line-height: 24px;
+}
+
+
+// Hacks for uber nav
+.splash {
+	display: none;
 }

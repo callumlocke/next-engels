@@ -2,6 +2,9 @@ require('es6-promise').polyfill();
 var express = require('express');
 var swig = require('swig');
 var ft = require('ft-api-client')(process.env.apikey);
+var request = require('request');
+var parseString = require('xml2js').parseString;
+var resize = require('../src/js/resize');
 
 var port = process.env.PORT || 3001;
 var app = module.exports = express();
@@ -14,15 +17,16 @@ app.set('views', __dirname + '/../templates');
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
-swig.setFilter('resize', function(input, width, height) {
-	return 'http://image.webservices.ft.com/v1/images/raw/' + encodeURIComponent(input) + '?width=' + width + '&height=' + height + '&source=docs&fit=cover';
-});
+swig.setFilter('resize', resize);
 
 app.use('/engels', express.static(__dirname + '/../static'));
 
 // Appended to all successful responeses
 var responseHeaders = {
     'Cache-Control': 'max-age=120, public'
+};
+var noCacheResponseHeaders = {
+	'Cache-Control': 'no-cache, private, no-store, must-revalidate'
 };
 
 app.get('/__gtg', function(req, res) {
@@ -61,6 +65,33 @@ app.get('/', function(req, res) {
 				res.status(404).end();
 			});
 		});
+});
+
+app.use('/engels/recommended', function(req, res) {
+	res.set(noCacheResponseHeaders);
+	if (req.query && req.query.eid) {
+		request('http://79.125.2.81/focus/api?method=getrec&uid='+req.query.eid, function(error, resp, body) {
+			parseString(body, function(err, result) {
+				var ids = result.rsp.item.map(function(item) {
+					return item.$.id;
+				});
+				ft.get(ids)
+					.then(function(recommended) {
+						recommended = recommended.map(function(item) {
+							return {
+								id: item.id,
+								headline: item.raw.item && item.raw.item.title && item.raw.item.title.title,
+								largestImage: item.largestImage && item.largestImage.url,
+								lastPublishDateTime: item.raw.item.lifecycle.lastPublishDateTime
+							};
+						});
+						res.json(recommended);
+					});
+			});
+		});
+	} else {
+		res.json([]);
+	}
 });
 
 app.listen(port, function() {
