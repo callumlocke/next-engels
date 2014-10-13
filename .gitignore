@@ -4,3 +4,4 @@ styles.css
 bundle.js
 .DS_Store
 .env
+.sass-cache
