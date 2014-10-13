@@ -81,9 +81,9 @@ ul, li {
 	}
 }
 
-@include nextCentreVertically('.tile--imageless', '.tile__title');
+@include nextCentreVertically('.tile--no-image', '.tile__title');
 
-.tile--imageless .tile__title  {
+.tile--no-image .tile__title  {
     font-size: 20px;
 }
 
