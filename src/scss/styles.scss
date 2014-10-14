@@ -34,7 +34,6 @@ h2 {
 }
 
 .marketing-card {
-	padding: 10px;
 	clear: both;
 	min-height: 100vh;
 	background-size: 100%;
@@ -90,7 +89,7 @@ h2 {
 	h2 {
 		color: #FFFFFF;
 	}
-	background: url(/engels/militants.jpg) fixed no-repeat;
+	background: url(/engels/militants.jpg) no-repeat fixed center top;
 }
 
 .marketing-card--comment {
@@ -100,7 +99,23 @@ h2 {
 	h2 {
 		color: #FFFFFF;
 	}
-	background: url(/engels/referendum.jpg) fixed no-repeat;
+	background: url(/engels/referendum.jpg) no-repeat fixed center top;
+}
+.comment__quote {
+	font-family: FinancierDisplay;
+	font-size: 50px;
+	text-align: center;
+	font-style: italic;
+}
+
+.comment__image {
+	text-align: center;
+}
+
+.comment__text {
+	font-family: Metric;
+	font-size: 20px;
+	line-height: 24px;
 }
 
 @media screen and (min-width: 900px) {
@@ -116,16 +131,22 @@ h2 {
 		}
 	}
 }
+@media screen and (max-width: 600px) {
+	[data-o-grid-colspan] { 
+		padding-left: 5px;
+		padding-right: 5px;
+	}
 
-.comment__quote {
-	font-family: FinancierDisplay;
-	font-size: 50px;
-	text-align: center;
-	font-style: italic;
-}
+	.comment__quote {
+		font-size: 32px;
+	}
+	.comment__image img {
+		max-width: 50%;
+	}
 
-.comment__image {
-	text-align: center;
+	.comment__text {
+		font-size: 16px;
+	}
 }
 
 .comment__text {

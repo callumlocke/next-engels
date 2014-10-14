@@ -5,7 +5,8 @@
     "es6-promise": "^1.0.0",
     "express": "^4.9.5",
     "forever": "^0.11.1",
-    "ft-api-client": "https://github.com/Financial-Times/ft-api-client/archive/v3.0.25.tar.gz",
+    "ft-api-client": "https://github.com/Financial-Times/ft-api-client/archive/v3.0.27.tar.gz",
+    "origami-build-tools": "https://github.com/Financial-Times/origami-build-tools/archive/2.0.0.tar.gz",
     "jquery-browserify": "^1.8.1",
     "node-sass": "^0.9.6",
     "request": "^2.45.0",
@@ -16,6 +17,7 @@
     "test": "make test"
   },
   "devDependencies": {
+    "gulp-watch": "^1.0.7",
     "jshint": "^2.5.6"
   }
 }
