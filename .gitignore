@@ -3,7 +3,5 @@
 /.idea/
 /.node-version
 /.sass-cache
-/static/main.css
-/static/main.js
 .DS_Store
 .env
