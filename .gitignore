@@ -4,4 +4,6 @@ styles.css
 bundle.js
 .DS_Store
 .env
-.sass-cache
+/.sass-cache
+/static/styles.css
+/.node-version
