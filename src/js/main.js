@@ -1,6 +1,6 @@
+require('next-header');
 var search = require('../components/search/search.js');
 var header = require('../components/header/main.js');
-var splash = require('../components/splash/main.js');
 var resize = require('./resize');
 var $ = require('jquery-browserify');
 

@@ -1,9 +1,9 @@
 /node_modules/
+/bower_components/
 /.idea/
 /.node-version
 /.sass-cache
 /static/main.css
 /static/main.js
-bundle.js
 .DS_Store
 .env

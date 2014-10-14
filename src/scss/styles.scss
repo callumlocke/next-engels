@@ -11,7 +11,7 @@ body {
 @import "../components/search/search";
 @import "../components/header/style";
 @import "tiles";
-@import "uber-nav";
+@import "next-header/main";
 
 h1 {
 	text-align: center;
@@ -157,6 +157,6 @@ h2 {
 
 
 // Hacks for uber nav
-.splash {
-	display: none;
+.container {
+	margin-top: 10px;
 }
