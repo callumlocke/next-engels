@@ -1,7 +1,10 @@
+<!-- import macros -->
+{% include "./partials/tile.html" %}
+
 <html>
     <head>
         <link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules=o-fonts@^1.4.1,o-grid@^2.1.5"/>
-        <link rel="stylesheet" href="/engels/styles.css" />
+        <link rel="stylesheet" href="/engels/main.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Financial Times</title>
     </head>
@@ -9,22 +12,16 @@
         <!-- HEADER -->
         {% include "../src/components/header/base.html" %}
 
-
         <div class="container">
 	    <div class="marketing-card marketing-card--news">
-		<h2>1. Top Stories</h2>
+		<!-- <h2>1. Top Stories</h2> -->
 		<ul>
 		{% for article in articles %}
-			<li data-o-grid-colspan="{% if loop.first %}12 M12 L6 XL6{% else %}6 M3 L3 XL3{% endif %}">
-			<a class="tile{% if (loop.first) %} tile--large{% else %} tile--small{% endif %}{% if (!article.largestImage) %} tile--no-image{% endif %}" href="/{{ article.id }}">
-					<div class="tile__label">{{ article.primarySection.name }}</div>
-					{% if (article.largestImage) %}
-					<img class="tile__image" src="{{ article.largestImage.url|resize(600, 338) }}" />
-					{% endif %}
-					<div class="tile__title">{{ article.raw.item.title.title }}</div>
-					<time data-o-component="o-date" class="o-date tile__date" datetime="{{ article.raw.item.lifecycle.lastPublishDateTime }}">{{ article.lastUpdated|date('l, j F, Y') }}</time>
-				</a>
-			</li>
+            {% if loop.first %}
+                {{ tile(article, true, true) }}
+            {% else %}
+                {{ tile(article, true, false) }}
+            {% endif %}
 		{% endfor %}
 		</ul>
 	</div>
@@ -53,7 +50,7 @@
 	</div>
 	<div class="marketing-card marketing-card--comment">
 		<h2>3. Comment</h2>
-		<div class='comment'>
+		<div class='comment' data-o-grid-colspan="12">
 			<div class='comment__quote'>&ldquo;The firm was a complete mess. I had to deal with that&rdquo;</div>
 			<div class='comment__image'><img src="/engels/comment.jpg "/></div>
 			<div class='comment__text'>Lagarde and I are here because she recently celebrated an anniversary: just over three years ago she took over as managing director of the International Monetary Fund, the first woman to run the mighty $760bn organisation that is charged with promoting global financial and monetary stability. She arrived, however, amid great instability. The IMF’s former managing director, Dominique Strauss-Kahn, had just resigned after becoming entangled in a sordid sex scandal in a New York hotel. “It was a very bizarre time,” Lagarde drolly observes, stressing her words. The world outside the IMF was also experiencing its own, financial, crisis.
@@ -73,6 +70,6 @@
     </div>
     <div>
     </div>
-    <script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0"></script>
+    <script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0&amp;minify=none&amp;autoinit=0"></script>
         <script src="/engels/bundle.js"></script>
 </html>
