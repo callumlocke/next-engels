@@ -1,9 +1,9 @@
 /node_modules/
 /.idea/
-styles.css
+/static/main.css
+/static/main.js
 bundle.js
 .DS_Store
 .env
 /.sass-cache
-/static/styles.css
 /.node-version
