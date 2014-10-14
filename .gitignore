@@ -1,5 +1,6 @@
 /node_modules/
 /.idea/
+/.node-version
 styles.css
 bundle.js
 .DS_Store

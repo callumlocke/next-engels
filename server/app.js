@@ -25,10 +25,6 @@ app.use('/engels', express.static(__dirname + '/../static'));
 var responseHeaders = {
     'Cache-Control': 'max-age=120, public'
 };
-var noCacheResponseHeaders = {
-	'Cache-Control': 'no-cache, private, no-store, must-revalidate'
-};
-
 app.get('/__gtg', function(req, res) {
 	res.status(200).end();
 });
@@ -68,7 +64,7 @@ app.get('/', function(req, res) {
 });
 
 app.use('/engels/recommended', function(req, res) {
-	res.set(noCacheResponseHeaders);
+	res.set(responseHeaders);
 	if (req.query && req.query.eid) {
 		request('http://79.125.2.81/focus/api?method=getrec&uid='+req.query.eid, function(error, resp, body) {
 			parseString(body, function(err, result) {
