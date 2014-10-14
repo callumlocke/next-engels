@@ -17,7 +17,7 @@
   },
   "scripts": {
     "postinstall": "./node_modules/.bin/bower install && make build",
-    "test": "make tes"
+    "test": "make test"
   },
   "devDependencies": {
     "jshint": "^2.5.6"
