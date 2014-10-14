@@ -2,7 +2,7 @@ PORT := 3002
 
 .PHONY: test
 test:
-	./node_modules/.bin/jshint `find . \\( -name '*.js' -o -name '*.json' \\) ! \\( -path './node_modules/*' -o -name '*.min.*' -o -name 'bundle.js' \\)`
+	./node_modules/.bin/jshint `find . \\( -name '*.js' -o -name '*.json' \\) ! \\( -path './node_modules/*' -o -name '*.min.*' -o -path './bower_components/*' -o -path './static/*' -o -name 'bundle.js' \\)`
 
 run:
 	$(MAKE) _run -j2
