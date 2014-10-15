@@ -91,6 +91,10 @@ ul, li {
 
 @include nextCentreVertically('.tile--no-image', '.tile__title');
 
+.tile--no-image {
+	min-height: 150px;
+}
+
 .tile--no-image .tile__title  {
     font-size: 20px;
 }
