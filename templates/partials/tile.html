@@ -8,7 +8,7 @@
             <img class="tile__image" src="{{ article.largestImage.url|resize(600, 338) }}" />
             {% endif %}
             <div class="tile__title">{{ article.raw.item.title.title }}</div>
-            <time data-o-component="o-date" class="o-date tile__date" datetime="{{ article.raw.item.lifecycle.lastPublishDateTime }}">{{ article.lastUpdated|date('l, j F, Y') }}</time>
+            <time data-o-component="o-date" class="o-date tile__date" datetime="{{ article.raw.item.lifecycle.lastPublishDateTime }}">{{ article.lastUpdated|date('M j, Y') }}</time>
         </a>
     {% if (isInList) %}
     </li>
