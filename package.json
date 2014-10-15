@@ -5,7 +5,7 @@
     "es6-promise": "^1.0.0",
     "express": "^4.9.5",
     "forever": "^0.11.1",
-    "ft-api-client": "https://github.com/Financial-Times/ft-api-client/archive/v3.0.27.tar.gz",
+    "ft-api-client": "https://github.com/Financial-Times/ft-api-client/archive/v3.0.30.tar.gz",
     "jquery-browserify": "^1.8.1",
     "jshint": "^2.5.6",
     "request": "^2.45.0",
