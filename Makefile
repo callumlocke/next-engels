@@ -13,7 +13,7 @@ run-local: build
 	export apikey=`cat ~/.ftapi` ; export PORT=${PORT}; nodemon server/app.js
 
 run-router:
-	export homepage=${PORT}; export engels=${PORT}; export PORT=5050; export DEBUG=proxy ; next-router
+	export engels=${PORT}; export PORT=5050; export DEBUG=proxy ; next-router
 
 build:
 	@./node_modules/.bin/gulp
