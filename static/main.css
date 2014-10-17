@@ -110,7 +110,8 @@ ul, li {
   background: #EEEEEE;
   font-family: BentonSans, Arial, sans-serif;
   margin-bottom: 20px;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 .tile__content {
   display: block;
@@ -138,11 +139,11 @@ ul, li {
   margin: 10px 10px 0 10px; }
   .tile--large .tile__title {
     font-size: 32px;
-    line-height: 1; }
+    line-height: 1.2; }
   a:hover .tile__title {
     text-decoration: underline; }
 
-.tile--no-image {
+.tile--no-image .tile__content {
   display: -webkit-box;
   /* OLD - iOS 6-, Safari 3.1-6 */
   display: -moz-box;
@@ -169,7 +170,7 @@ ul, li {
   -ms-flex-direction: column;
   flex-direction: column; }
 
-.tile--no-image .tile__title {
+.tile--no-image .tile__content .tile__title {
   margin-top: auto;
   margin-bottom: auto;
   -webkit-align-self: center;
@@ -180,6 +181,9 @@ ul, li {
 .tile--no-image {
   min-height: 150px; }
 
+.tile--no-image .tile__content {
+  height: 100%; }
+
 .tile--no-image .tile__title {
   font-size: 20px; }
 
@@ -189,9 +193,16 @@ ul, li {
 .tile__label {
   position: absolute;
   top: 0;
-  box-sizing: border-box;
   max-width: 100%;
-  overflow: hidden; }
+  padding: 0 0 5px 0; }
+  .tile__label:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -5px;
+    content: '';
+    width: 5px; }
   .tile__label a {
     background: rgba(0, 0, 0, 0.7);
     display: inline-block;
@@ -199,8 +210,7 @@ ul, li {
     padding: 6px;
     font-size: 14px;
     text-transform: uppercase;
-    text-decoration: none;
-    margin: 0 5px 5px 0; }
+    text-decoration: none; }
 
 .tile__date {
   display: block;

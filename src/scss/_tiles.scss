@@ -47,6 +47,7 @@ ul, li {
 	font-family: BentonSans, Arial, sans-serif;
 	margin-bottom: 20px;
 	position: relative;
+	overflow: hidden;
 }
 
 .tile__content {
@@ -87,7 +88,7 @@ ul, li {
 	
 	.tile--large & {
 		font-size: 32px;
-		line-height: 1;
+		line-height: 1.2;
 	}
 
 	a:hover & {
@@ -95,10 +96,14 @@ ul, li {
 	}
 }
 
-@include nextCentreVertically('.tile--no-image', '.tile__title');
+@include nextCentreVertically('.tile--no-image .tile__content', '.tile__title');
 
 .tile--no-image {
 	min-height: 150px;
+}
+
+.tile--no-image .tile__content {
+	height: 100%;
 }
 
 .tile--no-image .tile__title  {
@@ -112,9 +117,18 @@ ul, li {
 .tile__label {
 	position: absolute;
 	top: 0;
-	box-sizing: border-box;
 	max-width: 100%;
-	overflow: hidden;
+	padding: 0 0 5px 0;
+
+	&:after {
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: -5px;
+		content: '';
+		width: 5px;
+	}
 	
 
 	a {
@@ -125,7 +139,6 @@ ul, li {
 		font-size: 14px;
 		text-transform: uppercase;
 		text-decoration: none;
-		margin: 0 5px 5px 0;
 	}
 }
 
