@@ -77,7 +77,8 @@ app.use('/engels/recommended', function(req, res) {
 							return {
 								id: item.id,
 								headline: item.raw.item && item.raw.item.title && item.raw.item.title.title,
-								largestImage: item.largestImage && item.largestImage.url,
+								largestImage: {url: item.largestImage.url},
+								primarySection: {name: item.raw.item.metadata.primarySection.term.name},
 								lastPublishDateTime: item.raw.item.lifecycle.lastPublishDateTime
 							};
 						});

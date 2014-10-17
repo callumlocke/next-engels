@@ -1,6 +1,7 @@
 {
   "name": "next-engels",
   "dependencies": {
-    "next-header": "https://github.com/matthew-andrews/next-header.git#v1.0.8"
+    "next-header": "https://github.com/matthew-andrews/next-header.git#v1.0.8",
+    "swig": "~1.4.2"
   }
 }

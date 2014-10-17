@@ -10,13 +10,16 @@ run:
 _run: run-local run-router
 
 run-local: build
-	export apikey=`cat ~/.ftapi` ; export PORT=${PORT}; nodemon server/app.js
+	export apikey=`cat ~/.ftapi` ; export ENVIRONMENT=development; export PORT=${PORT}; nodemon server/app.js
 
 run-router:
 	export homepage=${PORT}; export engels=${PORT}; export PORT=5050; export DEBUG=proxy ; next-router
 
 build:
-	@./node_modules/.bin/gulp
+	export ENVIRONMENT=development; ./node_modules/.bin/gulp
+
+watch:
+	export ENVIRONMENT=development; ./node_modules/.bin/gulp watch
 
 heroku-cfg:
 	@heroku config:set apikey=`cat ~/.ftapi`
