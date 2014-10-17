@@ -41,14 +41,19 @@ ul, li {
 	margin: 0;
 	padding: 0;
 }
+
 .tile {
 	background: #EEEEEE;
 	font-family: BentonSans, Arial, sans-serif;
+	margin-bottom: 20px;
+	position: relative;
+	overflow: hidden;
+}
+
+.tile__content {
 	display: block;
 	text-decoration: none;
 	color: #000000;
-	margin-bottom: 20px;
-	position: relative;
 }
 
 .tile--small {
@@ -71,6 +76,8 @@ ul, li {
 	}
 }
 
+
+
 .tile__title {
 	font-size: 16px;
 	display: -webkit-box;
@@ -81,7 +88,7 @@ ul, li {
 	
 	.tile--large & {
 		font-size: 32px;
-		line-height: 1;
+		line-height: 1.2;
 	}
 
 	a:hover & {
@@ -89,10 +96,14 @@ ul, li {
 	}
 }
 
-@include nextCentreVertically('.tile--no-image', '.tile__title');
+@include nextCentreVertically('.tile--no-image .tile__content', '.tile__title');
 
 .tile--no-image {
 	min-height: 150px;
+}
+
+.tile--no-image .tile__content {
+	height: 100%;
 }
 
 .tile--no-image .tile__title  {
@@ -105,15 +116,30 @@ ul, li {
 
 .tile__label {
 	position: absolute;
-	display: inline-block;
-	background: rgba(0,0,0,0.7);
-	color: #FFF;
-	padding: 6px;
-	font-size: 14px;
-	text-transform: uppercase;
-	overflow: hidden;
+	top: 0;
 	max-width: 100%;
-	text-decoration: none;
+	padding: 0 0 5px 0;
+
+	&:after {
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: -5px;
+		content: '';
+		width: 5px;
+	}
+	
+
+	a {
+		background: rgba(0,0,0,0.7);
+		display: inline-block;
+		color: #FFF;
+		padding: 6px;
+		font-size: 14px;
+		text-transform: uppercase;
+		text-decoration: none;
+	}
 }
 
 .tile__date {

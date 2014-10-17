@@ -1,6 +1,3 @@
-<!-- import macros -->
-{% include "./partials/tile.html" %}
-
 <html>
     <head>
         <link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules=o-fonts@^1.4.1,o-grid@^2.1.5"/>
@@ -18,9 +15,9 @@
 		<ul>
 		{% for article in articles %}
             {% if loop.first %}
-                {{ tile(article, true, true) }}
+                {% include "./partials/tile.html" with {article: article, isInList: true, isLarge: true} %}
             {% else %}
-                {{ tile(article, true, false) }}
+                {% include "./partials/tile.html" with {article: article, isInList: true, isLarge: false} %}
             {% endif %}
 		{% endfor %}
 		</ul>

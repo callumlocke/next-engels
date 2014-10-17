@@ -6,7 +6,9 @@ gulp.task('default', function () {
 	obt.build(gulp, {
 		sass: './src/scss/styles.scss',
 		js: './src/js/main.js',
-		buildFolder: './static/'
+		buildFolder: './static/',
+        transforms: [require('swigify')()],
+        env: process.env.ENVIRONMENT || 'production'
 	});
 });
 
