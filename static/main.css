@@ -109,11 +109,13 @@ ul, li {
 .tile {
   background: #EEEEEE;
   font-family: BentonSans, Arial, sans-serif;
-  display: block;
-  text-decoration: none;
-  color: #000000;
   margin-bottom: 20px;
   position: relative; }
+
+.tile__content {
+  display: block;
+  text-decoration: none;
+  color: #000000; }
 
 .tile--small {
   height: 250px; }
@@ -186,15 +188,19 @@ ul, li {
 
 .tile__label {
   position: absolute;
-  display: inline-block;
-  background: rgba(0, 0, 0, 0.7);
-  color: #FFF;
-  padding: 6px;
-  font-size: 14px;
-  text-transform: uppercase;
-  overflow: hidden;
+  top: 0;
+  box-sizing: border-box;
   max-width: 100%;
-  text-decoration: none; }
+  overflow: hidden; }
+  .tile__label a {
+    background: rgba(0, 0, 0, 0.7);
+    display: inline-block;
+    color: #FFF;
+    padding: 6px;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 0 5px 5px 0; }
 
 .tile__date {
   display: block;
