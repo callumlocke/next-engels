@@ -1213,6 +1213,16 @@ html {
   text-decoration: none;
   height: 28px; }
 
+.notify-badge {
+  margin-left: 10px;
+  background-color: red;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-family: BentonSans, Helvetica, Arial; }
+  .notify-badge[aria-hidden] {
+    display: none; }
+
 .icon {
   font-family: "ft-icons";
   display: inline-block;

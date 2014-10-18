@@ -1,7 +1,7 @@
 {
   "name": "next-engels",
   "dependencies": {
-    "next-header": "https://github.com/Financial-Times/next-header.git#v1.0.9",
+    "next-header": "https://github.com/Financial-Times/next-header.git#v1.0.10",
     "swig": "~1.4.2"
   }
 }
