@@ -87,7 +87,8 @@ app.use('/engels/recommended', function(req, res) {
 				}))
 					.then(function(recommended) {
 						recommended = recommended.filter(function(item) {
-							return item !== undefined;
+							var daysOld = (Date.now() - (new Date(item.raw.item.lifecycle.lastPublishDateTime)).getTime())/1000/60/60/24;
+							return item !== undefined && daysOld <= 7;
 						});
 						recommended = recommended.map(function(item) {
 							return {
