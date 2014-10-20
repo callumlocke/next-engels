@@ -16,7 +16,7 @@ function allIgnoreRejects(promises) {
 				res();
 			});
 		});
-	}
+	};
 	return Promise.all(promises.map(neverFail));
 }
 
