@@ -9,6 +9,17 @@ var resize = require('../src/js/resize');
 var port = process.env.PORT || 3001;
 var app = module.exports = express();
 
+function allIgnoreRejects(promises) {
+	var neverFail = function(promise) {
+		return new Promise(function(res, rej) {
+			promise.then(res, function() {
+				res();
+			});
+		});
+	}
+	return Promise.all(promises.map(neverFail));
+}
+
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/../templates');
@@ -71,14 +82,21 @@ app.use('/engels/recommended', function(req, res) {
 				var ids = result.rsp.item.map(function(item) {
 					return item.$.id;
 				});
-				ft.get(ids)
+				allIgnoreRejects(ids.map(function(id) {
+					return ft.get(id);
+				}))
 					.then(function(recommended) {
+						recommended = recommended.filter(function(item) {
+							return item !== undefined;
+						});
 						recommended = recommended.map(function(item) {
 							return {
 								id: item.id,
 								headline: item.raw.item && item.raw.item.title && item.raw.item.title.title,
-								largestImage: {url: item.largestImage.url},
-								primarySection: {name: item.raw.item.metadata.primarySection.term.name},
+								largestImage: { url: item.largestImage && item.largestImage.url },
+								primarySection: {
+									name: item.raw.item && item.raw.item.metadata && item.raw.item.metadata.primarySection && item.raw.item.metadata.primarySection.term && item.raw.item.metadata.primarySection.term.name
+								},
 								lastPublishDateTime: item.raw.item.lifecycle.lastPublishDateTime
 							};
 						});
