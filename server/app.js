@@ -8,6 +8,7 @@ var resize = require('../src/js/resize');
 
 var port = process.env.PORT || 3001;
 var app = module.exports = express();
+app.use(raven.middleware.express(process.env.RAVEN_URL));
 
 function allIgnoreRejects(promises) {
 	var neverFail = function(promise) {
