@@ -1,59 +1,67 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules=o-fonts@^1.4.1,o-grid@^2.1.5"/>
-        <link rel="stylesheet" href="/engels/main.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<head>
+	<link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules=o-fonts@^1.4.1,o-grid@^2.1.5"/>
+	<link rel="stylesheet" href="/engels/main.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Financial Times</title>
-    </head>
-    <div class="home">
-        <!-- HEADER -->
-        {% include "../src/components/header/base.html" %}
+</head>
+<div class="home">
+	<!-- HEADER -->
+	{% include "../src/components/header/base.html" %}
 
-        <div class="container">
-	    <div class="marketing-card marketing-card--news">
-		<!-- <h2>1. Top Stories</h2> -->
-		<ul>
-		{% for article in articles %}
-            {% if loop.first %}
-                {% include "./partials/tile.html" with {article: article, isInList: true, isLarge: true} %}
-            {% else %}
-                {% include "./partials/tile.html" with {article: article, isInList: true, isLarge: false} %}
-            {% endif %}
-		{% endfor %}
-		</ul>
-	</div>
-	<div class="marketing-card marketing-card--recommended">
-		<h2>2. Recommended for you</h2>
-		<div class="recommended">
+	<div class="container">
+
+		<aside class="display-ad display-ad--slot1 fixedsticky" data-display-ad="slot1">
+			<div class="dummy-ad dummy-ad--size728x90">Slot 1</div> 
+		</aside>
+
+		<div class="marketing-card marketing-card--news clearfix">
+			<!-- <h2>1. Top Stories</h2> -->
+			<ul>
+				{% for article in articles %}
+				{% if loop.first %}
+				{% include "./partials/tile.html" with {article: article, isInList: true, isLarge: true} %}
+				{% else %}
+				{% include "./partials/tile.html" with {article: article, isInList: true, isLarge: false} %}
+				{% endif %}
+				{% endfor %}
+			</ul>
 		</div>
-	</div>
-	<div class="marketing-card marketing-card--favorites">
-		<h2>3. Favourites</h2>
-		<div class="favorites">
-			<div class="tile tile--large">
-			    <img class="tile__image" src="/engels/favorites.png" />
-			    <div class="tile__title">Your favourite items will appear here</div>
-			    <div calss="tile__date">&nbsp;</div>
+		<aside class="display-ad display-ad--slot2 fixedsticky" data-display-ad="slot2">
+			<div class="dummy-ad dummy-ad--size728x90">Slot 2</div> 
+		</aside>
+		<div class="marketing-card marketing-card--recommended">
+			<h2>2. Recommended for you</h2>
+			<div class="recommended">
 			</div>
 		</div>
-	</div>
-	<div class="marketing-card marketing-card--analysis">
-		<h2>4. Informed analysis</h2>
-		<ul class="analysis">
-			<li data-o-grid-colspan="12 M6 L6 XL6">
-				<a href="#" class="analysis__card">
-					<div class="analysis__card__title">Bad time to break up</div>
-					Until recently, I thought I did not much care if Scotland voted for independence. But, now, as the prospect becomes very real, I am surprised by how upset I feel. I follow the polls obsessively. I fume at the incompetence of the No campaign and the insularity of the Yes. And my sense of foreboding grows as the day grows closer.
-				</a>
-			</li>
-			<li data-o-grid-colspan="12 M6 L6 XL6">
-				<a href="#" class="analysis__card">
-					<div class="analysis__card__title">Nationalism vs. Unionism</div>
-					After 307 years as part of Great Britain, Scotland will soon decide whether it is time to once again go it alone. Opinion polls suggest that nationalists still fall short of the numbers needed to unpick the 1707 parliamentary union with England that lies at the heart of the UK. But nationalist and pro-union campaigners alike agree that with eight months of febrile campaigning to go, the result of September’s historic referendum is far from assured.
-				</a>
-			</li>
+		<div class="marketing-card marketing-card--favorites">
+			<h2>3. Favourites</h2>
+			<div class="favorites">
+				<div class="tile tile--large">
+					<img class="tile__image" src="/engels/favorites.png" />
+					<div class="tile__title">Your favourite items will appear here</div>
+					<div calss="tile__date">&nbsp;</div>
+				</div>
+			</div>
+		</div>
+		<div class="marketing-card marketing-card--analysis">
+			<h2>4. Informed analysis</h2>
+			<ul class="analysis">
+				<li data-o-grid-colspan="12 M6 L6 XL6">
+					<a href="#" class="analysis__card">
+						<div class="analysis__card__title">Bad time to break up</div>
+						Until recently, I thought I did not much care if Scotland voted for independence. But, now, as the prospect becomes very real, I am surprised by how upset I feel. I follow the polls obsessively. I fume at the incompetence of the No campaign and the insularity of the Yes. And my sense of foreboding grows as the day grows closer.
+					</a>
+				</li>
+				<li data-o-grid-colspan="12 M6 L6 XL6">
+					<a href="#" class="analysis__card">
+						<div class="analysis__card__title">Nationalism vs. Unionism</div>
+						After 307 years as part of Great Britain, Scotland will soon decide whether it is time to once again go it alone. Opinion polls suggest that nationalists still fall short of the numbers needed to unpick the 1707 parliamentary union with England that lies at the heart of the UK. But nationalist and pro-union campaigners alike agree that with eight months of febrile campaigning to go, the result of September’s historic referendum is far from assured.
+					</a>
+				</li>
+			</ul>
 		</ul>
-          </ul>
 	</div>
 	<div class="marketing-card marketing-card--comment">
 		<h2>5. Comment</h2>
@@ -64,20 +72,23 @@
 			</div>
 		</div>
 	</div>
-	<div class="marketing-card marketing-card--themes">
+	<div class="marketing-card marketing-card--themes clearfix">
 		<h2>6. Significant Themes</h2>
-          <ul class="themes">
-            {% for theme in themes %}
-		<li data-o-grid-colspan="6 M3 L3 XL3">
-			<a href="#" class="themes__card">{{theme }}</a>
-		</li>
-            {% endfor %}
-          </ul>
+		<ul class="themes">
+			{% for theme in themes %}
+			<li data-o-grid-colspan="6 M3 L3 XL3">
+				<a href="#" class="themes__card">{{theme }}</a>
+			</li>
+			{% endfor %}
+		</ul>
 	</div>
-    </div>
-    <div>
-    </div>
-    <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
-    <script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0&amp;minify=none&amp;autoinit=0"></script>
-        <script src="/engels/main.js"></script>
+	<aside class="display-ad display-ad--slot3 fixedsticky" data-display-ad="slot3">
+		<div class="dummy-ad dummy-ad--size728x90">Slot 3</div> 
+	</aside>
+</div>
+<div>
+</div>
+<script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
+<script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0&amp;minify=none&amp;autoinit=0"></script>
+<script src="/engels/main.js"></script>
 </html>

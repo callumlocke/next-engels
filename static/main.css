@@ -1241,6 +1241,36 @@ html {
   color: #FFFFFF;
   border: transparent; }
 
+.fixedsticky {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky; }
+
+/* When position: sticky is supported but native behavior is ignored */
+.fixedsticky-withoutfixedfixed .fixedsticky-off,
+.fixed-supported .fixedsticky-off {
+  position: static; }
+
+.fixedsticky-withoutfixedfixed .fixedsticky-on,
+.fixed-supported .fixedsticky-on {
+  position: fixed; }
+
+.fixedsticky-dummy {
+  display: none; }
+
+.fixedsticky-on + .fixedsticky-dummy {
+  display: block; }
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
 h1 {
   text-align: center;
   padding: 30px; }
@@ -1351,3 +1381,41 @@ h2 {
 
 .container {
   margin-top: 10px; }
+
+.display-ad {
+  z-index: 10;
+  width: 100%;
+  padding: 10px; }
+  .display-ad.fixedsticky-on {
+    background-color: rgba(255, 255, 255, 0.6);
+    -webkit-box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2); }
+
+.display-ad--size728x90 {
+  height: 100px;
+  padding: 5px 10px; }
+
+.display-ad--slot1,
+.display-ad--slot2 {
+  top: 0; }
+
+.display-ad--slot3 {
+  bottom: 0; }
+
+.display-ad--slot1 {
+  margin-top: -10px; }
+  .display-ad--slot1.fixedsticky-on {
+    margin-top: 0; }
+
+.dummy-ad {
+  background-color: #646464;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 36px;
+  font-family: Arial;
+  text-align: center;
+  margin: auto; }
+
+.dummy-ad--size728x90 {
+  width: 728px;
+  height: 90px;
+  padding: 20px; }

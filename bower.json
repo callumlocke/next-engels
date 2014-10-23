@@ -2,6 +2,7 @@
   "name": "next-engels",
   "dependencies": {
     "next-header": "https://github.com/Financial-Times/next-header.git#v1.0.10",
+    "filament-sticky": "https://github.com/Financial-Times/fixed-sticky.git#scss",
     "swig": "~1.4.2"
   }
 }
