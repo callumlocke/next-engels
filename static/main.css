@@ -1385,22 +1385,18 @@ h2 {
 .display-ad {
   z-index: 10;
   width: 100%;
-  padding: 10px; }
+  padding: 10px 0; }
   .display-ad.fixedsticky-on {
     background-color: rgba(255, 255, 255, 0.6);
     -webkit-box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2); }
 
-.display-ad--size728x90 {
-  height: 100px;
-  padding: 5px 10px; }
+.display-ad--banner {
+  padding: 5px 0; }
 
 .display-ad--slot1,
 .display-ad--slot2 {
   top: 0; }
-
-.display-ad--slot3 {
-  bottom: 0; }
 
 .display-ad--slot1 {
   margin-top: -10px; }
@@ -1410,12 +1406,22 @@ h2 {
 .dummy-ad {
   background-color: #646464;
   color: rgba(255, 255, 255, 0.3);
-  font-size: 36px;
+  font-size: 24px;
   font-family: Arial;
   text-align: center;
   margin: auto; }
 
-.dummy-ad--size728x90 {
-  width: 728px;
-  height: 90px;
-  padding: 20px; }
+.dummy-ad--banner {
+  width: 300px;
+  height: 50px;
+  padding: 10px; }
+
+@media screen and (min-width: 468px) {
+  .dummy-ad--banner {
+    width: 468px;
+    height: 60px;
+    padding: 20px; } }
+@media screen and (min-width: 728px) {
+  .dummy-ad--banner {
+    width: 728px;
+    height: 90px; } }
