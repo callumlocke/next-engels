@@ -29,6 +29,7 @@ deploy:
 	# Clean+install dependencies
 	git clean -fxd
 	npm install
+	$(MAKE) deploy-without-clean-and-install
 
 deploy-without-clean-and-install:
 	./node_modules/.bin/bower install
