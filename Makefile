@@ -1,8 +1,9 @@
 PORT := 3002
+app := ft-next-engels
 
 .PHONY: test
 test:
-	./node_modules/.bin/jshint `find . \\( -name '*.js' -o -name '*.json' \\) ! \\( -path './node_modules/*' -o -name '*.min.*' -o -path './bower_components/*' -o -path './static/*' -o -name 'bundle.js' \\)`
+	./node_modules/.bin/jshint `find . \\( -name '*.js' -o -name '*.json' \\) ! \\( -path './tmp/*' -o -path './node-v0.10.32-linux-x64/*' -o -path './node_modules/*' -o -name '*.min.*' -o -path './bower_components/*' -o -path './static/*' -o -name 'bundle.js' \\)`
 
 run:
 	$(MAKE) _run -j2
@@ -18,9 +19,28 @@ run-router:
 build:
 	export ENVIRONMENT=development; ./node_modules/.bin/gulp
 
+build-production:
+	./node_modules/.bin/gulp
+
 watch:
 	export ENVIRONMENT=development; ./node_modules/.bin/gulp watch
 
-heroku-cfg:
-	@heroku config:set apikey=`cat ~/.ftapi`
-	@heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
+deploy:
+	# Clean+install dependencies
+	git clean -fxd
+	npm install
+
+deploy-without-clean-and-install:
+	./node_modules/.bin/bower install
+
+	# Build steps
+	$(MAKE) build-production
+
+	# Pre-deploy clean
+	npm prune --production
+
+	# Package+deploy
+	@./node_modules/.bin/haikro build deploy \
+		--app $(app) \
+		--token $(HEROKU_AUTH_TOKEN) \
+		--commit `git rev-parse HEAD`
