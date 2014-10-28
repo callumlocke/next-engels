@@ -1,7 +1,6 @@
 /node_modules/
 /bower_components/
 /node-v0.10.32-linux-x64/
-/.idea/
 /tmp/
 /.node-version
 /.sass-cache
