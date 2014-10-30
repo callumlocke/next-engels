@@ -11,9 +11,11 @@
 
 	<div class="container">
 
+		{% if flags.ads.isSwitchedOn() %}
 		<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
 			<div class="dummy-ad dummy-ad--banner">Slot 1</div> 
 		</aside>
+		{% endif %}
 
 		<div class="marketing-card marketing-card--news clearfix">
 			<!-- <h2>1. Top Stories</h2> -->
@@ -27,9 +29,13 @@
 				{% endfor %}
 			</ul>
 		</div>
+
+		{% if flags.ads.isSwitchedOn() %}
 		<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
 			<div class="dummy-ad dummy-ad--banner">Slot 2</div> 
 		</aside>
+		{% endif %}
+
 		<div class="marketing-card marketing-card--recommended">
 			<h2>2. Recommended for you</h2>
 			<div class="recommended">
