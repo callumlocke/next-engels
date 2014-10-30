@@ -1,8 +1,11 @@
 /node_modules/
 /bower_components/
-/.idea/
+/node-v0.10.32-linux-x64/
+/tmp/
 /.node-version
 /.sass-cache
+/static/main.js
+/static/main.css
 .DS_Store
 .env
 npm-debug.log

@@ -3,11 +3,7 @@ script:
 language: node_js
 node_js:
 - '0.10'
-deploy:
-  provider: heroku
-  api_key:
-    secure: B8WgD07Z6ieQVPgKYlbh0S8Qy+iQPA13qe4I53rXfyECt0UQmXGu+p3wy7KX/WTD9U0S0UUQ2ojTxg7RAlH7eUVSxMEqfs7NRVKvnk5GDv4iTIiAEZgP0nm4rBLls6xKOUUqVTAguq/KpqiQCTwdZdWnIWxmNUr4TyTIj4t1XBQ=
-  app: ft-next-engels
-  on:
-    repo: Financial-Times/next-engels
-    node: '0.10'
+before_install:
+- gem install sass --version 3.3
+after_success:
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && make deploy-without-clean-and-install
