@@ -30,6 +30,6 @@ FixedSticky.tests.sticky = false;
 var ads = document.querySelectorAll('[data-display-ad]');
 for(var i = 0; i < ads.length; i++){
 	$(ads[i]).fixedsticky();
-};
+}
 
 search.init();
