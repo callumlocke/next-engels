@@ -12,6 +12,17 @@ body {
 @import "../components/header/style";
 @import "tiles";
 @import "next-header/main";
+@import "filament-sticky/main";
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+ 
+.clearfix:after {
+  clear: both;
+}
 
 h1 {
 	text-align: center;
@@ -153,3 +164,62 @@ h2 {
 .container {
 	margin-top: 10px;
 }
+
+//Sticky ads
+.display-ad {
+	z-index: 10;
+	width: 100%;
+	padding: 10px 0;
+	
+	&.fixedsticky-on {
+		background-color:rgba(255,255,255,.6);
+		-webkit-box-shadow: 0 1px 4px 1px rgba(0,0,0,.2);
+		box-shadow: 0 1px 4px 1px rgba(0,0,0,.2);
+	}	
+}
+.display-ad--banner {
+	padding: 5px 0;
+}
+
+.display-ad--slot1,
+.display-ad--slot2 { 
+	top: 0; 
+}
+
+.display-ad--slot1 {
+	margin-top: -10px;
+	&.fixedsticky-on { 
+		margin-top: 0;
+	}
+}
+
+.dummy-ad {
+	background-color:rgb(100,100,100);
+	color: rgba(255,255,255,.3);
+	font-size: 24px;
+	font-family: Arial;
+	text-align: center;
+	margin: auto;
+} 
+
+.dummy-ad--banner {
+	width: 300px;
+	height: 50px;
+	padding: 10px;
+}
+
+@media screen and (min-width: 468px) {
+	.dummy-ad--banner {
+		width: 468px;
+		height: 60px;
+		padding: 20px;
+	}
+}
+
+@media screen and (min-width: 728px) {
+	.dummy-ad--banner {
+		width: 728px;
+		height: 90px;
+	}
+}
+

@@ -5,6 +5,9 @@ var ft = require('ft-api-client')(process.env.apikey);
 var request = require('request');
 var parseString = require('xml2js').parseString;
 var resize = require('../src/js/resize');
+var Flags = require('next-feature-flags-client');
+var flagsNamespace = (process.env.FLAGS) ? process.env.FLAGS : 'production';
+var flags = new Flags('http://ft-next-api-feature-flags.herokuapp.com/' + flagsNamespace);
 
 var port = process.env.PORT || 3001;
 var app = module.exports = express();
@@ -66,7 +69,8 @@ app.get('/', function(req, res) {
 						'European Central Bank Rates',
 						'EPA Carbon Ruling',
 						'The Crisis In Ukraine'
-					]
+					],
+					flags: flags.get()
 				});
 			}, function(err) {
 				res.status(404).end();
