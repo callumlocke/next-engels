@@ -5,7 +5,7 @@
     "express": "^4.9.5",
     "forever": "^0.11.1",
     "ft-api-client": "https://github.com/Financial-Times/ft-api-client/archive/v3.0.31.tar.gz",
-    "haikro": "1.1.6",
+    "haikro": "1.2.3",
     "jquery-browserify": "^1.8.1",
     "raven": "^0.7.2",
     "request": "^2.45.0",
