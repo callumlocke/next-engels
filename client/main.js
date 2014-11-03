@@ -1,15 +1,13 @@
 require('next-header');
-var search = require('../components/search/search.js');
-var header = require('../components/header/main.js');
 var $ = require('jquery-browserify');
 var swig = require('swig/index');
 //Fixed position ads:
 var filamentFixed = require('filament-fixed');
 var filamentSticky = require('filament-sticky');
 
-swig.setFilter('resize', require('./resize'));
+swig.setFilter('resize', require('../templates/helpers/resize'));
 
-var tile = require('../../templates/partials/tile.html');
+var tile = require('../templates/components/tile.html');
 try {
 $.getJSON('/engels/recommended?eid='+document.cookie.match(/_EID=([0-9]+)_/)[1])
 	.then(function(data) {

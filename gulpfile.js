@@ -4,14 +4,14 @@ var obt = require('origami-build-tools');
 
 gulp.task('default', function () {
 	obt.build(gulp, {
-		sass: './src/scss/styles.scss',
-		js: './src/js/main.js',
-		buildFolder: './static/',
+        sass: './client/main.scss',
+        js: './client/main.js',
+        buildFolder: './public',
         transforms: [require('swigify')()],
         env: process.env.ENVIRONMENT || 'production'
 	});
 });
 
 gulp.task('watch', function() {
-	gulp.watch('./src/**/*', ['default']);
+	gulp.watch('./client/**/*', ['default']);
 });

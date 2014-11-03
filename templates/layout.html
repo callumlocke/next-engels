@@ -7,7 +7,7 @@
 </head>
 <div class="home">
 	<!-- HEADER -->
-	{% include "../src/components/header/base.html" %}
+	{% include "components/header.html" %}
 
 	<div class="container">
 
@@ -22,9 +22,9 @@
 			<ul>
 				{% for article in articles %}
 				{% if loop.first %}
-				{% include "./partials/tile.html" with {article: article, isInList: true, isLarge: true} %}
+				{% include "components/tile.html" with {article: article, isInList: true, isLarge: true} %}
 				{% else %}
-				{% include "./partials/tile.html" with {article: article, isInList: true, isLarge: false} %}
+				{% include "components/tile.html" with {article: article, isInList: true, isLarge: false} %}
 				{% endif %}
 				{% endfor %}
 			</ul>

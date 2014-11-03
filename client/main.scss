@@ -1,3 +1,17 @@
+$font-family-sansserif: BentonSans, Arial, sans-serif;
+$next-black: black;
+$ft-pink: rgb(255, 241, 224);
+
+$breakpoint-small : 450px;
+$breakpoint-mid : 800px;
+$breakpoint-large : 1100px;
+
+@mixin respond($min-width){
+  @media screen and (min-width : $min-width){
+    @content;
+  }
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -7,10 +21,7 @@ body {
 	padding: 0;
 }
 
-@import "variables";
-@import "../components/search/search";
-@import "../components/header/style";
-@import "tiles";
+@import "components/tile/main";
 @import "next-header/main";
 @import "filament-sticky/main";
 
