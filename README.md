@@ -16,7 +16,7 @@ Please install `next-router` globally.
 
 ## Run
 
-Just run engels on its own (localhost:3001):
+Just run engels on its own (localhost:3002):
 
 ```
 make run-local

@@ -30,4 +30,4 @@ for(var i = 0; i < ads.length; i++){
 	$(ads[i]).fixedsticky();
 }
 
-search.init();
+require('./components/search/main').init();
