@@ -1,3 +1,4 @@
+require('es6-promise').polyfill();
 require('next-header');
 var $ = require('jquery-browserify');
 var swig = require('swig/index');

@@ -3,6 +3,7 @@
   "dependencies": {
     "filament-sticky": "https://github.com/Financial-Times/fixed-sticky.git#scss",
     "next-header": "https://github.com/Financial-Times/next-header.git#v1.0.17",
-    "swig": "~1.4.2"
+    "swig": "~1.4.2",
+    "es6-promise": "~2.0.0"
   }
 }
