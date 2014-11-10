@@ -23,15 +23,18 @@ function allIgnoreRejects(promises) {
 	return Promise.all(promises.map(neverFail));
 }
 
-app.engine('html', swig.renderFile);
-app.set('view engine', 'html');
+
+require('next-wrapper').setup(app, require('next-feature-flags-client'), {
+	appname: 'engels'
+});
+
 app.set('views', __dirname + '/../templates');
 
 // not for production
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
-swig.setFilter('resize', resize);
+
 
 app.use('/engels', express.static(__dirname + '/../public'));
 

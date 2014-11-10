@@ -1,8 +1,9 @@
-require('es6-promise').polyfill();
-require('next-header');
-var $ = require('jquery-browserify');
+require('next-wrapper');
+document.querySelector('[data-o-component="o-header"]').setAttribute('data-panel', 'search');
+var $ = require('jquery');
 var swig = require('swig/index');
 //Fixed position ads:
+window.jQuery = require('jquery');
 var filamentFixed = require('filament-fixed');
 var filamentSticky = require('filament-sticky');
 
@@ -31,4 +32,3 @@ for(var i = 0; i < ads.length; i++){
 	$(ads[i]).fixedsticky();
 }
 
-require('./components/search/main').init();

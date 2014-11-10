@@ -1,22 +1,6 @@
-<html>
-<head>
-	<link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules=o-fonts@^1.4.1,o-grid@^2.1.5"/>
-	<link rel="stylesheet" href="/engels/main.css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Financial Times</title>
-</head>
-<body class="home">
-	<script>
-    var FT = FT || {}; FT.Properties = FT.Properties || {}; FT.Properties.ENV = 't';
-    </script>
-    <!-- FT tracking module 1.2.4 -->
-    <script src="http://s2.ft-static.com/scripts/392b9acc/bundles/tracking.js"></script>
-    <noscript>
-    <img alt="" border="0" width="1" height="1" src="http://track.ft.com/track/track.js?javascript=disabled"/>
-    <img alt="" border="0" width="1" height="1" src="http://stats.ft.com/si/track.gif?WT.js=No"/>
-    </noscript>
-	<!-- HEADER -->
-	{% include "components/header.html" %}
+{% extends "../node_modules/next-wrapper/templates/layout.html" %}
+{% block body %}
+
 
 	<div class="container">
 
@@ -76,32 +60,25 @@
 					</a>
 				</li>
 			</ul>
-		</ul>
-	</div>
-	<div class="marketing-card marketing-card--comment">
-		<h2>5. Comment</h2>
-		<div class='comment' data-o-grid-colspan="12">
-			<div class='comment__quote'>&ldquo;The firm was a complete mess. I had to deal with that&rdquo;</div>
-			<div class='comment__image'><img src="/engels/comment.jpg "/></div>
-			<div class='comment__text'>Lagarde and I are here because she recently celebrated an anniversary: just over three years ago she took over as managing director of the International Monetary Fund, the first woman to run the mighty $760bn organisation that is charged with promoting global financial and monetary stability. She arrived, however, amid great instability. The IMF’s former managing director, Dominique Strauss-Kahn, had just resigned after becoming entangled in a sordid sex scandal in a New York hotel. “It was a very bizarre time,” Lagarde drolly observes, stressing her words. The world outside the IMF was also experiencing its own, financial, crisis.
+		</div>
+		<div class="marketing-card marketing-card--comment">
+			<h2>5. Comment</h2>
+			<div class='comment' data-o-grid-colspan="12">
+				<div class='comment__quote'>&ldquo;The firm was a complete mess. I had to deal with that&rdquo;</div>
+				<div class='comment__image'><img src="/engels/comment.jpg "/></div>
+				<div class='comment__text'>Lagarde and I are here because she recently celebrated an anniversary: just over three years ago she took over as managing director of the International Monetary Fund, the first woman to run the mighty $760bn organisation that is charged with promoting global financial and monetary stability. She arrived, however, amid great instability. The IMF’s former managing director, Dominique Strauss-Kahn, had just resigned after becoming entangled in a sordid sex scandal in a New York hotel. “It was a very bizarre time,” Lagarde drolly observes, stressing her words. The world outside the IMF was also experiencing its own, financial, crisis.
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="marketing-card marketing-card--themes clearfix">
-		<h2>6. Significant Themes</h2>
-		<ul class="themes">
-			{% for theme in themes %}
-			<li data-o-grid-colspan="6 M3 L3 XL3">
-				<a href="#" class="themes__card">{{theme }}</a>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
+		<div class="marketing-card marketing-card--themes clearfix">
+			<h2>6. Significant Themes</h2>
+			<ul class="themes">
+				{% for theme in themes %}
+				<li data-o-grid-colspan="6 M3 L3 XL3">
+					<a href="#" class="themes__card">{{theme }}</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
 </div>
-<div>
-<script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
-<script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0&amp;minify=none&amp;autoinit=0"></script>
-<script src="/engels/main.js"></script>
-</body>
-
-</html>
+{% endblock %}

@@ -1,3 +1,5 @@
+@import "next-wrapper/main";
+
 $font-family-sansserif: BentonSans, Arial, sans-serif;
 $next-black: black;
 $ft-pink: rgb(255, 241, 224);
@@ -22,7 +24,7 @@ body {
 }
 
 @import "components/tile/main";
-@import "next-header/main";
+
 @import "filament-sticky/main";
 
 .clearfix:before,
