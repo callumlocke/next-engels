@@ -3,7 +3,7 @@
 {% endif %}
     <div class="tile{% if isLarge %} tile--large{% else %} tile--small{% endif %}{% if (!article.largestImage) %} tile--no-image{% endif %}" >
         <div class="tile__label">
-            <a href="/search?q={{ article.primarySection.name }}">{{ article.primarySection.name }}</a>
+            <a href="/search?q=sections:{{ article.primarySection.name }}">{{ article.primarySection.name }}</a>
         </div>
         <a class="tile__content" href="/{{ article.id }}">
             {% if (article.largestImage) %}
