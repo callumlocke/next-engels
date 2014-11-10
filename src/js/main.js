@@ -1,3 +1,4 @@
+require('es6-promise').polyfill();
 require('next-header');
 var search = require('../components/search/search.js');
 var header = require('../components/header/main.js');
