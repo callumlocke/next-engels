@@ -5,7 +5,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Financial Times</title>
 </head>
-<div class="home">
+<body class="home">
+	<script>
+    var FT = FT || {}; FT.Properties = FT.Properties || {}; FT.Properties.ENV = 't';
+    </script>
+    <!-- FT tracking module 1.2.4 -->
+    <script src="http://s2.ft-static.com/scripts/392b9acc/bundles/tracking.js"></script>
+    <noscript>
+    <img alt="" border="0" width="1" height="1" src="http://track.ft.com/track/track.js?javascript=disabled"/>
+    <img alt="" border="0" width="1" height="1" src="http://stats.ft.com/si/track.gif?WT.js=No"/>
+    </noscript>
 	<!-- HEADER -->
 	{% include "../src/components/header/base.html" %}
 
@@ -90,8 +99,9 @@
 	</div>
 </div>
 <div>
-</div>
 <script src="//cdn.polyfill.io/v1/polyfill.min.js"></script>
 <script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0&amp;minify=none&amp;autoinit=0"></script>
 <script src="/engels/main.js"></script>
+</body>
+
 </html>
