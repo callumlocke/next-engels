@@ -4,10 +4,10 @@ var swig = require('swig');
 var ft = require('ft-api-client')(process.env.apikey);
 var request = require('request');
 var parseString = require('xml2js').parseString;
-var resize = require('../src/js/resize');
-var Flags = require('next-feature-flags-client');
-var flagsNamespace = (process.env.FLAGS) ? process.env.FLAGS : 'production';
-var flags = new Flags('http://ft-next-api-feature-flags.herokuapp.com/' + flagsNamespace);
+var resize = require('../templates/helpers/resize');
+var flags = require('next-feature-flags-client');
+
+flags.init();
 
 var port = process.env.PORT || 3001;
 var app = module.exports = express();
@@ -23,17 +23,20 @@ function allIgnoreRejects(promises) {
 	return Promise.all(promises.map(neverFail));
 }
 
-app.engine('html', swig.renderFile);
-app.set('view engine', 'html');
+
+require('next-wrapper').setup(app, require('next-feature-flags-client'), {
+	appname: 'engels'
+});
+
 app.set('views', __dirname + '/../templates');
 
 // not for production
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
-swig.setFilter('resize', resize);
 
-app.use('/engels', express.static(__dirname + '/../static'));
+
+app.use('/engels', express.static(__dirname + '/../public'));
 
 // Appended to all successful responeses
 var responseHeaders = {
@@ -60,7 +63,7 @@ app.get('/', function(req, res) {
 			.get(ids)
 			.then(function(articles) {
 				res.set(responseHeaders);
-				res.render('base', {
+				res.render('layout', {
 					articles: articles,
 					themes: [
 						'Scottish Independence',

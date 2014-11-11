@@ -1,3 +1,19 @@
+@import "next-wrapper/main";
+
+$font-family-sansserif: BentonSans, Arial, sans-serif;
+$next-black: black;
+$ft-pink: rgb(255, 241, 224);
+
+$breakpoint-small : 450px;
+$breakpoint-mid : 800px;
+$breakpoint-large : 1100px;
+
+@mixin respond($min-width){
+  @media screen and (min-width : $min-width){
+    @content;
+  }
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -7,11 +23,8 @@ body {
 	padding: 0;
 }
 
-@import "variables";
-@import "../components/search/search";
-@import "../components/header/style";
-@import "tiles";
-@import "next-header/main";
+@import "components/tile/main";
+
 @import "filament-sticky/main";
 
 .clearfix:before,
@@ -96,14 +109,14 @@ h2 {
 }
 
 .marketing-card--themes {
-	background: url(/engels/militants.jpg) no-repeat fixed center top;
+	background: url(/engels/assets/img/militants.jpg) no-repeat fixed center top;
 }
 
 .marketing-card--comment {
 }
 
 .marketing-card--analysis {
-	background: url(/engels/referendum.jpg) no-repeat fixed center top;
+	background: url(/engels/assets/img/referendum.jpg) no-repeat fixed center top;
 }
 .comment__quote {
 	font-family: FinancierDisplay;

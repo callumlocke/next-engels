@@ -1,16 +1,15 @@
-require('es6-promise').polyfill();
-require('next-header');
-var search = require('../components/search/search.js');
-var header = require('../components/header/main.js');
-var $ = require('jquery-browserify');
+require('next-wrapper');
+document.querySelector('[data-o-component="o-header"]').setAttribute('data-panel', 'search');
+var $ = require('jquery');
 var swig = require('swig/index');
 //Fixed position ads:
+window.jQuery = require('jquery');
 var filamentFixed = require('filament-fixed');
 var filamentSticky = require('filament-sticky');
 
-swig.setFilter('resize', require('./resize'));
+swig.setFilter('resize', require('../templates/helpers/resize'));
 
-var tile = require('../../templates/partials/tile.html');
+var tile = require('../templates/components/tile.html');
 try {
 $.getJSON('/engels/recommended?eid='+document.cookie.match(/_EID=([0-9]+)_/)[1])
 	.then(function(data) {
@@ -33,4 +32,3 @@ for(var i = 0; i < ads.length; i++){
 	$(ads[i]).fixedsticky();
 }
 
-search.init();
