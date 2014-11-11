@@ -117,11 +117,6 @@ app.use('/engels/recommended', function(req, res) {
 	}
 });
 
-if (process.env.NODE_ENV === 'production') {
-	var raven = require('raven');
-	app.use(raven.middleware.express(process.env.RAVEN_URL));
-}
-
 app.listen(port, function() {
 	console.log("Listening on " + port);
 });
