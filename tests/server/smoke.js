@@ -19,21 +19,21 @@ describe('smoke tests for the app', function () {
         });
     });
 
-    it('Should serve a main.js file', function(done) {
-        request
-        .get('http://localhost:3001/engels/main.js', function (req, res) {
-            expect(res.statusCode).to.equal(200);
-            done();
-        });
-    });
+    // it('Should serve a main.js file', function(done) {
+    //     request
+    //     .get('http://localhost:3001/engels/main.js', function (req, res) {
+    //         expect(res.statusCode).to.equal(200);
+    //         done();
+    //     });
+    // });
 
-    it('Should serve a main.csss file', function(done) {
-        request
-        .get('http://localhost:3001/engels/main.css', function (req, res) {
-            expect(res.statusCode).to.equal(200);
-            done();
-        });
-    });
+    // it('Should serve a main.csss file', function(done) {
+    //     request
+    //     .get('http://localhost:3001/engels/main.css', function (req, res) {
+    //         expect(res.statusCode).to.equal(200);
+    //         done();
+    //     });
+    // });
 
     it('Should serve an index page', function(done) {
         var page = require('fs').readFileSync('node_modules/ft-api-client/test/fixtures/page_front-page', { encoding: 'utf8' });
