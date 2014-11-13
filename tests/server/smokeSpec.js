@@ -13,6 +13,30 @@ var article = require('fs').readFileSync('node_modules/ft-api-client/test/fixtur
 var recommends = require('fs').readFileSync('tests/fixtures/recommends.xml', { encoding: 'utf8' });
 var page = require('fs').readFileSync('node_modules/ft-api-client/test/fixtures/page_front-page', { encoding: 'utf8' });
         
+var servesGoodHTML = function (url, done) {
+    request
+    .get(url, function (req, res) {
+        expect(res.headers['content-type']).to.match(/text\/html/);
+        expect(res.statusCode).to.equal(200);
+        done();
+    }, function (err) {
+        console.log(err);
+    });
+};
+
+var servesGoodJSON = function (url, done) {
+    request
+    .get(url, function (req, res) {
+        expect(res.statusCode).to.equal(200);
+        expect(res.headers['content-type']).to.match(/application\/json/);
+        expect(function () {
+            JSON.parse(res.body);
+        }).to.not.throw();
+        done();
+    }, function (err) {
+        console.log(err);
+    });
+};
 
 describe('smoke tests for the app', function () {
 
@@ -55,14 +79,7 @@ describe('smoke tests for the app', function () {
             .times(20)
             .reply(200, article);
 
-        request
-        .get('http://localhost:3001/', function (req, res) {
-            expect(res.headers['content-type']).to.match(/text\/html/);
-            expect(res.statusCode).to.equal(200);
-            done();
-        }, function (err) {
-            console.log(err);
-        });
+        servesGoodHTML('http://localhost:3001/', done);
     });
 
     it('Should serve a recommendations json', function(done) {
@@ -78,17 +95,7 @@ describe('smoke tests for the app', function () {
             .times(20)
             .reply(200, article);
 
-        request
-        .get('http://localhost:3001/engels/recommended?eid=123', function (req, res) {
-            expect(res.statusCode).to.equal(200);
-            expect(res.headers['content-type']).to.match(/application\/json/);
-            expect(function () {
-                JSON.parse(res.body);
-            }).to.not.throw();
-            done();
-        }, function (err) {
-            console.log(err);
-        });
+        servesGoodJSON('http://localhost:3001/engels/recommended?eid=123', done);
     });
     
 });
