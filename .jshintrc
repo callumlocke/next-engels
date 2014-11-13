@@ -1,4 +1,10 @@
 {
 	"node": true,
-	"laxbreak": true
+	"laxbreak": true,
+    "globals": {
+        "it": false,
+        "xit": false,
+        "describe": false,
+        "xdescribe": false
+    }
 }

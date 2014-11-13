@@ -7,7 +7,7 @@
     "forever": "^0.12.0",
     "ft-api-client": "https://github.com/Financial-Times/ft-api-client/archive/v3.0.31.tar.gz",
     "haikro": "^1.3.0",
-    "next-feature-flags-client": "https://github.com/Financial-Times/next-feature-flags-client/archive/v1.0.1.tar.gz",
+    "next-feature-flags-client": "https://github.com/Financial-Times/next-feature-flags-client/archive/v1.0.3.tar.gz",
     "request": "^2.47.0",
     "reqwest": "^1.1.5",
     "swig": "^1.4.2",
@@ -20,9 +20,13 @@
   },
   "devDependencies": {
     "bower": "^1.3.12",
+    "chai": "^1.10.0",
     "gulp": "^3.8.9",
     "gulp-watch": "^1.1.0",
     "jshint": "^2.5.8",
-    "origami-build-tools": "https://github.com/Financial-Times/origami-build-tools/archive/master.tar.gz"
+    "mocha": "^2.0.1",
+    "nock": "^0.48.2",
+    "origami-build-tools": "https://github.com/Financial-Times/origami-build-tools/archive/master.tar.gz",
+    "sinon": "^1.11.1"
   }
 }
