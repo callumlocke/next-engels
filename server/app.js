@@ -34,8 +34,6 @@ app.set('views', __dirname + '/../templates');
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
-
-
 app.use('/engels', express.static(__dirname + '/../public'));
 
 // Appended to all successful responeses
