@@ -4,8 +4,9 @@ var swig = require('swig');
 var ft = require('ft-api-client')(process.env.apikey);
 var request = require('request');
 var parseString = require('xml2js').parseString;
-var resize = require('../templates/helpers/resize');
+var errorPublisher = require('./utils/error-publisher');
 var flags = require('next-feature-flags-client');
+
 
 flags.init();
 
@@ -40,6 +41,7 @@ app.use('/engels', express.static(__dirname + '/../public'));
 var responseHeaders = {
     'Cache-Control': 'max-age=120, public'
 };
+
 app.get('/__gtg', function(req, res) {
     res.status(200).end();
 });
@@ -77,11 +79,7 @@ app.get('/', function(req, res) {
             }, function(err) {
                 res.status(404).end();
             });
-        }, function (err) {
-            console.log('ashdjkha', err);
-        }).catch(function (err) {
-            console.log('ashdjkha', err);
-        });
+        }).catch(errorPublisher(res));
 });
 
 app.use('/engels/recommended', function(req, res) {
@@ -112,7 +110,7 @@ app.use('/engels/recommended', function(req, res) {
                             };
                         });
                         res.json(recommended);
-                    });
+                    }).catch(errorPublisher(res));
             });
         });
     } else {
