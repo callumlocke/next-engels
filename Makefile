@@ -9,6 +9,7 @@ test:
 	export ENVIRONMENT=production; ./node_modules/.bin/mocha --reporter spec -i -g 'smoke tests' tests/server/
 
 smoke-test:
+	# NOTE - this will fail unless run after a build as it checks for existence of css and js files
 	export ENVIRONMENT=production; ./node_modules/.bin/mocha --reporter spec -g 'smoke tests' tests/server/
 
 run:
@@ -26,8 +27,8 @@ build:
 	export ENVIRONMENT=development; ./node_modules/.bin/gulp
 
 build-production:
+	./node_modules/.bin/bower install
 	./node_modules/.bin/gulp
-	$(make) smoke-test 
 
 watch:
 	export ENVIRONMENT=development; ./node_modules/.bin/gulp watch
@@ -39,10 +40,6 @@ deploy:
 	$(MAKE) deploy-without-clean-and-install
 
 deploy-without-clean-and-install:
-	./node_modules/.bin/bower install
-
-	# Build steps
-	$(MAKE) build-production
 
 	# Pre-deploy clean
 	npm prune --production
