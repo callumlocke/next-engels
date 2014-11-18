@@ -16,7 +16,7 @@
     "next-wrapper": "https://github.com/Financial-Times/next-wrapper/archive/v1.2.13.tar.gz"
   },
   "scripts": {
-    "test": "make test"
+    "test": "make test build-production smoke-test"
   },
   "devDependencies": {
     "bower": "^1.3.12",
