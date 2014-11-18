@@ -6,4 +6,4 @@ node_js:
 before_install:
 - gem install sass --version 3.3
 after_success:
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && make deploy-without-clean-and-install
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && make deploy
