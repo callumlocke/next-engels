@@ -3,7 +3,7 @@
   "dependencies": {
     "filament-sticky": "https://github.com/Financial-Times/fixed-sticky.git#scss",
     "swig": "~1.4.2",
-    "next-wrapper": "https://github.com/Financial-Times/next-wrapper.git#^1.2.8",
+    "next-wrapper": "https://github.com/Financial-Times/next-wrapper.git#^2.1.0",
     "jquery": "~2.1.1"
   }
 }

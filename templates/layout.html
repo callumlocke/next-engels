@@ -4,12 +4,12 @@
 
 	<div class="container">
 
-		{% if flags.ads.isSwitchedOn() %}
+		{% flags ads %}
 		<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
 			<div class="dummy-ad dummy-ad--banner">Slot 1</div> 
 		</aside>
-		{% endif %}
-
+		{% endflags %}
+		{% flags homePageTopStories %}
 		<div class="marketing-card marketing-card--news clearfix">
 			<!-- <h2>1. Top Stories</h2> -->
 			<ul>
@@ -22,18 +22,21 @@
 				{% endfor %}
 			</ul>
 		</div>
-
-		{% if flags.ads.isSwitchedOn() %}
+		{% endflags %}
+		{% flags ads %}
 		<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
 			<div class="dummy-ad dummy-ad--banner">Slot 2</div> 
 		</aside>
-		{% endif %}
-
+		{% endflags %}
+		
+		{% flags homePageRecommended %}
 		<div class="marketing-card marketing-card--recommended">
 			<h2>2. Recommended for you</h2>
 			<div class="recommended">
 			</div>
 		</div>
+		{% endflags %}
+		{% flags homePageFavourites %}
 		<div class="marketing-card marketing-card--favorites">
 			<h2>3. Favourites</h2>
 			<div class="favorites">
@@ -44,6 +47,8 @@
 				</div>
 			</div>
 		</div>
+		{% endflags %}
+		{% flags homePageAnalysis %}
 		<div class="marketing-card marketing-card--analysis">
 			<h2>4. Informed analysis</h2>
 			<ul class="analysis">
@@ -61,6 +66,8 @@
 				</li>
 			</ul>
 		</div>
+		{% endflags %}
+		{% flags homePageComment %}
 		<div class="marketing-card marketing-card--comment">
 			<h2>5. Comment</h2>
 			<div class='comment' data-o-grid-colspan="12">
@@ -70,6 +77,8 @@
 				</div>
 			</div>
 		</div>
+		{% endflags %}
+		{% flags homePageThemes %}
 		<div class="marketing-card marketing-card--themes clearfix">
 			<h2>6. Significant Themes</h2>
 			<ul class="themes">
@@ -80,5 +89,6 @@
 				{% endfor %}
 			</ul>
 		</div>
+		{% endflags %}
 </div>
 {% endblock %}

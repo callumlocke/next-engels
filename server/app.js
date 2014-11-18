@@ -71,8 +71,7 @@ app.get('/', function(req, res) {
                         'European Central Bank Rates',
                         'EPA Carbon Ruling',
                         'The Crisis In Ukraine'
-                    ],
-                    flags: flags.get()
+                    ]
                 });
             }, function(err) {
                 res.status(404).end();
