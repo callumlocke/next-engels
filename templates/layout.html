@@ -1,4 +1,4 @@
-{% extends "../node_modules/next-wrapper/templates/layout.html" %}
+{% extends "components/bower/next-wrapper/templates/layout.html" %}
 {% block head %}
 <script>
 	localStorage['ft.stream.context.display'] = 'Front page';
@@ -15,7 +15,6 @@
 			<div class="dummy-ad dummy-ad--banner">Slot 1</div> 
 		</aside>
 		{% endflags %}{# ads #}
-		{% flags homePageTopStories %}
 		<div class="marketing-card marketing-card--news clearfix">
 			<!-- <h2>1. Top Stories</h2> -->
 			<ul>
@@ -28,21 +27,17 @@
 				{% endfor %}
 			</ul>
 		</div>
-		{% endflags %}{# homePageTopStories #}
 		{% flags ads %}
 		<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
 			<div class="dummy-ad dummy-ad--banner">Slot 2</div> 
 		</aside>
 		{% endflags %}{# ads #}
 		
-		{% flags homePageRecommended %}
 		<div class="marketing-card marketing-card--recommended">
 			<h2>2. Recommended for you</h2>
 			<div class="recommended">
 			</div>
 		</div>
-		{% endflags %}{# homePageRecommended #}
-		{% flags homePageFavourites %}
 		<div class="marketing-card marketing-card--favorites">
 			<h2>3. Favourites</h2>
 			<div class="favorites">
@@ -53,8 +48,6 @@
 				</div>
 			</div>
 		</div>
-		{% endflags %}{# homePageFavourites #}
-		{% flags homePageAnalysis %}
 		<div class="marketing-card marketing-card--analysis">
 			<h2>4. Informed analysis</h2>
 			<ul class="analysis">
@@ -72,8 +65,6 @@
 				</li>
 			</ul>
 		</div>
-		{% endflags %}{# homePageAnalysis #}
-		{% flags homePageComment %}
 		<div class="marketing-card marketing-card--comment">
 			<h2>5. Comment</h2>
 			<div class='comment' data-o-grid-colspan="12">
@@ -83,8 +74,6 @@
 				</div>
 			</div>
 		</div>
-		{% endflags %}{# homePageComment #}
-		{% flags homePageThemes %}
 		<div class="marketing-card marketing-card--themes clearfix">
 			<h2>6. Significant Themes</h2>
 			<ul class="themes">
@@ -95,6 +84,5 @@
 				{% endfor %}
 			</ul>
 		</div>
-		{% endflags %}{# homePageThemes #}
 </div>
 {% endblock %}

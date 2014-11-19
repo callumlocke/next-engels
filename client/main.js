@@ -7,19 +7,15 @@ swig.setFilter('resize', require('../templates/helpers/resize'));
 
 var tile = require('../templates/components/tile.html');
 
-if (FT.flags.homePageRecommended.isSwitchedOn && FT.flags.contentApiCors.isSwitchedOn) {
-    
-    function renderAllRecommended(data) {
-        return data.map(function(item) {
-            return swig.render(tile, {locals: {article: item, isInList: true, isLarge: false}});
-        }).join('');
-    }
+if (FT.flags.contentApiCalls.isSwitchedOn) {
 
     try {
     $.getJSON('/engels/recommended?eid='+document.cookie.match(/_EID=([0-9]+)_/)[1])
         .then(function(data) {
             var el = document.querySelector('.recommended');
-            el.innerHTML = '<ul>' + renderAllRecommended(data) + '</ul>';
+            el.innerHTML = '<ul>' + data.map(function(item) {
+                return swig.render(tile, {locals: {article: item, isInList: true, isLarge: false}});
+            }).join('') + '</ul>';
             document.dispatchEvent(new CustomEvent('o.DOMContentLoaded'));
         });
     } catch (e) {}
