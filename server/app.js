@@ -57,7 +57,6 @@ app.get('/', function(req, res) {
                 ids = articles;
             }
 
-
             ft
             .get(ids)
             .then(function(articles) {
@@ -72,52 +71,15 @@ app.get('/', function(req, res) {
                         'EPA Carbon Ruling',
                         'The Crisis In Ukraine'
                     ],
-                    flags: flags.get()
                 });
             }, function(err) {
                 res.status(404).end();
             });
         }, function (err) {
-            console.log('ashdjkha', err);
+            console.log(err);
         }).catch(function (err) {
-            console.log('ashdjkha', err);
+            console.log(err);
         });
-});
-
-app.use('/engels/recommended', function(req, res) {
-    res.set(responseHeaders);
-    if (req.query && req.query.eid) {
-        request('http://79.125.2.81/focus/api?method=getrec&uid='+req.query.eid, function(error, resp, body) {
-            parseString(body, function(err, result) {
-                var ids = result.rsp.item.map(function(item) {
-                    return item.$.id;
-                });
-                allIgnoreRejects(ids.map(function(id) {
-                    return ft.get(id);
-                }))
-                    .then(function(recommended) {
-                        recommended = recommended.filter(function(item) {
-                            var daysOld = (Date.now() - (new Date(item.raw.item.lifecycle.lastPublishDateTime)).getTime())/1000/60/60/24;
-                            return item !== undefined && daysOld <= 7;
-                        });
-                        recommended = recommended.map(function(item) {
-                            return {
-                                id: item.id,
-                                headline: item.raw.item && item.raw.item.title && item.raw.item.title.title,
-                                largestImage: { url: item.largestImage && item.largestImage.url },
-                                primarySection: {
-                                    name: item.raw.item && item.raw.item.metadata && item.raw.item.metadata.primarySection && item.raw.item.metadata.primarySection.term && item.raw.item.metadata.primarySection.term.name
-                                },
-                                lastPublishDateTime: item.raw.item.lifecycle.lastPublishDateTime
-                            };
-                        });
-                        res.json(recommended);
-                    });
-            });
-        });
-    } else {
-        res.json([]);
-    }
 });
 
 app.listen(port, function() {

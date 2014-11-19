@@ -5,15 +5,15 @@
     "es6-promise": "^2.0.0",
     "express": "^4.10.1",
     "forever": "^0.12.0",
-    "ft-api-client": "https://github.com/Financial-Times/ft-api-client/archive/v3.0.31.tar.gz",
+    "ft-api-client": "https://github.com/Financial-Times/ft-api-client/archive/v3.0.43.tar.gz",
     "haikro": "^1.3.0",
-    "next-feature-flags-client": "https://github.com/Financial-Times/next-feature-flags-client/archive/v1.0.3.tar.gz",
+    "next-feature-flags-client": "https://github.com/Financial-Times/next-feature-flags-client/archive/v2.0.0.tar.gz",
     "request": "^2.47.0",
     "reqwest": "^1.1.5",
     "swig": "^1.4.2",
     "swigify": "0.0.3",
     "xml2js": "^0.4.4",
-    "next-wrapper": "https://github.com/Financial-Times/next-wrapper/archive/v1.2.13.tar.gz"
+    "next-wrapper": "https://github.com/Financial-Times/next-wrapper/archive/v2.1.1.tar.gz"
   },
   "scripts": {
     "test": "make test build-production smoke-test"
