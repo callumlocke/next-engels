@@ -23,7 +23,7 @@ var servesGoodHTML = function (url, done) {
         done();
     }, function (err) {
         console.log(err);
-    })
+    });
 };
 
 describe('smoke tests for the app', function () {
