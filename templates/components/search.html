@@ -1,3 +1,7 @@
-<form class="search" action="/search">
-    <input type="search" name="q" placeholder="Search here..." autocomplete="off" />
-</form>
+<div class="site-search">
+    <form method="get" action="/search">
+        <input type="text" name="q" placeholder="Search" class="site-search__field typeahead">
+    </form>
+</div>
+
+<script src="/dobi/components/site-search/main.js"></script>

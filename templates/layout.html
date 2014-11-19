@@ -1,16 +1,12 @@
+
 {% extends "../node_modules/next-wrapper/templates/layout.html" %}
+
 {% block body %}
-
-	<div class="container">
-
-		{% if flags.ads.isSwitchedOn() %}
-		<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
-			<div class="dummy-ad dummy-ad--banner">Slot 1</div> 
-		</aside>
-		{% endif %}
-
-        HELLO WORLD
-
-	</div>
-
+    <div class="o-grid-row" data-track-zone="{{title|replace(' ', '-', 'g')|lower}}-stream">
+        <div data-o-grid-colspan="S0 M2 L3 XL3">&nbsp;</div>
+        <div class="stream__container" data-o-grid-colspan="S12 M8 L6 XL6">
+            {% include "components/stream.html" %}
+        </div>
+        <div data-o-grid-colspan="S0 M2 L3 XL3">&nbsp;</div>
+    </div>
 {% endblock %}
