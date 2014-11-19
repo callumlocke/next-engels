@@ -10,16 +10,16 @@
 
 {% endif %}
 
-<h1 class="stream-list__title">
-    <span class="js-context">
-    {% if title %}
-        {{ title }} 
-    {% endif %}
-    </span>
-    {% if isFollowable %}
-        <button class="favourite js-favourite" data-toggle-text="Unfollow this section">Follow this section</button>
-    {% endif %}
-</h1>
+{% if title %}
+    <h1 class="stream-list__title">
+        <span class="js-context">
+            {{ title }} 
+        </span>
+        {% if isFollowable %}
+            <button class="favourite js-favourite" data-toggle-text="Unfollow this section">Follow this section</button>
+        {% endif %}
+    </h1>
+{% endif %}
    
 {% if isUserPage %} 
 
