@@ -2,7 +2,7 @@
 
 var Stream = require('../models/stream');
 
-var ft = require('ft-api-client')(process.env.apikey)
+var ft = require('ft-api-client')(process.env.apikey);
 
 console.log('***', process.env.apikey);
 
@@ -28,7 +28,6 @@ module.exports = function(req, res) {
         .then(function (results) {
    
             var articles = results[0] ? results[0].articles : [];
-            var ids;
 
             if (!articles.length){
                 res.sendStatus(404);
