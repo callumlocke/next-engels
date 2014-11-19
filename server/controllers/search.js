@@ -4,8 +4,6 @@ var Stream = require('../models/stream');
 
 var ft = require('ft-api-client')(process.env.apikey);
 
-console.log('***', process.env.apikey);
-
 var isTaxonomySearch = function(q) {
     return /(.*):(.*)/.test(q);
 };
@@ -23,7 +21,7 @@ module.exports = function(req, res) {
     var query = 'page:Front page'; 
     var layout = req.query.partial ? 'components/stream/article-list' : 'layout';
     var methodePromise = ft.search(query, 6);
-   
+
     Promise.all([methodePromise])
         .then(function (results) {
    
@@ -49,8 +47,6 @@ module.exports = function(req, res) {
                         }
                     });
 
-                    //stream.sortByToneAndLastPublished();
-                   
                     res.render(layout, {
                         stream: { related: [], items: stream.items, meta: [] },
                         isFollowable: false,
@@ -60,9 +56,15 @@ module.exports = function(req, res) {
                 }, function(err) {
                     console.log(err);
                     res.sendStatus(404);
-                }).catch(function (err) { console.log('error', err); res.sendStatus(404); });
+                }).catch(function (err) {
+                    console.log('error', err); res.sendStatus(404);
+                });
 
-    }, function (err) { console.log('ERR', err); })
-        .catch(function (err) { console.log('error', err); res.sendStatus(404); });
+    }, function (err) { 
+            console.log('ERR', err);
+    })
+    .catch(function (err) {
+        console.log('error', err); res.sendStatus(404);
+    });
 
 };
