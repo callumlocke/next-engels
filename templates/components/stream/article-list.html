@@ -1,0 +1,26 @@
+
+<ul class="stream" data-track-comp-name="stream">
+    {% for article in stream.items %}
+        <li data-track-pos="{{loop.index}}">
+        
+        {% if article.item.recommendation %}
+            <p class="recommended__by">Recommended by:
+                {% if article.item.recommendation.recommendedBy.id %}
+                    <a href="/users/{{ article.item.recommendation.recommendedBy.id }}/recommended">
+                        {{ article.item.recommendation.recommendedBy.name }}
+                    </a>
+                {% else %}
+                    {{ article.item.recommendation.recommendedBy.name }}        
+                {% endif %}
+                    on {{ article.item.recommendation.on|date('F jS, Y') }}
+            </p>
+        {% endif %}
+
+        {% if article.type === 'fastft' %}
+            {% include "../bower/next-article-card-component/templates/fastft.html" with { item: article.item } %}
+        {% elseif article.type === 'methode' %}
+            {% include "../bower/next-article-card-component/templates/methode.html" with { item: article.item } %}
+        {% endif %}
+        </li>
+    {% endfor %}
+</ul>

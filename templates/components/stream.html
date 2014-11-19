@@ -1,0 +1,48 @@
+
+{% if isUserPage %} 
+
+<div class="user-prefs__menu">
+    <a href="/users/{{ user.id }}/following/new">Following</a> |
+    <a href="/users/{{ user.id }}/recommended">Recommended</a> |
+    <a href="/users/{{ user.id }}/forlaters">Saved for later</a>
+    <p class="user-prefs__groups"></p>
+</div>
+
+{% endif %}
+
+{% if title %}
+    <h1 class="stream-list__title">
+        <span class="js-context">
+            {{ title }} 
+        </span>
+        {% if isFollowable %}
+            <button class="favourite js-favourite" data-toggle-text="Unfollow this section">Follow this section</button>
+        {% endif %}
+    </h1>
+{% endif %}
+   
+{% if isUserPage %} 
+
+    {% if stream.items.length === 0 %}
+        <p>You've not received any new articles since you last looked at this page.</p>
+    {% endif %}
+
+
+{% else %}
+
+    {% if stream.items.length === 0 %}
+        <p>No articles found.</p>
+    {% endif %}
+    
+{% endif %}
+
+{% include "./stream/article-list.html" %}
+    
+{% if isUserPage %} 
+    <div class="groups-js"></div>
+    <div class="follows-js"></div>
+{% else %}
+    {% if stream.items.length === 0 %}
+        {% include "./stream/related.html" %}
+    {% endif %}
+{% endif %}

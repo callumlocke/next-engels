@@ -1,4 +1,7 @@
+
 require('next-wrapper');
+require('next-article-card-component');
+
 document.querySelector('[data-o-component="o-header"]').setAttribute('data-panel', 'search');
 var $ = require('jquery');
 var swig = require('swig/index');

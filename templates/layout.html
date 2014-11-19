@@ -1,84 +1,12 @@
+
 {% extends "../node_modules/next-wrapper/templates/layout.html" %}
+
 {% block body %}
-
-
-	<div class="container">
-
-		{% if flags.ads.isSwitchedOn() %}
-		<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
-			<div class="dummy-ad dummy-ad--banner">Slot 1</div> 
-		</aside>
-		{% endif %}
-
-		<div class="marketing-card marketing-card--news clearfix">
-			<!-- <h2>1. Top Stories</h2> -->
-			<ul>
-				{% for article in articles %}
-				{% if loop.first %}
-				{% include "components/tile.html" with {article: article, isInList: true, isLarge: true} %}
-				{% else %}
-				{% include "components/tile.html" with {article: article, isInList: true, isLarge: false} %}
-				{% endif %}
-				{% endfor %}
-			</ul>
-		</div>
-
-		{% if flags.ads.isSwitchedOn() %}
-		<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
-			<div class="dummy-ad dummy-ad--banner">Slot 2</div> 
-		</aside>
-		{% endif %}
-
-		<div class="marketing-card marketing-card--recommended">
-			<h2>2. Recommended for you</h2>
-			<div class="recommended">
-			</div>
-		</div>
-		<div class="marketing-card marketing-card--favorites">
-			<h2>3. Favourites</h2>
-			<div class="favorites">
-				<div class="tile tile--large">
-					<img class="tile__image" src="/engels/assets/img/favorites.png" />
-					<div class="tile__title">Your favourite items will appear here</div>
-					<div calss="tile__date">&nbsp;</div>
-				</div>
-			</div>
-		</div>
-		<div class="marketing-card marketing-card--analysis">
-			<h2>4. Informed analysis</h2>
-			<ul class="analysis">
-				<li data-o-grid-colspan="12 M6 L6 XL6">
-					<a href="#" class="analysis__card">
-						<div class="analysis__card__title">Bad time to break up</div>
-						Until recently, I thought I did not much care if Scotland voted for independence. But, now, as the prospect becomes very real, I am surprised by how upset I feel. I follow the polls obsessively. I fume at the incompetence of the No campaign and the insularity of the Yes. And my sense of foreboding grows as the day grows closer.
-					</a>
-				</li>
-				<li data-o-grid-colspan="12 M6 L6 XL6">
-					<a href="#" class="analysis__card">
-						<div class="analysis__card__title">Nationalism vs. Unionism</div>
-						After 307 years as part of Great Britain, Scotland will soon decide whether it is time to once again go it alone. Opinion polls suggest that nationalists still fall short of the numbers needed to unpick the 1707 parliamentary union with England that lies at the heart of the UK. But nationalist and pro-union campaigners alike agree that with eight months of febrile campaigning to go, the result of September’s historic referendum is far from assured.
-					</a>
-				</li>
-			</ul>
-		</div>
-		<div class="marketing-card marketing-card--comment">
-			<h2>5. Comment</h2>
-			<div class='comment' data-o-grid-colspan="12">
-				<div class='comment__quote'>&ldquo;The firm was a complete mess. I had to deal with that&rdquo;</div>
-				<div class='comment__image'><img src="/engels/assets/img/comment.jpg "/></div>
-				<div class='comment__text'>Lagarde and I are here because she recently celebrated an anniversary: just over three years ago she took over as managing director of the International Monetary Fund, the first woman to run the mighty $760bn organisation that is charged with promoting global financial and monetary stability. She arrived, however, amid great instability. The IMF’s former managing director, Dominique Strauss-Kahn, had just resigned after becoming entangled in a sordid sex scandal in a New York hotel. “It was a very bizarre time,” Lagarde drolly observes, stressing her words. The world outside the IMF was also experiencing its own, financial, crisis.
-				</div>
-			</div>
-		</div>
-		<div class="marketing-card marketing-card--themes clearfix">
-			<h2>6. Significant Themes</h2>
-			<ul class="themes">
-				{% for theme in themes %}
-				<li data-o-grid-colspan="6 M3 L3 XL3">
-					<a href="#" class="themes__card">{{theme }}</a>
-				</li>
-				{% endfor %}
-			</ul>
-		</div>
-</div>
+    <div class="o-grid-row" data-track-zone="{{title|replace(' ', '-', 'g')|lower}}-stream">
+        <div data-o-grid-colspan="S0 M2 L3 XL3">&nbsp;</div>
+        <div class="stream__container" data-o-grid-colspan="S12 M8 L6 XL6">
+            {% include "components/stream.html" %}
+        </div>
+        <div data-o-grid-colspan="S0 M2 L3 XL3">&nbsp;</div>
+    </div>
 {% endblock %}

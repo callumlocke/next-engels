@@ -1,0 +1,29 @@
+<html>
+    <head>
+        {% if origamiStyles %}
+        <link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules={{ origamiStyles }}">
+        {% endif %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="theme-color" content="#fff1e0"/>
+        <link rel="stylesheet" href="/{{ appname }}/main.css"/>
+        <title>{% if page.title %}{{ page.title }} - {% endif %}Financial Times</title>
+        <script>window.FT = window.FT || {}; window.FT.flags = {{ flags | safe }};</script>
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+
+        {% include "tracking.html" %}
+        
+        {% include "header.html" %}
+
+        {% block body %}<div class="error">Error - content failed to load</div>{% endblock %}
+
+
+        {% if origamiScripts %}
+            <script src="//build.origami.ft.com/bundles/js?modules={{ origamiScripts }}"></script>
+        {% endif %}
+        
+        <script src="/{{ appname }}/main.js"></script>
+        {% block foot %}{% endblock %}
+    </body>
+</html>
