@@ -54,7 +54,7 @@ module.exports = function(req, res) {
                    
                     res.render(layout, {
                         stream: { related: [], items: stream.items, meta: [] },
-                        title: 'Front page',
+                        title: 'Latest news',
                         isFollowable: false,
                         defaultHeaderPanel: false 
                     });
