@@ -1,7 +1,11 @@
-
-{% extends "../node_modules/next-wrapper/templates/layout.html" %}
+{% extends "components/bower/next-wrapper/templates/layout.html" %}
 
 {% block body %}
+	{% flags ads %}
+	<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
+		<div class="dummy-ad dummy-ad--banner">Slot 1</div> 
+	</aside>
+	{% endflags %}{# ads #}
     <div class="o-grid-row" data-track-zone="{{title|replace(' ', '-', 'g')|lower}}-stream">
         <div data-o-grid-colspan="S0 M2 L3 XL3">&nbsp;</div>
         <div class="stream__container" data-o-grid-colspan="S12 M8 L6 XL6">
@@ -9,4 +13,10 @@
         </div>
         <div data-o-grid-colspan="S0 M2 L3 XL3">&nbsp;</div>
     </div>
+    {% flags ads %}
+	<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
+		<div class="dummy-ad dummy-ad--banner">Slot 2</div> 
+	</aside>
+	{% endflags %}{# ads #}
+
 {% endblock %}
