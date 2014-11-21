@@ -16,14 +16,13 @@ var formatSection = function (s) {
     return 'Search results: ' + s;
 };
 
-module.exports = function(req, res) {
-    
+module.exports = function(req, res, next) {
     var query = 'page:Front page'; 
     var layout = req.query.partial ? 'components/stream/article-list' : 'layout';
     var methodePromise = ft.search(query, 6);
 
     Promise.all([methodePromise])
-        .then(function (results) {
+        .then(function(results) {
    
             var articles = results[0] ? results[0].articles : [];
 
@@ -59,12 +58,7 @@ module.exports = function(req, res) {
                 }).catch(function (err) {
                     console.log('error', err); res.sendStatus(404);
                 });
-
-    }, function (err) { 
-            console.log('ERR', err);
     })
-    .catch(function (err) {
-        console.log('error', err); res.sendStatus(404);
-    });
+    .catch(next);
 
 };
