@@ -47,7 +47,6 @@ app.get('/__gtg', function(req, res) {
 
 app.get('/', require('./controllers/search'));
 
-console.log(require('next-wrapper/node/raven'));
 app.use(require('next-wrapper/node/raven'));
 
 app.listen(port, function() {
