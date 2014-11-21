@@ -13,7 +13,7 @@
     "swig": "^1.4.2",
     "swigify": "0.0.3",
     "xml2js": "^0.4.4",
-    "next-wrapper": "https://github.com/Financial-Times/next-wrapper/archive/v3.0.0.tar.gz"
+    "next-wrapper": "https://github.com/Financial-Times/next-wrapper/archive/v3.1.0.tar.gz"
   },
   "scripts": {
     "test": "make test build-production smoke-test"
