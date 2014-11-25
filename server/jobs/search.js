@@ -18,7 +18,8 @@ Search.prototype.fetch = function(query, count) {
     var stream = new Stream();
     var self = this;
 
-    return methodePromise
+    return new Promise(function(resolve, reject) {
+        methodePromise
         .then(function (results) {
             var articles = results.articles ? results.articles : [];
             
@@ -31,10 +32,11 @@ Search.prototype.fetch = function(query, count) {
                 return article.id;
             });
 
-
             ft.get(ids)
                 .then( function (articles) {
+                    
                     var stream = new Stream();
+
                     articles.forEach(function (article) {
                         if(article) {
                             stream.push('methode', article);
@@ -42,20 +44,16 @@ Search.prototype.fetch = function(query, count) {
                     });
                    
                     self.stream = stream;
-                    
-                    resolve('hello');
-
-                    res.render(layout, {
-                        stream: { related: [], items: stream.items, meta: [] },
-                        isFollowable: false,
-                        defaultHeaderPanel: false 
-                    });
+                    resolve();
 
             }, function(err) {
+                console.log(err);
                 reject(err);
             }).catch(function (err) {
+                console.log(err);
                 reject(err);
             });
+        });
     });
 
 };

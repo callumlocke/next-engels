@@ -2,24 +2,25 @@
 
 var Search = require('../jobs/search');
 
+// Periodically load these searches in to memory
 var frontPage = new Search();
-frontPage.init('page:Front page', 2);
+frontPage.init('page:Front page', 10);
 
 var bigRead = new Search();
-bigRead.init('page:The Big Read', 2);
+bigRead.init('page:The Big Read', 5);
+
+var comment = new Search();
+comment.init('page:comment', 5);
 
 module.exports = function(req, res) {
-
-    res.json({
-        frontPage: frontPage.stream.items,
-        bigRead: bigRead.stream.items
-    });
-    return;
-
-    res.render(layout, {
-        stream: { related: [], items: stream.items, meta: [] },
+    res.render('layout', {
+        streams: [
+            { related: [], items: frontPage.stream.items, meta: [], title: 'Top stories' },
+            { related: [], items: bigRead.stream.items, meta: [], title: 'FT Highlights' },
+            { related: [], items: comment.stream.items, meta: [], title: 'Comment & columnists' }
+        ],
         isFollowable: false,
-        defaultHeaderPanel: false 
+        isUserPage: false,
+        defaultHeaderPanel: true 
     });
-
 };

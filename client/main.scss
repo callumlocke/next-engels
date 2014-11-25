@@ -242,3 +242,22 @@ h2 {
     margin-bottom: 50px;
     list-style: none;
 }
+
+.stream-list__title {
+    font-family: $fontSans;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: $next-black;
+    padding: 8px 0 7px;
+    border-top: 4px solid #a7a59b;
+    border-bottom: 1px dotted #a7a59b;
+    text-align: left;
+
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
