@@ -7,22 +7,34 @@
 	</aside>
 	{% endflags %}{# ads #}
     <div class="o-grid-row" data-track-zone="{{title|replace(' ', '-', 'g')|lower}}-stream">
-        <div data-o-grid-colspan="S0 M2 L3 XL3">&nbsp;</div>
-        <div class="stream__container" data-o-grid-colspan="S12 M8 L6 XL6">
-
-            {% for stream in streams %}
-                
-                <h1 class="stream-list__title">
-                    <span class="stream-list__title-name">
-                        {{ stream.title }} 
-                    </span>
-                </h1>
-                {% include "components/stream.html" with { stream: stream } %}
-            
-            {% endfor %}
-
+        <div class="stream__container" data-o-grid-colspan="S12 M12 L12 XL12">
+            <div class="stream__row">
+                <div data-o-grid-colspan="S12 M12 L12 XL12">
+                    <h1 class="stream-list__title">
+                        <span class="stream-list__title-name">
+                            Top stories
+                        </span>
+                    </h1>
+                </div>
+                {% for stream in topStories %}
+                    <div data-o-grid-colspan="S12 M12 L6 XL6">
+                            {% include "components/stream.html" with { stream: stream } %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div>
+                {% for stream in secondary %}
+                    <div data-o-grid-colspan="S12 M12 L6 XL6">
+                            <h1 class="stream-list__title">
+                                <span class="stream-list__title-name">
+                                    {{ stream.title }} 
+                                </span>
+                            </h1>
+                            {% include "components/stream.html" with { stream: stream } %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-        <div data-o-grid-colspan="S0 M2 L3 XL3">&nbsp;</div>
     </div>
     {% flags ads %}
 	<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
