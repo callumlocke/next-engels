@@ -9,7 +9,18 @@
     <div class="o-grid-row" data-track-zone="{{title|replace(' ', '-', 'g')|lower}}-stream">
         <div data-o-grid-colspan="S0 M2 L3 XL3">&nbsp;</div>
         <div class="stream__container" data-o-grid-colspan="S12 M8 L6 XL6">
-            {% include "components/stream.html" %}
+
+            {% for stream in streams %}
+                
+                <h1 class="stream-list__title">
+                    <span class="stream-list__title-name">
+                        {{ stream.title }} 
+                    </span>
+                </h1>
+                {% include "components/stream.html" with { stream: stream } %}
+            
+            {% endfor %}
+
         </div>
         <div data-o-grid-colspan="S0 M2 L3 XL3">&nbsp;</div>
     </div>
