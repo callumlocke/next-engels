@@ -24,10 +24,10 @@ endif
 test:
 	./node_modules/.bin/jshint `find . \\( -name '*.js' -o -name '*.json' \\) ! \\( -path './tmp/*' -o -path './node-v0.10.32-linux-x64/*' -o -path './node_modules/*' -o -name '*.min.*' -o -path './bower_components/*' -o -path './public/*' \\)`
 	# Run all tests except for smoke tests
-	export ENVIRONMENT=production; ./node_modules/.bin/mocha --reporter spec -i -g 'smoke tests' tests/server/
+	export HOSTEDGRAPHITE_APIKEY=123; export ENVIRONMENT=production; ./node_modules/.bin/mocha --reporter spec -i -g 'smoke tests' tests/server/
 
 smoke-test:
-	export ENVIRONMENT=production; ./node_modules/.bin/mocha --reporter spec -g 'smoke tests' tests/server/
+	export HOSTEDGRAPHITE_APIKEY=123; export ENVIRONMENT=production; ./node_modules/.bin/mocha --reporter spec -g 'smoke tests' tests/server/
 
 test-debug:
 	./node_modules/.bin/mocha --debug-brk --reporter spec -i tests/server/ 
@@ -38,7 +38,7 @@ run:
 _run: run-local run-router
 
 run-local:
-	export apikey=`cat ~/.ftapi` ; export ENVIRONMENT=development; export PORT=${PORT}; nodemon --watch server server/app.js;
+	export HOSTEDGRAPHITE_APIKEY=123; export apikey=`cat ~/.ftapi` ; export ENVIRONMENT=development; export PORT=${PORT}; nodemon --watch server server/app.js;
 
 run-router:
 	export engels=${PORT}; export PORT=5050; export DEBUG=proxy ; next-router

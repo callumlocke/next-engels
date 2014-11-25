@@ -1,5 +1,4 @@
 
-
 require('es6-promise').polyfill();
 
 var express = require('express');
@@ -9,6 +8,9 @@ var request = require('request');
 var parseString = require('xml2js').parseString;
 var resize = require('../templates/helpers/resize');
 var flags = require('next-feature-flags-client');
+var Metrics = require('next-metrics');
+
+Metrics.init({ app: 'dobi', flushEvery: 30000 });
 
 flags.init();
 
@@ -53,5 +55,6 @@ app.get('/', require('./controllers/uk-front'));
 app.use(require('next-wrapper/node/raven'));
 
 app.listen(port, function() {
+    Metrics.count('express.start');
     console.log("Listening on " + port);
 });

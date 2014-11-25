@@ -1,6 +1,7 @@
 'use strict';
 
-var Search = require('../jobs/search');
+var Search  = require('../jobs/search');
+var Metrics = require('next-metrics');
 
 // Periodically load these searches in to memory
 var topStories = new Search();
@@ -19,15 +20,19 @@ var globalInsight = new Search();
 globalInsight.init('brand:Global Insight', 2);
 
 module.exports = function(req, res) {
+    
+    Metrics.instrument(res, { as: 'express.http.res' });
+
     var highlights = [].concat(bigRead.stream.items, lunch.stream.items, globalInsight.stream.items);
+    
     res.render('layout', {
         topStories: [
             { related: [], items: topStories.stream.items.slice(0, 5), meta: [] },
             { related: [], items: topStories.stream.items.slice(6, 11), meta: [] }
         ],
         secondary: [
-                { related: [], items: highlights, meta: [], title: 'FT Highlights' },
-                { related: [], items: comment.stream.items, meta: [], title: 'Comment & columnists' }
+            { related: [], items: highlights, meta: [], title: 'FT Highlights' },
+            { related: [], items: comment.stream.items, meta: [], title: 'Comment & columnists' }
         ],
         isFollowable: false,
         isUserPage: false,
