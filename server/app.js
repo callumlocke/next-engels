@@ -10,7 +10,7 @@ var resize = require('../templates/helpers/resize');
 var flags = require('next-feature-flags-client');
 var Metrics = require('next-metrics');
 
-Metrics.init({ app: 'dobi', flushEvery: 30000 });
+Metrics.init({ app: 'engels', flushEvery: 30000 });
 
 flags.init();
 
