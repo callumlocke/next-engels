@@ -2,12 +2,18 @@
 
 var Search = require('../jobs/search');
 
-var s = new Search();
-s.init('page:Front page', 2);
+var frontPage = new Search();
+frontPage.init('page:Front page', 2);
+
+var bigRead = new Search();
+bigRead.init('page:The Big Read', 2);
 
 module.exports = function(req, res) {
 
-    res.json(s.stream.items);
+    res.json({
+        frontPage: frontPage.stream.items,
+        bigRead: bigRead.stream.items
+    });
     return;
 
     res.render(layout, {
