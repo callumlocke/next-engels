@@ -41,14 +41,14 @@ app.use('/engels', express.static(__dirname + '/../public'));
 
 // Appended to all successful responeses
 var responseHeaders = {
-    'Cache-Control': 'max-age=119, public'
+    'Cache-Control': 'max-age=120, public'
 };
 
 app.get('/__gtg', function(req, res) {
     res.status(200).end();
 });
 
-app.get('/', require('./controllers/search'));
+app.get('/', require('./controllers/uk-front'));
 
 app.use(require('next-wrapper/node/raven'));
 
