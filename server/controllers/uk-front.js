@@ -13,10 +13,10 @@ var comment = new Search();
 comment.init('page:comment', 5);
 
 var lunch = new Search();
-lunch.init('brand:Lunch with the FT', 1)
+lunch.init('brand:Lunch with the FT', 1);
 
 var globalInsight = new Search();
-globalInsight.init('brand:Global Insight', 2)
+globalInsight.init('brand:Global Insight', 2);
 
 module.exports = function(req, res) {
     var highlights = [].concat(bigRead.stream.items, lunch.stream.items, globalInsight.stream.items);
