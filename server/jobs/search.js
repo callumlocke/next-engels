@@ -7,13 +7,13 @@ var ft      = require('ft-api-client')(process.env.apikey);
 
 var Search = function () {
     this.stream = new Stream();
-}
+};
 
-Search.prototype.fetch = function(query, count) {
+Search.prototype.fetch = function(q, c) {
     
-    var query = query || 'page:Front page'; 
+    var query = q || 'page:Front page'; 
     var layout = 'components/stream/article-list';
-    var count = count || 10;
+    var count = c || 10;
     var methodePromise = ft.search(query, count);
     var stream = new Stream();
     var self = this;
@@ -60,12 +60,16 @@ Search.prototype.fetch = function(query, count) {
 
 Search.prototype.init = function (query, count, interval) {
     var self = this;
-    setInterval(function () {
-        console.log('fetching...')
+    var fetch = function () {
+        console.log('fetching...');
         self.fetch(query, count).then(function () {
             console.log('fetched!', self.stream);
-        })
-    }, 5000);
-}
+        });
+    };
+    
+    // fetch every 20s and also immediately as the module is initialised
+    setInterval(fetch, 20000);
+    fetch();
+};
 
 module.exports = Search;
