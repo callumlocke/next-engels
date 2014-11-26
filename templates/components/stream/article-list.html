@@ -19,7 +19,11 @@
         {% if article.type === 'fastft' %}
             {% include "../bower/next-article-card-component/templates/fastft.html" with { item: article.item } %}
         {% elseif article.type === 'methode' %}
-            {% include "../bower/next-article-card-component/templates/methode.html" with { item: article.item } %}
+            {% if article.item.visualTone === 'news' %}
+             {% include "../bower/next-article-card-component/templates/news.html" with { item: article.item } %}
+            {% else %}
+             {% include "../bower/next-article-card-component/templates/feature.html" with { item: article.item, lead: loop.index === 1, showMedia: true } %}
+            {% endif %}
         {% endif %}
         </li>
     {% endfor %}
