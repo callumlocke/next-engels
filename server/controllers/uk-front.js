@@ -28,7 +28,7 @@ module.exports = function(req, res) {
     res.render('layout', {
         topStories: [
             { related: [], items: topStories.stream.items.slice(0, 5), meta: [] },
-            { related: [], items: topStories.stream.items.slice(6, 11), meta: [] }
+            { related: [], items: topStories.stream.items.slice(5, 10), meta: [] }
         ],
         secondary: [
             { related: [], items: highlights, meta: [], title: 'FT Highlights' },

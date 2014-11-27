@@ -16,15 +16,12 @@
             </p>
         {% endif %}
 
-        {% if article.type === 'fastft' %}
-            {% include "../bower/next-article-card-component/templates/fastft.html" with { item: article.item } %}
-        {% elseif article.type === 'methode' %}
-            {% if article.item.visualTone === 'news' %}
-             {% include "../bower/next-article-card-component/templates/news.html" with { item: article.item } %}
-            {% else %}
-             {% include "../bower/next-article-card-component/templates/feature.html" with { item: article.item, lead: loop.index === 1, showMedia: true } %}
-            {% endif %}
+        {% if article.type === 'news' %}
+            {% include "../bower/next-article-card-component/templates/news.html" with { item: article.item, isLead: article.isLead, showMedia: article.showMedia } %}
+        {% elseif article.type === 'feature' %}
+            {% include "../bower/next-article-card-component/templates/feature.html" with { item: article.item, isLead: article.isLead, showMedia: article.showMedia } %}
         {% endif %}
+
         </li>
     {% endfor %}
 </ul>

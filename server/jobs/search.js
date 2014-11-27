@@ -61,7 +61,7 @@ Search.prototype.fetch = function(q, c) {
 Search.prototype.init = function (query, count, interval) {
     var self = this;
     var fetch = function () {
-        console.log('fetching...');
+        console.log('fetching...', query);
         self.fetch(query, count).then(function () {
             console.log('fetched!', self.stream);
         });
