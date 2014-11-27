@@ -12,10 +12,6 @@
 
 */
 
-function isPromoted(tone) {
-	return ['comment', 'analysis'].indexOf(tone) >= 0;
-}
-
 function getVisualTone(item) {
 	return ['comment', 'analysis','feature'].indexOf(item.visualTone) >= 0 ? 'feature' : 'news';
 }
@@ -25,11 +21,10 @@ function getPublishDate(item) {
 }
 
 function isMediaCard(item, positionInStream) {
-    if(positionInStream % 3 === 0) {
-        return true;
-    } else if (getVisualTone(item) === 'feature') {
-        return true;
-    } else if (item.largestImage && item.largestImage.alt && item.largestImage.alt.indexOf("Ingram Pinn") >= 0) {
+    if( (positionInStream % 3 === 0) || 
+        (getVisualTone(item) === 'feature') ||
+        (item.largestImage && item.largestImage.alt && item.largestImage.alt.indexOf("Ingram Pinn") >= 0))
+    {
         return true;
     } else {
         return false;
@@ -43,7 +38,7 @@ var Stream = function () {
 Stream.prototype.push = function (type, item) {
     var isLead =  (this.items.length === 0);
     this.items.push({ 
-        type: getVisualTone(item), 
+        type: type === 'methode' ? getVisualTone(item) : type, 
         item: item, 
         isLead: isLead, 
         showMedia: isMediaCard(item, this.items.length)
