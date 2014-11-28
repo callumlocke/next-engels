@@ -23,16 +23,16 @@ module.exports = function(req, res) {
     
     Metrics.instrument(res, { as: 'express.http.res' });
 
-    var highlights = [].concat(bigRead.stream.items, lunch.stream.items, globalInsight.stream.items);
+    var highlights = [].concat(bigRead.stream.texturedItems, lunch.stream.texturedItems, globalInsight.stream.texturedItems);
     
     res.render('layout', {
         topStories: [
-            { related: [], items: topStories.stream.items.slice(0, 5), meta: [] },
-            { related: [], items: topStories.stream.items.slice(5, 10), meta: [] }
+            { related: [], items: topStories.stream.texturedItems.slice(0, 5), meta: [] },
+            { related: [], items: topStories.stream.texturedItems.slice(5, 10), meta: [] }
         ],
         secondary: [
             { related: [], items: highlights, meta: [], title: 'FT Highlights' },
-            { related: [], items: comment.stream.items, meta: [], title: 'Comment & columnists' }
+            { related: [], items: comment.stream.texturedItems, meta: [], title: 'Comment & columnists' }
         ],
         isFollowable: false,
         isUserPage: false,
