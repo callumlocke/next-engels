@@ -35,11 +35,15 @@ require('next-wrapper').setup(app, require('next-feature-flags-client'), {
 
 app.set('views', __dirname + '/../templates');
 
-// not for production
 app.set('view cache', false);
 swig.setDefaults({ cache: false });
 
-app.use('/engels', express.static(__dirname + '/../public'));
+var assets = express.Router();
+assets.use('/', express.static(require('path').join(__dirname, '../public'), { 
+    maxAge: 120000 // 2 minutes 
+}));
+
+app.use('/engels', assets);
 
 // Appended to all successful responeses
 var responseHeaders = {
