@@ -1,5 +1,5 @@
 
-<ul class="stream" data-track-comp-name="stream">
+<ul class="stream">
     {% for article in stream.items %}
         <li data-track-pos="{{loop.index}}">
         
@@ -16,11 +16,12 @@
             </p>
         {% endif %}
 
-        {% if article.type === 'fastft' %}
-            {% include "../bower/next-article-card-component/templates/fastft.html" with { item: article.item } %}
-        {% elseif article.type === 'methode' %}
-            {% include "../bower/next-article-card-component/templates/methode.html" with { item: article.item } %}
+        {% if article.type === 'news' %}
+            {% include "../bower/next-article-card-component/templates/news.html" with { item: article.item, isLead: article.isLead, showMedia: article.showMedia } %}
+        {% elseif article.type === 'feature' %}
+            {% include "../bower/next-article-card-component/templates/feature.html" with { item: article.item, isLead: article.isLead, showMedia: article.showMedia } %}
         {% endif %}
+
         </li>
     {% endfor %}
 </ul>

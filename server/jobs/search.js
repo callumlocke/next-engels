@@ -61,10 +61,7 @@ Search.prototype.fetch = function(q, c) {
 Search.prototype.init = function (query, count, interval) {
     var self = this;
     var fetch = function () {
-        console.log('fetching...');
-        self.fetch(query, count).then(function () {
-            console.log('fetched!', self.stream);
-        });
+        self.fetch(query, count);
     };
     
     // fetch every 20s and also immediately as the module is initialised
