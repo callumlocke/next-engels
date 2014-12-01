@@ -4,6 +4,7 @@ GLOBAL.Promise = require('es6-promise').Promise;
 
 var Stream  = require('../models/stream');
 var ft      = require('../utils/api').ft;
+var raven = require('next-wrapper').raven;
 
 var Search = function () {
     this.stream = new Stream();
@@ -18,23 +19,19 @@ Search.prototype.fetch = function(q, c) {
     var stream = new Stream();
     var self = this;
 
-    return new Promise(function(resolve, reject) {
-        methodePromise
+    return methodePromise
         .then(function (results) {
             var articles = results.articles ? results.articles : [];
-            
-            if (!articles.length){
-                reject(404);
-                return;
+            if (!articles.length) {
+                raven.captureMessage('No results returned for ' + q);
             }
-            
             var ids = articles.map(function (article) {
                 return article.id;
             });
 
-            ft.get(ids)
+            return ft.get(ids)
                 .then( function (articles) {
-                    console.log(q, articles);
+
                     var stream = new Stream();
 
                     articles.forEach(function (article) {
@@ -44,17 +41,9 @@ Search.prototype.fetch = function(q, c) {
                     });
                    
                     self.stream = stream;
-                    resolve();
 
-            }, function(err) {
-                console.log('rhys', err);
-                reject(err);
-            }).catch(function (err) {
-                console.log(err);
-                reject(err);
-            });
+                });
         });
-    });
 
 };
 
