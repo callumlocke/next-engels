@@ -3,7 +3,7 @@
 GLOBAL.Promise = require('es6-promise').Promise;
 
 var Stream  = require('../models/stream');
-var ft      = require('ft-api-client')(process.env.apikey);
+var ft      = require('../utils/api').ft;
 
 var Search = function () {
     this.stream = new Stream();
@@ -34,7 +34,7 @@ Search.prototype.fetch = function(q, c) {
 
             ft.get(ids)
                 .then( function (articles) {
-                    
+                    console.log(q, articles);
                     var stream = new Stream();
 
                     articles.forEach(function (article) {
@@ -47,7 +47,7 @@ Search.prototype.fetch = function(q, c) {
                     resolve();
 
             }, function(err) {
-                console.log(err);
+                console.log('rhys', err);
                 reject(err);
             }).catch(function (err) {
                 console.log(err);
