@@ -1,11 +1,11 @@
 {% extends "components/bower/next-wrapper/templates/layout.html" %}
 
 {% block body %}
-	{% flags ads %}
+	{% if flags.ads.isSwitchedOn %}
 	<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
 		<div class="dummy-ad dummy-ad--banner">Slot 1</div> 
 	</aside>
-	{% endflags %}{# ads #}
+	{% endif %}{# ads #}
     <div class="o-grid-row">
         <div class="stream__container" data-o-grid-colspan="S12 M12 L12 XL12">
             <div class="stream__row" data-track-zone="top-stories-stream">
@@ -36,10 +36,10 @@
             </div>
         </div>
     </div>
-    {% flags ads %}
+    {% if flags.ads.isSwitchedOn %}
 	<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
 		<div class="dummy-ad dummy-ad--banner">Slot 2</div> 
 	</aside>
-	{% endflags %}{# ads #}
+	{% endif %}{# ads #}
 
 {% endblock %}
