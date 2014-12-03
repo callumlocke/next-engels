@@ -2,6 +2,7 @@
 
 var Search  = require('../jobs/search');
 var Metrics = require('next-metrics');
+var flags = require('next-feature-flags-client');
 
 // Periodically load these searches in to memory
 var topStories = new Search();
@@ -20,7 +21,6 @@ var globalInsight = new Search();
 globalInsight.init('brand:Global Insight', 2);
 
 module.exports = function(req, res) {
-    
     Metrics.instrument(res, { as: 'express.http.res' });
 
     var highlights = [].concat(bigRead.stream.texturedItems, lunch.stream.texturedItems, globalInsight.stream.texturedItems);

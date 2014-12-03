@@ -29,7 +29,7 @@ function allIgnoreRejects(promises) {
 }
 
 
-require('next-wrapper').setup(app, require('next-feature-flags-client'), {
+require('next-wrapper').setup(app, flags, {
     appname: 'engels'
 });
 
@@ -54,7 +54,7 @@ app.get('/__gtg', function(req, res) {
     res.status(200).end();
 });
 
-app.get('/', require('./controllers/uk-front'));
+app.get('/', flags.middleware, require('./controllers/uk-front'));
 
 app.use(require('next-wrapper/node/raven'));
 
