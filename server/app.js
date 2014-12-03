@@ -8,13 +8,11 @@ var request = require('request');
 var parseString = require('xml2js').parseString;
 var resize = require('../templates/helpers/resize');
 var flags = require('next-feature-flags-client');
-var flagsMiddleware = require('next-feature-flags-client').middleware;
 var Metrics = require('next-metrics');
-var flagsClient = require('next-feature-flags-client');
 
 Metrics.init({ app: 'engels', flushEvery: 30000 });
 
-flagsClient.init();
+flags.init();
 
 var port = process.env.PORT || 3001;
 var app = module.exports = express();
@@ -31,7 +29,7 @@ function allIgnoreRejects(promises) {
 }
 
 
-require('next-wrapper').setup(app, flagsClient, {
+require('next-wrapper').setup(app, flags, {
     appname: 'engels'
 });
 
@@ -56,7 +54,7 @@ app.get('/__gtg', function(req, res) {
     res.status(200).end();
 });
 
-app.get('/', flagsMiddleware, require('./controllers/uk-front'));
+app.get('/', flags.middleware, require('./controllers/uk-front'));
 
 app.use(require('next-wrapper/node/raven'));
 
