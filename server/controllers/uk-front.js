@@ -2,7 +2,6 @@
 
 var Search  = require('../jobs/search');
 var Metrics = require('next-metrics');
-var flags = require('next-feature-flags-client');
 
 // Periodically load these searches in to memory
 var topStories = new Search();
