@@ -56,7 +56,7 @@ app.get('/__gtg', function(req, res) {
 
 app.get('/', flags.middleware, require('./controllers/uk-front'));
 
-app.use(require('next-wrapper/node/raven'));
+app.use(require('next-wrapper').raven.middleware);
 
 app.listen(port, function() {
     Metrics.count('express.start');
