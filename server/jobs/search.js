@@ -11,11 +11,11 @@ var Search = function () {
 };
 
 Search.prototype.fetch = function(q, c) {
-    
-    var query = q || 'page:Front page'; 
+
+    var query = q || 'page:Front page';
     var layout = 'components/stream/article-list';
     var count = c || 10;
-    var methodePromise = ft.search(query, count);
+    var methodePromise = ft.search(query, { quantity: c});
     var stream = new Stream();
     var self = this;
 
@@ -39,7 +39,7 @@ Search.prototype.fetch = function(q, c) {
                             stream.push('methode', article);
                         }
                     });
-                   
+
                     self.stream = stream;
 
                 });
@@ -52,7 +52,7 @@ Search.prototype.init = function (query, count, interval) {
     var fetch = function () {
         self.fetch(query, count);
     };
-    
+
     // fetch every 20s and also immediately as the module is initialised
     setInterval(fetch, 20000);
     fetch();
