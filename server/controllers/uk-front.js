@@ -20,7 +20,6 @@ var globalInsight = new Search();
 globalInsight.init('brand:Global Insight', 2);
 
 module.exports = function(req, res) {
-    
     Metrics.instrument(res, { as: 'express.http.res' });
 
     var highlights = [].concat(bigRead.stream.texturedItems, lunch.stream.texturedItems, globalInsight.stream.texturedItems);
