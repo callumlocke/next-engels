@@ -1,24 +1,25 @@
 PORT := 3002
 app := ft-next-engels
+OBT := $(shell which origami-build-tools)
+ROUTER := $(shell which next-router)
+API_KEY := $(shell cat ~/.ftapi)
 
 .PHONY: test
 
 install:
-ifeq ($(BUNDLER_EXISTS),)
-	@echo "Install Bundler globally"
-	@sudo gem install bundler
+ifeq ($(OBT),)
+	@echo "You need to install origami build tools first!  See docs here: http://origami.ft.com/docs/developer-guide/building-modules/"
+	exit 1
 endif
-	@echo "\nInstalling Ruby gems…"
-	@bundle install
-	@echo "\nInstalling Node modules. This might take a while…"
-	@npm install --silent
-	@echo "\nInstalling Bower components…"
-	@./node_modules/.bin/bower install --silent
-	@echo "\nBuilding project assets…"
-	@$(MAKE) build
-	@echo "\nRunning smoke tests…"
-	@$(MAKE) smoke-test
-	@echo "\nYou're good to go!\nType 'make run' and open http://localhost:5050"
+ifeq ($(ROUTER),)
+	@echo "You need to install the next router first!  See docs here: https://github.com/Financial-Times/next-router"
+	exit 1
+endif
+ifeq ($(API_KEY),)
+	@echo "You need an api key!  Speak to one of the next team to get one"
+	exit 1
+endif
+	origami-build-tools install
 
 
 test:
@@ -38,13 +39,13 @@ run:
 _run: run-local run-router
 
 run-local:
-	export HOSTEDGRAPHITE_APIKEY=123; export apikey=`cat ~/.ftapi` ; export ENVIRONMENT=development; export PORT=${PORT}; nodemon --watch server server/app.js;
+	export HOSTEDGRAPHITE_APIKEY=123; export apikey=${API_KEY} ; export ENVIRONMENT=development; export PORT=${PORT}; nodemon --watch server server/app.js;
 
 run-router:
 	export engels=${PORT}; export PORT=5050; export DEBUG=proxy ; next-router
 
 debug:
-	export apikey=`cat ~/.ftapi` ; export PORT=${PORT}; node --debug-brk server/app.js
+	export apikey=${API_KEY} ; export PORT=${PORT}; node --debug-brk server/app.js
 
 build:
 	export ENVIRONMENT=development; ./node_modules/.bin/gulp
