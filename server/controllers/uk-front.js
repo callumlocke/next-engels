@@ -24,6 +24,8 @@ module.exports = function(req, res) {
 
     var highlights = [].concat(bigRead.stream.texturedItems, lunch.stream.texturedItems, globalInsight.stream.texturedItems);
     
+    require('../utils/cache-control')(res);
+
     res.render('layout', {
         topStories: [
             { related: [], items: topStories.stream.texturedItems.slice(0, 5), meta: [] },
