@@ -55,6 +55,7 @@ Search.prototype.init = function (query, count, interval) {
     // fetch every 20s and also immediately as the module is initialised
     setInterval(fetch, 20000);
     fetch();
+    return this;
 };
 
 module.exports = Search;

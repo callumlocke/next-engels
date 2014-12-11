@@ -3,11 +3,12 @@
     <div class="stream stream--tiled o-grid-row">
         {# grid column styles added in css file due to complexity of handling the last column on tablet #}
         {% for column in row %}
-            <div class="stream__column" data-column="{{loop.index}}">
+            {% set colIndex = loop.index %}
+            <div class="stream__column" data-column="{{colIndex}}">
             
                 {% for article in column %}
 
-                    <div class="stream__article-wrapper" data-track-pos="{{loop.index}}">
+                    <div class="stream__article-wrapper" data-track-pos="{{colIndex}}-{{loop.index}}">
                         {% if article.recommendation %}
                             <p class="recommended__by">Recommended by:
                                 {% if article.recommendation.recommendedBy.id %}

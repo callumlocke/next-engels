@@ -37,11 +37,11 @@ var Stream = function () {
 };
 
 Stream.merge = function () {
-    console.log('merge', arguments);
     var stream = new Stream();
     [].forEach.call(arguments, function (str) {
         stream.items = stream.items.concat(str.items);
     });
+    stream.items = sortByLastPublished(stream.items);
     return stream;
 };
 
@@ -85,7 +85,7 @@ Stream.prototype.setPositionalAttributes = function (items) {
         var conf = {
             type: item.type,
             isLead: (index === 0),
-            articleFormat: item.type === 'fastft' ? 'fastft' : 'methode',
+            dataFormat: item.type === 'fastft' ? 'fastft' : 'methode',
             showMedia: isMediaCard(item, index)
         };
         if (this.viewConf) {
@@ -158,7 +158,7 @@ Stream.prototype.getTiled = function (rows, cols) {
         var conf = {
             type: item.type,
             isLead: getsLead,
-            articleFormat: item.type === 'fastft' ? 'fastft' : 'methode',
+            dataFormat: item.type === 'fastft' ? 'fastft' : 'methode',
             showMedia: getsMedia,
             isTile: true
         };
