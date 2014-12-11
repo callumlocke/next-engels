@@ -2,6 +2,7 @@
 
 var Search  = require('../jobs/search');
 var Metrics = require('next-metrics');
+var Stream = require('../models/stream');
 
 // Periodically load these searches in to memory
 var topStories = new Search();
@@ -22,13 +23,32 @@ globalInsight.init('brand:Global Insight', 2);
 module.exports = function(req, res) {
     Metrics.instrument(res, { as: 'express.http.res' });
 
-    var highlights = [].concat(bigRead.stream.texturedItems, lunch.stream.texturedItems, globalInsight.stream.texturedItems);
-    
+    var highlights = Stream.merge(bigRead.stream, lunch.stream, globalInsight.stream);
+    console.log(highlights.items);
     res.render('layout', {
-        topStories: { related: [], items: topStories.stream.getTiled(1, 3), meta: [] }//,
+        streams: [
+            { 
+                title: 'Top stories',
+                related: [], 
+                items: topStories.stream.getTiled(1, 3), 
+                meta: [] 
+            },
+            { 
+                title: 'FT Highlights',
+                related: [],
+                items: highlights.getTiled(1, 3),
+                meta: []
+            },
+            { 
+                related: [], 
+                items: comment.stream.getTiled(1, 3), 
+                meta: [], 
+                title: 'Comment & columnists' 
+            }
+        ]//,
         // secondary: [
-        //     // { related: [], items: highlights, meta: [], title: 'FT Highlights' },
-        //     { related: [], items: comment.stream.texturedItems, meta: [], title: 'Comment & columnists' }
+        //     // 
+        //     
         // ],
         // isFollowable: false,
         // isUserPage: false,

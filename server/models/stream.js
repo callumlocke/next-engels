@@ -36,8 +36,16 @@ var Stream = function () {
     this.items = [];
 };
 
+Stream.merge = function () {
+    console.log('merge', arguments);
+    var stream = new Stream();
+    [].forEach.call(arguments, function (str) {
+        stream.items = stream.items.concat(str.items);
+    });
+    return stream;
+};
+
 Stream.prototype.setViewConf = function (obj) {
-    console.log('asdsa')
     this.viewConf = obj;
 };
 
@@ -119,7 +127,7 @@ Stream.prototype.getTiled = function (rows, cols) {
         }
         
         var spaceLeft = 6 - columnFullness;
-        var wantsLead = (index === 0);
+        var wantsLead = (index < 2);
         var wantsMedia = isMediaCard(item, index);
         var getsLead = false;
         var getsMedia = false;
@@ -174,7 +182,12 @@ Stream.prototype.getTiled = function (rows, cols) {
         column.push(cardViewModel(item.item, conf));
     }.bind(this));
     
-    console.log(layout);
+    if (column.length) {
+        row.push(column);
+    }
+    if (row.length) {
+        layout.push(row);
+    }
     return layout;
 
 

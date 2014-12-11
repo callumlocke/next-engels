@@ -34,11 +34,11 @@ Search.prototype.fetch = function(q, c) {
                     var stream = new Stream();
 
                     articles.forEach(function (article) {
-                        if(article) {
+                        if (article) {
                             stream.push('methode', article);
                         }
                     });
-                    console.log('Results cached for ' + q);
+                    console.log(stream.items.length + ' articles cached for ' + q);
                     self.stream = stream;
 
                 });

@@ -1,15 +1,13 @@
 <div class="it">
     {% for row in stream.items %}
-    <div class="stream o-grid-row">
+    <div class="stream stream--tiled o-grid-row">
+        {# grid column styles added in css file due to complexity of handling the last column on tablet #}
         {% for column in row %}
-            {% if loop.last %}
-                <div data-o-grid-colspan="4 S12 M12">
-            {% else %}
-                <div data-o-grid-colspan="4 S12 M6">
-            {% endif %}
+            <div class="stream__column" data-column="{{loop.index}}">
             
                 {% for article in column %}
-                    <div data-track-pos="{{loop.index}}">
+
+                    <div class="stream__article-wrapper" data-track-pos="{{loop.index}}">
                         {% if article.recommendation %}
                             <p class="recommended__by">Recommended by:
                                 {% if article.recommendation.recommendedBy.id %}

@@ -8,30 +8,22 @@
 	{% endif %}{# ads #}
     <div class="o-grid-row">
         <div class="stream__container" data-o-grid-colspan="S12 M12 L12 XL12">
+            
+            {% for stream in streams %}
             <div class="stream__row" data-track-zone="top-stories-stream">
                 <div data-o-grid-colspan="S12 M12 L12 XL12">
                     <h1 class="stream-list__title">
                         <span class="stream-list__title-name">
-                            Top stories
+                            {{ stream.title }}
                         </span>
                     </h1>
                 </div>
                 <div class="top-stories" data-o-grid-colspan="12">
-                    {% include "components/stream.html" with { stream: topStories } %}
+                    {% include "components/stream.html" %}
                 </div>
             </div>
-            <div>
-                {% for stream in secondary %}
-                    <div data-o-grid-colspan="S12 M12 L6 XL6" data-track-zone="{{ stream.title |lower|replace(' ','-','g')  }}-stream">
-                            <h1 class="stream-list__title">
-                                <span class="stream-list__title-name">
-                                    {{ stream.title }} 
-                                </span>
-                            </h1>
-                            {% include "components/stream.html" with { stream: stream } %}
-                    </div>
-                {% endfor %}
-            </div>
+            {% endfor %}
+                   
         </div>
     </div>
     {% if flags.ads.isSwitchedOn %}
