@@ -1,4 +1,4 @@
-/node_modules/
+/node*
 /bower_components/
 /node-v0.10.32-linux-x64/
 /tmp/
