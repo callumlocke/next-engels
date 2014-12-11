@@ -25,16 +25,13 @@ module.exports = function(req, res) {
     var highlights = [].concat(bigRead.stream.texturedItems, lunch.stream.texturedItems, globalInsight.stream.texturedItems);
     
     res.render('layout', {
-        topStories: [
-            { related: [], items: topStories.stream.texturedItems.slice(0, 5), meta: [] },
-            { related: [], items: topStories.stream.texturedItems.slice(5, 10), meta: [] }
-        ],
-        secondary: [
-            { related: [], items: highlights, meta: [], title: 'FT Highlights' },
-            { related: [], items: comment.stream.texturedItems, meta: [], title: 'Comment & columnists' }
-        ],
-        isFollowable: false,
-        isUserPage: false,
-        defaultHeaderPanel: true 
+        topStories: { related: [], items: topStories.stream.getTiled(1, 3), meta: [] }//,
+        // secondary: [
+        //     // { related: [], items: highlights, meta: [], title: 'FT Highlights' },
+        //     { related: [], items: comment.stream.texturedItems, meta: [], title: 'Comment & columnists' }
+        // ],
+        // isFollowable: false,
+        // isUserPage: false,
+        // defaultHeaderPanel: true 
     });
 };

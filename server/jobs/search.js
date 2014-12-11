@@ -16,7 +16,6 @@ Search.prototype.fetch = function(q, c) {
     var layout = 'components/stream/article-list';
     var count = c || 10;
     var methodePromise = ft.search(query, { quantity: c});
-    var stream = new Stream();
     var self = this;
 
     return methodePromise
@@ -39,7 +38,7 @@ Search.prototype.fetch = function(q, c) {
                             stream.push('methode', article);
                         }
                     });
-
+                    console.log('Results cached for ' + q);
                     self.stream = stream;
 
                 });

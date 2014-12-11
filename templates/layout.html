@@ -16,11 +16,9 @@
                         </span>
                     </h1>
                 </div>
-                {% for stream in topStories %}
-                    <div data-o-grid-colspan="S12 M12 L6 XL6">
-                            {% include "components/stream.html" with { stream: stream } %}
-                    </div>
-                {% endfor %}
+                <div class="top-stories" data-o-grid-colspan="12">
+                    {% include "components/stream.html" with { stream: topStories } %}
+                </div>
             </div>
             <div>
                 {% for stream in secondary %}
