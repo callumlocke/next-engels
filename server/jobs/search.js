@@ -1,7 +1,5 @@
 'use strict';
 
-GLOBAL.Promise = require('es6-promise').Promise;
-
 var Stream  = require('../models/stream');
 var ft      = require('../utils/api').ft;
 var raven = require('next-wrapper').raven;

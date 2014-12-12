@@ -286,7 +286,7 @@ h2 {
 .stream__column[data-column="3"] {
 	@extend %o-grid-colspan-M12; 
 	padding: 0;
-	
+
 	.stream__article-wrapper {
 		@extend %o-grid-col;
 		@extend %o-grid-colspan-12; 
