@@ -1,7 +1,5 @@
 'use strict';
 
-GLOBAL.Promise = require('es6-promise').Promise;
-
 var Stream  = require('../models/stream');
 var ft      = require('../utils/api').ft;
 var raven = require('next-wrapper').raven;
@@ -13,7 +11,6 @@ var Search = function () {
 Search.prototype.fetch = function(q, c) {
 
     var query = q || 'page:Front page';
-    var layout = 'components/stream/article-list';
     var count = c || 10;
     var methodePromise = ft.search(query, { quantity: c});
     var self = this;
@@ -54,6 +51,8 @@ Search.prototype.init = function (query, count, interval) {
 
     // fetch every 20s and also immediately as the module is initialised
     setInterval(fetch, 20000);
+
+    // TODO on start 
     fetch();
     return this;
 };
