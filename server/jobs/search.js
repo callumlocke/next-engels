@@ -2,7 +2,7 @@
 
 var Stream  = require('../models/stream');
 var ft      = require('../utils/api').ft;
-var raven = require('next-wrapper').raven;
+var raven = require('express-errors-handler');
 
 var Search = function () {
     this.stream = new Stream();

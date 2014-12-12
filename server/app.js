@@ -29,7 +29,7 @@ function allIgnoreRejects(promises) {
 }
 
 
-require('next-wrapper').setup(app, flags, {
+require('ft-next-wrapper').setup(app, flags, {
     appname: 'engels'
 });
 

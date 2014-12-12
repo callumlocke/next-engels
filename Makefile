@@ -11,8 +11,7 @@ ifeq ($(OBT),)
 	@echo "You need to install origami build tools first!  See docs here: http://origami.ft.com/docs/developer-guide/building-modules/"
 	exit 1
 endif
-	origami-build-tools install
-
+	@origami-build-tools install
 
 test:
 	./node_modules/.bin/jshint `find . \\( -name '*.js' -o -name '*.json' \\) ! \\( -path './tmp/*' -o -path './node-v0.10.32-linux-x64/*' -o -path './node_modules/*' -o -name '*.min.*' -o -path './bower_components/*' -o -path './public/*' \\)`
@@ -39,19 +38,18 @@ endif
 _run: run-local run-router
 
 run-local:
-	export HOSTEDGRAPHITE_APIKEY=123; export apikey=${API_KEY} ; export ENVIRONMENT=development; export PORT=${PORT}; nodemon --watch server server/app.js;
+	export HOSTEDGRAPHITE_APIKEY=123; export apikey=${API_KEY}; export ENVIRONMENT=development; export PORT=${PORT}; nodemon --watch server server/app.js;
 
 run-router:
-	export engels=${PORT}; export PORT=5050; export DEBUG=proxy ; next-router
+	export engels=${PORT}; export PORT=5050; export DEBUG=proxy; next-router;
 
 debug:
-	export apikey=${API_KEY} ; export PORT=${PORT}; node --debug-brk server/app.js
+	export apikey=${API_KEY} ; export PORT=${PORT}; node --debug-brk server/app.js;
 
 build:
-	export ENVIRONMENT=development; ./node_modules/.bin/gulp
+	export ENVIRONMENT=development; ./node_modules/.bin/gulp;
 
 build-production:
-	@./node_modules/.bin/bower install
 	@./node_modules/.bin/gulp
 
 watch:
