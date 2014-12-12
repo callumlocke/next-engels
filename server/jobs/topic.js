@@ -6,50 +6,38 @@ var Stream  = require('../models/stream');
 var ft      = require('../utils/api').ft;
 var raven = require('next-wrapper').raven;
 
-var Search = function () {
-    this.stream = new Stream();
+
+var Topic = function () {
+    this.articles = [];
 };
 
-Search.prototype.fetch = function(q, c) {
-
-    var query = q || 'page:Front page';
-    var layout = 'components/stream/article-list';
-    var count = c || 10;
-    var methodePromise = ft.search(query, { quantity: c});
+Topic.prototype.fetch = function(topicName) {
+    var query = 'page:' + topicName;
+    var methodePromise = ft.search(query);
     var self = this;
-
     return methodePromise
         .then(function (results) {
             var articles = results.articles ? results.articles : [];
             if (!articles.length) {
-                raven.captureMessage('No results returned for ' + q);
+                raven.captureMessage('No results returned for topic ' + topicName);
             }
-            var ids = articles.map(function (article) {
-                return article.id;
+            console.log(articles.length + ' articles cached for topic ' + topicName);
+            self.articles = articles.map(function (article) {
+                return {
+                    id: article.id,
+                    headline: article.headline
+                };
             });
-
-            return ft.get(ids)
-                .then( function (articles) {
-
-                    var stream = new Stream();
-
-                    articles.forEach(function (article) {
-                        if (article) {
-                            stream.push('methode', article);
-                        }
-                    });
-                    console.log(stream.items.length + ' articles cached for ' + q);
-                    self.stream = stream;
-
-                });
+            self.primaryTheme = articles[0].primaryTheme;
         });
 
 };
 
-Search.prototype.init = function (query, count, interval) {
+Topic.prototype.init = function (topicName) {
+    this.name = topicName;
     var self = this;
     var fetch = function () {
-        self.fetch(query, count);
+        self.fetch(topicName);
     };
 
     // fetch every 20s and also immediately as the module is initialised
@@ -58,4 +46,4 @@ Search.prototype.init = function (query, count, interval) {
     return this;
 };
 
-module.exports = Search;
+module.exports = Topic;

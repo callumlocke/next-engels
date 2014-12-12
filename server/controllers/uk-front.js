@@ -1,6 +1,7 @@
 'use strict';
 
 var Search  = require('../jobs/search');
+var Topic  = require('../jobs/topic');
 var Metrics = require('next-metrics');
 var Stream = require('../models/stream');
 
@@ -9,15 +10,23 @@ var topStories = new Search().init('page:Front page', 10);
 
 var bigRead = new Search().init('page:The Big Read', 5);
 
-var comment = new Search().init('page:comment', 5);
+var comment = new Search().init('page:comment', 10);
 
 var lunch = new Search().init('brand:Lunch with the FT', 5);
 
 var globalInsight = new Search().init('brand:Global Insight', 5);
 
 var topics = [
-    
-]
+    'Living With Cheaper Oil',
+    'Crisis in Ukraine',
+    'Britain and the Cuts',
+    'Syria Crisis', 
+    'Climate change', 
+    'Cyber warfare'
+].map(function (topic) {
+    return new Topic().init(topic);
+});
+
 
 module.exports = function(req, res) {
     Metrics.instrument(res, { as: 'express.http.res' });
@@ -51,7 +60,11 @@ module.exports = function(req, res) {
                 title: 'FT New Themes' ,
                 type: 'curated-topics',
                 items: topics.map(function (topic) {
-                    return topic.stream;
+                    return {
+                        title: topic.name,
+                        primaryTheme: topic.primaryTheme,
+                        articles: topic.articles.slice(0, 3)
+                    };
                 }), 
                 meta: []
             }

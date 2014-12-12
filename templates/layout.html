@@ -13,7 +13,7 @@
                 {% if segment.type === 'tiled-article-stream' %}
                     {% include "components/tiled-article-stream.html" with {stream: segment} %}
                 {% elseif segment.type === 'curated-topics' %}
-                    {% include "components/curated-topics.html" %}
+                    {% include "components/curated-topics.html" with {topics: segment} %}
                 {% endif %}
             {% endfor %}
                    

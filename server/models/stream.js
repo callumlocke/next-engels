@@ -52,7 +52,7 @@ Stream.prototype.setViewConf = function (obj) {
 Object.defineProperty(Stream.prototype, 'texturedItems', {
     get: function() {
         if(this.items.length) {
-            return this.setPositionalAttributes();
+            return this.getItemsForView();
         } else {
             return [];
         }
@@ -62,7 +62,7 @@ Object.defineProperty(Stream.prototype, 'texturedItems', {
 Object.defineProperty(Stream.prototype, 'texturedAndSortedItems', {
     get: function() {
         if(this.items.length) {
-            return this.setPositionalAttributes(sortByLastPublished(this.items));
+            return this.getItemsForView(sortByLastPublished(this.items));
         } else {
             return [];
         }
@@ -78,7 +78,7 @@ Stream.prototype.push = function (type, item) {
     });
 };
 
-Stream.prototype.setPositionalAttributes = function (items) {
+Stream.prototype.getItemsForView = function (items) {
     items = items || this.items;
     return items.map(function(item, index) {
 
