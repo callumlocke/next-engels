@@ -95,7 +95,7 @@ Stream.prototype.setPositionalAttributes = function (items) {
         }
         return cardViewModel(item.item, conf);
     }.bind(this));
-}
+};
 
 
 
