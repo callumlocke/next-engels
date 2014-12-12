@@ -16,7 +16,6 @@ Search.prototype.fetch = function(q, c) {
     var layout = 'components/stream/article-list';
     var count = c || 10;
     var methodePromise = ft.search(query, { quantity: c});
-    var stream = new Stream();
     var self = this;
 
     return methodePromise
@@ -35,11 +34,11 @@ Search.prototype.fetch = function(q, c) {
                     var stream = new Stream();
 
                     articles.forEach(function (article) {
-                        if(article) {
+                        if (article) {
                             stream.push('methode', article);
                         }
                     });
-
+                    console.log(stream.items.length + ' articles cached for ' + q);
                     self.stream = stream;
 
                 });
@@ -56,6 +55,7 @@ Search.prototype.init = function (query, count, interval) {
     // fetch every 20s and also immediately as the module is initialised
     setInterval(fetch, 20000);
     fetch();
+    return this;
 };
 
 module.exports = Search;

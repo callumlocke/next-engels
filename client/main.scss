@@ -238,6 +238,9 @@ h2 {
 	}
 }
 
+
+
+
 .stream {
     margin-bottom: 50px;
     list-style: none;
@@ -269,3 +272,22 @@ h2 {
         clear: both;
     }
 }
+
+
+.stream__column {
+	@extend %o-grid-col;
+    @extend %o-grid-colspan-4;
+    @extend %o-grid-colspan-M6;
+    @extend %o-grid-colspan-S12;
+}
+
+.stream__column[data-column="3"] {
+	@extend %o-grid-colspan-M12; 
+	padding: 0;
+
+	.stream__article-wrapper {
+		@extend %o-grid-col;
+		@extend %o-grid-colspan-12; 
+		@extend %o-grid-colspan-M6; 
+	}
+}	

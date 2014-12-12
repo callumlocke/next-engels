@@ -1,0 +1,44 @@
+<div class="stream__row" data-track-zone="top-stories-stream">
+    <div data-o-grid-colspan="S12 M12 L12 XL12">
+        <h1 class="stream-list__title">
+            <span class="stream-list__title-name js-context">
+                {{ stream.title }}
+            </span>
+        </h1>
+    </div>
+    <div data-o-grid-colspan="12">
+
+        {% if isUserPage %} 
+
+        <div class="user-prefs__menu">
+            <a href="/users/{{ user.id }}/following/new">Following</a> |
+            <a href="/users/{{ user.id }}/recommended">Recommended</a> |
+            <a href="/users/{{ user.id }}/forlaters">Saved for later</a>
+            <p class="user-prefs__groups"></p>
+        </div>
+
+            {% if stream.items.length === 0 %}
+                <p>You've not received any new articles since you last looked at this page.</p>
+            {% endif %}
+
+
+        {% else %}
+            {% if stream.items.length === 0 %}
+                <p>No articles found.</p>
+            {% endif %}
+            
+        {% endif %}
+
+        {% include "./stream/article-list.html" %}
+            
+        {% if isUserPage %} 
+            <div class="groups-js"></div>
+            <div class="follows-js"></div>
+        {% else %}
+            {% if stream.items.length === 0 %}
+                {% include "./stream/related.html" %}
+            {% endif %}
+        {% endif %}
+
+    </div>
+</div>

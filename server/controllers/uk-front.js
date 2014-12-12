@@ -2,41 +2,46 @@
 
 var Search  = require('../jobs/search');
 var Metrics = require('next-metrics');
+var Stream = require('../models/stream');
 
 // Periodically load these searches in to memory
-var topStories = new Search();
-topStories.init('page:Front page', 10);
+var topStories = new Search().init('page:Front page', 10);
 
-var bigRead = new Search();
-bigRead.init('page:The Big Read', 2);
+var bigRead = new Search().init('page:The Big Read', 5);
 
-var comment = new Search();
-comment.init('page:comment', 5);
+var comment = new Search().init('page:comment', 5);
 
-var lunch = new Search();
-lunch.init('brand:Lunch with the FT', 1);
+var lunch = new Search().init('brand:Lunch with the FT', 5);
 
-var globalInsight = new Search();
-globalInsight.init('brand:Global Insight', 2);
+var globalInsight = new Search().init('brand:Global Insight', 5);
 
 module.exports = function(req, res) {
     Metrics.instrument(res, { as: 'express.http.res' });
 
-    var highlights = [].concat(bigRead.stream.texturedItems, lunch.stream.texturedItems, globalInsight.stream.texturedItems);
+    var highlights = Stream.merge(bigRead.stream, lunch.stream, globalInsight.stream);
     
     require('../utils/cache-control')(res);
 
     res.render('layout', {
-        topStories: [
-            { related: [], items: topStories.stream.texturedItems.slice(0, 5), meta: [] },
-            { related: [], items: topStories.stream.texturedItems.slice(5, 10), meta: [] }
-        ],
-        secondary: [
-            { related: [], items: highlights, meta: [], title: 'FT Highlights' },
-            { related: [], items: comment.stream.texturedItems, meta: [], title: 'Comment & columnists' }
-        ],
-        isFollowable: false,
-        isUserPage: false,
-        defaultHeaderPanel: true 
+        streams: [
+            { 
+                title: 'Top stories',
+                related: [], 
+                items: topStories.stream.getTiled(1, 3), 
+                meta: [] 
+            },
+            { 
+                title: 'FT Highlights',
+                related: [],
+                items: highlights.getTiled(1, 3),
+                meta: []
+            },
+            { 
+                title: 'Comment & columnists' ,
+                related: [], 
+                items: comment.stream.getTiled(1, 3), 
+                meta: []
+            }
+        ]
     });
 };
