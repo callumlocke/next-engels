@@ -12,10 +12,8 @@ gulp.task('build', function () {
 	});
 });
 
-require('next-wrapper/gulp')(gulp);
-
 gulp.task('watch', function() {
 	gulp.watch('./client/**/*', ['default']);
 });
 
-gulp.task('default', ['copy_templates', 'build']);
+gulp.task('default', ['build']);

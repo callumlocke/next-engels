@@ -4,7 +4,7 @@ GLOBAL.Promise = require('es6-promise').Promise;
 
 var Stream  = require('../models/stream');
 var ft      = require('../utils/api').ft;
-var raven = require('next-wrapper').raven;
+var raven = require('ft-next-wrapper').raven;
 
 var Search = function () {
     this.stream = new Stream();
