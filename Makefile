@@ -50,7 +50,6 @@ build:
 	export ENVIRONMENT=development; ./node_modules/.bin/gulp;
 
 build-production:
-	npm prune --production
 	@./node_modules/.bin/gulp
 
 watch:
