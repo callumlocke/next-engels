@@ -319,7 +319,10 @@ h2 {
 }
 
 .article-card--tile.topic-card {
-	height: 190px;
+	&,
+	.article-card__content {
+		height: 190px;
+	}
 }
 
 .topic-card__headline {
