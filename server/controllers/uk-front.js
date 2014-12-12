@@ -32,6 +32,7 @@ module.exports = function(req, res) {
     Metrics.instrument(res, { as: 'express.http.res' });
 
     var highlights = Stream.merge(bigRead.stream, lunch.stream, globalInsight.stream);
+    require('../utils/cache-control')(res);
 
     res.render('layout', {
         segments: [

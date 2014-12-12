@@ -1,4 +1,3 @@
-
 require('es6-promise').polyfill();
 
 var express = require('express');
@@ -9,6 +8,7 @@ var parseString = require('xml2js').parseString;
 var resize = require('../templates/helpers/resize');
 var flags = require('next-feature-flags-client');
 var Metrics = require('next-metrics');
+var errorMiddleware = require('express-errors-handler').middleware;
 
 Metrics.init({ app: 'engels', flushEvery: 30000 });
 
@@ -56,7 +56,7 @@ app.get('/__gtg', function(req, res) {
 
 app.get('/', flags.middleware, require('./controllers/uk-front'));
 
-app.use(require('next-wrapper').raven.middleware);
+app.use(errorMiddleware);
 
 app.listen(port, function() {
     Metrics.count('express.start');

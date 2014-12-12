@@ -7,7 +7,7 @@
     "next-article-card-component": "https://github.com/Financial-Times/next-article-card-component.git#tiles",
     "next-user-preferences": "https://github.com/Financial-Times/next-user-preferences.git#^v2.1.0",
     "jquery": "~2.1.1",
-    "o-grid": "~2.4.1"
+    "o-grid": "^2.0.0"
   },
   "resolutions": {
     "o-dom": "~0.4.0"

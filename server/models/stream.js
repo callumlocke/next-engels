@@ -95,7 +95,7 @@ Stream.prototype.getItemsForView = function (items) {
         }
         return cardViewModel(item.item, conf);
     }.bind(this));
-}
+};
 
 
 

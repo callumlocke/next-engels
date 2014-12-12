@@ -1,4 +1,4 @@
-# Next Engels [![Build Status](https://travis-ci.org/Financial-Times/next-engels.svg?branch=master)](https://travis-ci.org/Financial-Times/next-engels)
+# Next Engels [![Codeship Status for Financial-Times/next-engels](https://codeship.com/projects/97825450-6419-0132-c840-164ea2c5352e/status)](https://codeship.com/projects/52501)
 
 Engels is apparently a vintage aircraft of some kind. It's also the application which delivers the home page for next.ft.com
 
