@@ -4,10 +4,10 @@ var obt = require('origami-build-tools');
 
 gulp.task('build', function () {
 	obt.build(gulp, {
-        sass: './client/main.scss',
-        js: './client/main.js',
-        buildFolder: './public',
-        env: process.env.ENVIRONMENT || 'production'
+		sass: './client/main.scss',
+		js: './client/main.js',
+		buildFolder: './public',
+		env: process.env.ENVIRONMENT || 'production'
 	});
 });
 
