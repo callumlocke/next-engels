@@ -2,6 +2,7 @@
 'use strict';
 
 require('es6-promise').polyfill();
+require('../../server/app');
 
 var expect  = require('chai').expect;
 var nock = require('nock');
@@ -36,6 +37,11 @@ var mockMethode = function (n) {
 };
 
 describe('smoke tests for the app', function () {
+
+	before(function(done) {
+		this.timeout(5000);
+		setTimeout(done, 3000);
+	});
 
 	it('Should serve a good to go page', function(done) {
 		request
