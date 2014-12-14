@@ -8,7 +8,6 @@ Metrics.init({ app: 'engels', flushEvery: 30000 });
 
 var port = process.env.PORT || 3001;
 var app = module.exports = express();
-app.locals.name = 'engels';
 
 app.set('views', __dirname + '/../templates');
 
