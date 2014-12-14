@@ -4,14 +4,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta name="theme-color" content="#fff1e0"/>
 		<link rel="stylesheet" href="/{{appname}}/main.css"/>
-		<title>{{#page.title}}{{page.title}} - {{/page.title}}Financial Times</title>
+		<title>Financial Times</title>
 		{{#flags.javascript.isSwitchedOn}}
 		<script>
-		    (function () {
-			var html = document.querySelector('html');
-			html.classList.remove('no-js');
-			html.classList.add('js');
-		    }())
+			(function () {
+				var html = document.querySelector('html');
+				html.classList.remove('no-js');
+				html.classList.add('js');
+			}())
 		</script>
 		{{/flags.javascript.isSwitchedOn}}
 	</head>
@@ -64,4 +64,3 @@
 		{{/flags.javascript.isSwitchedOn}}
 	</body>
 </html>
-
