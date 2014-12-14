@@ -1,5 +1,7 @@
+/*jshint node:true*/
+'use strict';
+
 var gulp = require('gulp');
-var watch = require('gulp-watch');
 var obt = require('origami-build-tools');
 
 gulp.task('build', function () {

@@ -1,3 +1,6 @@
+/*global FixedSticky*/
+'use strict';
+
 require('ft-next-wrapper');
 require('next-article-card-component');
 var flags = require('next-feature-flags-client');
@@ -10,8 +13,8 @@ flags.init()
 		if (flags.get('ads').isSwitchedOn) {
 			//Fixed position ads:
 			window.jQuery = require('jquery');
-			var filamentFixed = require('filament-fixed');
-			var filamentSticky = require('filament-sticky');
+			require('filament-fixed');
+			require('filament-sticky');
 			//Display ads: fixed-sticky plugin
 			FixedSticky.tests.sticky = false;
 			var ads = document.querySelectorAll('[data-display-ad]');
