@@ -7,7 +7,6 @@ gulp.task('build', function () {
         sass: './client/main.scss',
         js: './client/main.js',
         buildFolder: './public',
-        transforms: [require('swigify')()],
         env: process.env.ENVIRONMENT || 'production'
 	});
 });

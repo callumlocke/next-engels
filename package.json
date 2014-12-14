@@ -1,21 +1,16 @@
 {
+  "name": "ft-next-engels",
+  "private": "true",
   "dependencies": {
-    "cookie-parser": "^1.3.3",
-    "debug": "^2.1.0",
-    "es6-promise": "^2.0.0",
-    "express": "^4.10.1",
+    "express": "^4.10.6",
     "express-errors-handler": "^1.0.0",
     "forever": "^0.12.0",
     "ft-api-client": "https://github.com/Financial-Times/ft-api-client/archive/v3.7.1.tar.gz",
-    "haikro": "^1.3.0",
-    "next-feature-flags-client": "https://github.com/Financial-Times/next-feature-flags-client/archive/v2.3.3.tar.gz",
-    "next-metrics": "https://github.com/Financial-Times/next-metrics/archive/v1.0.3.tar.gz",
+    "ft-next-express": "^1.2.2",
     "ft-next-wrapper": "^4.0.1",
+    "haikro": "^1.3.0",
     "next-article-card-component": "https://github.com/Financial-Times/next-article-card-component/archive/tiles.tar.gz",
-    "request": "^2.47.0",
-    "reqwest": "^1.1.5",
-    "swig": "^1.4.2",
-    "swigify": "0.0.3",
+    "next-metrics": "https://github.com/Financial-Times/next-metrics/archive/v1.0.3.tar.gz",
     "xml2js": "^0.4.4"
   },
   "scripts": {
@@ -24,12 +19,14 @@
   "devDependencies": {
     "bower": "^1.3.12",
     "chai": "^1.10.0",
+    "es6-promise": "^2.0.1",
     "gulp": "^3.8.9",
     "gulp-watch": "^1.1.0",
     "jshint": "^2.5.8",
     "mocha": "^2.0.1",
     "nock": "^0.48.2",
     "origami-build-tools": "https://github.com/Financial-Times/origami-build-tools/archive/master.tar.gz",
+    "request": "^2.47.0",
     "sinon": "^1.11.1"
   }
 }

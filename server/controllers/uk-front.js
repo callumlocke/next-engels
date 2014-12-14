@@ -4,19 +4,14 @@ var Search  = require('../jobs/search');
 var Topic  = require('../jobs/topic');
 var Metrics = require('next-metrics');
 var Stream = require('../models/stream');
+var cacheControl = require('../utils/cache-control');
 
 // Periodically load these searches in to memory
 var topStories = new Search().init('page:Front page', 10);
-
 var bigRead = new Search().init('page:The Big Read', 5);
-
 var comment = new Search().init('page:comment', 10);
-
 var lunch = new Search().init('brand:Lunch with the FT', 5);
-
 var globalInsight = new Search().init('brand:Global Insight', 5);
-
-
 
 var topics = [
     'Living With Cheaper Oil',
@@ -34,8 +29,6 @@ module.exports = function(req, res) {
     Metrics.instrument(res, { as: 'express.http.res' });
 
     var highlights = Stream.merge(bigRead.stream, lunch.stream, globalInsight.stream);
-
-    
     var segments = [
         { 
             title: 'Top stories',
@@ -76,8 +69,7 @@ module.exports = function(req, res) {
         });
     }
 
-    require('../utils/cache-control')(res);
-
+    res.set(cacheControl);
     res.render('layout', {
         segments: segments
     });

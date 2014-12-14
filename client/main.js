@@ -1,12 +1,8 @@
-
 require('ft-next-wrapper');
 require('next-article-card-component');
 
 document.querySelector('[data-o-component="o-header"]').setAttribute('data-panel', 'search');
 var $ = require('jquery');
-var swig = require('swig/index');
-
-swig.setFilter('resize', require('../templates/helpers/resize'));
 
 var tile = require('../templates/components/tile.html');
 

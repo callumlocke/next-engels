@@ -1,28 +1,67 @@
-{% extends "../bower_components/ft-next-wrapper/templates/layout.html" %}
+<html class="no-js">
+	<head>
+		<link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules=o-fonts@^1.4.1,o-grid@^2.1.5">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="theme-color" content="#fff1e0"/>
+		<link rel="stylesheet" href="/{{appname}}/main.css"/>
+		<title>{{#page.title}}{{page.title}} - {{/page.title}}Financial Times</title>
+		{{#flags.javascript.isSwitchedOn}}
+		<script>
+		    (function () {
+			var html = document.querySelector('html');
+			html.classList.remove('no-js');
+			html.classList.add('js');
+		    }())
+		</script>
+		{{/flags.javascript.isSwitchedOn}}
+	</head>
+	<body>
+		{{#flags.analytics.isSwitchedOn}}
+			{{>ft-next-wrapper/templates/tracking}}
+		{{/flags.analytics.isSwitchedOn}}
 
-{% block body %}
-	{% if flags.ads.isSwitchedOn %}
-	<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
-		<div class="dummy-ad dummy-ad--banner">Slot 1</div> 
-	</aside>
-	{% endif %}{# ads #}
-    <div class="o-grid-row">
-        <div class="stream__container" data-o-grid-colspan="S12 M12 L12 XL12">
-            
-            {% for segment in segments %}
-                {% if segment.type === 'tiled-article-stream' %}
-                    {% include "components/tiled-article-stream.html" with {stream: segment} %}
-                {% elseif segment.type === 'curated-topics' %}
-                    {% include "components/curated-topics.html" with {topics: segment} %}
-                {% endif %}
-            {% endfor %}
-                   
-        </div>
-    </div>
-    {% if flags.ads.isSwitchedOn %}
-	<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
-		<div class="dummy-ad dummy-ad--banner">Slot 2</div> 
-	</aside>
-	{% endif %}{# ads #}
+		{% include "../../next-header/templates/main.html" %}
+		{{!next-header/templates/main}}
 
-{% endblock %}
+		{{#flags.ads.isSwitchedOn}}
+		<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
+			<div class="dummy-ad dummy-ad--banner">Slot 1</div>
+		</aside>
+		{{/flags.ads.isSwitchedOn}}
+
+		<div class="o-grid-row">
+			<div class="stream__container" data-o-grid-colspan="S12 M12 L12 XL12">
+			{% for segment in segments %}
+				{% if segment.type === 'tiled-article-stream' %}
+				{% include "components/tiled-article-stream.html" with {stream: segment} %}
+				{% elseif segment.type === 'curated-topics' %}
+				{% include "components/curated-topics.html" with {topics: segment} %}
+				{% endif %}
+			{% endfor %}
+			</div>
+		</div>
+
+		{{#flags.ads.isSwitchedOn}}
+		<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
+			<div class="dummy-ad dummy-ad--banner">Slot 2</div>
+		</aside>
+		{{/flags.ads.isSwitchedOn}}
+
+		<script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0"></script>
+
+		{{#flags.alphasurvey.isSwitchedOn}}
+		{{>ft-next-wrapper/templates/survey}}
+		{{/flags.alphasurvey.isSwitchedOn}}
+
+		{{#flags.javascript.isSwitchedOn}}
+		<script src="/{{appname}}/main.js"></script>
+		<script>
+		(function () {
+			var html = document.querySelector('html');
+			html.classList.add('js-success');
+		}())
+		</script>
+		{{/flags.javascript.isSwitchedOn}}
+	</body>
+</html>
+
