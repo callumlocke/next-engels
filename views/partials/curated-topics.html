@@ -2,18 +2,12 @@
 	<div data-o-grid-colspan="S12 M12 L12 XL12">
 		<h1 class="stream-list__title"><span class="stream-list__title-name js-context">{{title}}</span></h1>
 	</div>
-	{{#each topics}}
+	{{#each items}}
 	<div class="topic__column" data-column="{{colIndex}}" data-track-pos="{{colIndex}}">
 		<div class="topic__wrapper">
 			<div class="article-card article-card--news article-card--lead article-card--tile topic-card">
 				<div class="article-card__content">
-					<a data-track-comp-name="theme-tag" class="article-card__tag article-card__tag--theme" href="/search?q={{ primaryTheme.taxonomy }}:{{ primaryTheme.name }}">{{ primaryTheme.name }}</a>
-
-					<h2 class="article-card__headline card__headline" data-track-comp-name="headline">
-						<a href="/search?q={{title}}" class="article-card__link">
-							{{ title }}
-						</a>
-					</h2>
+					<h2 class="article-card__headline card__headline" data-track-comp-name="headline"><a href="/search?q={{title}}" class="article-card__link">{{title}}</a></h2>
 					{{#each articles}}
 					<h3 class="topic__article-link">
 						<a href="/{{id}}">{{headline}}</a>

@@ -53,7 +53,6 @@ module.exports = function(req, res) {
 			items: topics.map(function(topic) {
 				return {
 					title: topic.name,
-					primaryTheme: topic.primaryTheme,
 					articles: topic.articles.slice(0, 3)
 				};
 			})

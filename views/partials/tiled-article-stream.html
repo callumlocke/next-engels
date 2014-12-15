@@ -3,11 +3,6 @@
 		<h1 class="stream-list__title"><span class="stream-list__title-name js-context">{{title}}</span></h1>
 	</div>
 	<div data-o-grid-colspan="12">
-	{{#each items}}
-		{{>stream/article-list}}
-	{{else}}
-		<p>No articles found.</p>
-		{{>stream/related}}
-	{{/each}}
+	{{>stream/article-list}}
 </div>
 </div>
