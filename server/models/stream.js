@@ -75,6 +75,7 @@ Object.defineProperty(Stream.prototype, 'texturedAndSortedItems', {
 Stream.prototype.push = function (type, item) {
 	this.items.push({
 		type: type === 'methode' ? getVisualTone(item) : type,
+		isFeature: (type === 'methode' ? getVisualTone(item) : type) === 'feature' ? true : false,
 		item: item
 	});
 };

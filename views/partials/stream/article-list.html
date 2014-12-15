@@ -3,12 +3,14 @@
 	{{#each this}}
 	<div class="stream__column" data-column="{{@index}}">
 		{{#each this}}
+		{{! TODO:MA Fix me.  Should be "{{parent index}}-{{current index}}"
 		<div class="stream__article-wrapper" data-track-pos="{{@index}}-{{@index}}">
-			{% if article.type === 'news' %}
-				{% include "../../../bower_components/next-article-card-component/templates/news.html" with { item: article} %}
-			{% elseif article.type === 'feature' %}
-				{% include "../../../bower_components/next-article-card-component/templates/feature.html" with { item: article } %}
-			{% endif %}
+			{{^isFeature}}
+				{{>next-article-card-component/templates/news}}
+			{{/isFeature}}
+			{{#isFeature}}
+				{{>next-article-card-component/templates/feature}}
+			{{/isFeature}}
 		</div>
 		{{/each}}
 	</div>
