@@ -69,6 +69,7 @@ module.exports = function(req, res) {
 			meta: []
 		});
 	}
+	console.log(segments);
 
 	res.set(cacheControl);
 	res.render('layout', {

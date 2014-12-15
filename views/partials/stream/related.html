@@ -1,8 +1,8 @@
 <div class="stream-list__related" data-track-comp-name="related-tags">
 	<h3 class="stream-list__heading">Related Topics</h3>
 	<ul>
-	{% for stream in stream.related %}
-		<li data-track-pos="{{loop.index}}" class="stream-list__stream-link"><a href="/search?q={{ stream.searchString }}">{{ stream.name }}<i class="icon-arrow-right"></i></a></li>
-	{% endfor %}
+	{{#each related}}
+		<li data-track-pos="{{@index}}" class="stream-list__stream-link"><a href="/search?q={{searchString}}">{{name}}<i class="icon-arrow-right"></i></a></li>
+	{{/each}}
 	</ul>
 </div>

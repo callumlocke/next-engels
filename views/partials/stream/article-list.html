@@ -17,7 +17,7 @@
                             {% else %}
                                 {{ article.recommendation.recommendedBy.name }}        
                             {% endif %}
-                                on {{ article.recommendation.on|date('F jS, Y') }}
+                                on {{!article.recommendation.on|date('F jS, Y') }}
                         </p>
                     {% endif %}
 
