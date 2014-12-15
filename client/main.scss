@@ -26,9 +26,7 @@ body {
 }
 
 @import "components/tile/main";
-
 @import "filament-sticky/main";
-
 @import "next-article-card-component/main";
 
 .clearfix:before,
@@ -59,16 +57,6 @@ h2 {
 	&:first-letter {
 		color: orange;
 	}
-}
-
-.marketing-card {
-	clear: both;
-	background-size: 100%;
-}
-
-.marketing-card > * {
-	max-width: 1170px;
-	margin: 0 auto;
 }
 
 .themes__card {
@@ -112,16 +100,6 @@ h2 {
 	}
 }
 
-.marketing-card--themes {
-	background: url(/engels/assets/img/militants.jpg) no-repeat fixed center top;
-}
-
-.marketing-card--comment {
-}
-
-.marketing-card--analysis {
-	background: url(/engels/assets/img/referendum.jpg) no-repeat fixed center top;
-}
 .comment__quote {
 	font-family: FinancierDisplay;
 	font-size: 50px;
@@ -177,11 +155,6 @@ h2 {
 }
 
 
-// Hacks for uber nav
-.container {
-	margin-top: 10px;
-}
-
 //Sticky ads
 .display-ad {
 	z-index: 10;
@@ -190,7 +163,6 @@ h2 {
 
 	&.fixedsticky-on {
 		background-color: rgba(255, 255, 255, 0.6);
-		-webkit-box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2);
 		box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2);
 	}
 }
