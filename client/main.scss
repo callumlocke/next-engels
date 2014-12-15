@@ -10,8 +10,8 @@ $breakpoint-small : 450px;
 $breakpoint-mid : 800px;
 $breakpoint-large : 1100px;
 
-@mixin respond($min-width){
-	@media screen and (min-width : $min-width){
+@mixin respond($min-width) {
+	@media screen and (min-width : $min-width) {
 		@content;
 	}
 }
@@ -68,7 +68,7 @@ h2 {
 
 .marketing-card > * {
 	max-width: 1170px;
-	margin: 0 auto 0 auto;
+	margin: 0 auto;
 }
 
 .themes__card {
@@ -77,7 +77,7 @@ h2 {
 	margin-bottom: 10px;
 	list-style: none;
 	background-color: rgba(255, 255, 255, 0.7);
-	color: #444;
+	color: #444444;
 	text-transform: uppercase;
 	font-size: 1.5em;
 	text-align: left;
@@ -96,7 +96,7 @@ h2 {
 	margin-bottom: 10px;
 	list-style: none;
 	background-color: rgba(255, 255, 255, 0.7);
-	color: #444;
+	color: #444444;
 	text-align: left;
 	font-family: BentonSans;
 	min-height: 230px;
@@ -189,9 +189,9 @@ h2 {
 	padding: 10px 0;
 
 	&.fixedsticky-on {
-		background-color:rgba(255,255,255,.6);
-		-webkit-box-shadow: 0 1px 4px 1px rgba(0,0,0,.2);
-		box-shadow: 0 1px 4px 1px rgba(0,0,0,.2);
+		background-color: rgba(255, 255, 255, 0.6);
+		-webkit-box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2);
+		box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.2);
 	}
 }
 .display-ad--banner {
@@ -211,8 +211,8 @@ h2 {
 }
 
 .dummy-ad {
-	background-color:rgb(100,100,100);
-	color: rgba(255,255,255,.3);
+	background-color: rgb(100, 100, 100);
+	color: rgba(255, 255, 255, 0.3);
 	font-size: 24px;
 	font-family: Arial;
 	text-align: center;
@@ -307,12 +307,12 @@ h2 {
 	font-family: $font-family-sansserif;
 	font-size: 14px;
 	line-height: 1.4;
-	margin: .5em 0;
+	margin: 0.5em 0;
 	font-weight: normal;
 
 	&,
 	a {
-		color: #666;
+		color: #666666;
 		&:hover {
 			color: $next-grey-dark;
 		}

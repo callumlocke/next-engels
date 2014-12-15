@@ -43,7 +43,7 @@ ul, li {
 }
 
 .tile {
-	background: #EEEEEE;
+	background: #eeeeee;
 	font-family: BentonSans, Arial, sans-serif;
 	margin-bottom: 20px;
 	position: relative;
@@ -84,7 +84,7 @@ ul, li {
 	-webkit-box-orient: vertical;
 	line-height: 1.2;
 	overflow: hidden;
-	margin: 10px 10px 0 10px;
+	margin: 10px 10px 0;
 
 	.tile--large & {
 		font-size: 32px;
@@ -118,7 +118,7 @@ ul, li {
 	position: absolute;
 	top: 0;
 	max-width: 100%;
-	padding: 0 0 5px 0;
+	padding: 0 0 5px;
 
 	&:after {
 		display: block;
@@ -132,9 +132,9 @@ ul, li {
 
 
 	a {
-		background: rgba(0,0,0,0.7);
+		background: rgba(0, 0, 0, 0.7);
 		display: inline-block;
-		color: #FFF;
+		color: #ffffff;
 		padding: 6px;
 		font-size: 14px;
 		text-transform: uppercase;
@@ -146,7 +146,7 @@ ul, li {
 	display: block;
 	padding: 10px;
 	font-size: 14px;
-	color: #777;
+	color: #777777;
 	text-align: right;
 	width: 100%;
 
@@ -170,7 +170,7 @@ ul, li {
 	background-size: 12px;
 	height: 11px;
 	width: 15px;
-	color: #777;
+	color: #777777;
 }
 
 .recommended {
