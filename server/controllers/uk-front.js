@@ -29,27 +29,19 @@ module.exports = function(req, res) {
 	Metrics.instrument(res, { as: 'express.http.res' });
 
 	var highlights = Stream.merge(bigRead.stream, lunch.stream, globalInsight.stream);
+	console.log(topStories.stream.getTiled(1,3));
 	var segments = [
 		{
 			title: 'Top stories',
-			type: 'tiled-article-stream',
-			related: [],
-			items: topStories.stream.getTiled(1, 3),
-			meta: []
+			items: topStories.stream.getTiled(1, 3)
 		},
 		{
 			title: 'FT Highlights',
-			type: 'tiled-article-stream',
-			related: [],
-			items: highlights.getTiled(1, 3),
-			meta: []
+			items: highlights.getTiled(1, 3)
 		},
 		{
 			title: 'Comment & columnists' ,
-			type: 'tiled-article-stream',
-			related: [],
-			items: comment.stream.getTiled(1, 3),
-			meta: []
+			items: comment.stream.getTiled(1, 3)
 		}
 	];
 
@@ -57,19 +49,16 @@ module.exports = function(req, res) {
 	if (res.locals.flags && res.locals.flags.homePageThemes && res.locals.flags.homePageThemes.isSwitchedOn) {
 		segments.push({
 			title: 'FT New Themes',
-			type: 'curated-topics',
 			isCuratedTopic: true,
-			items: topics.map(function (topic) {
+			items: topics.map(function(topic) {
 				return {
 					title: topic.name,
 					primaryTheme: topic.primaryTheme,
 					articles: topic.articles.slice(0, 3)
 				};
-			}),
-			meta: []
+			})
 		});
 	}
-	console.log(segments);
 
 	res.set(cacheControl);
 	res.render('layout', {
