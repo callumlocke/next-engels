@@ -2,6 +2,7 @@
 'use strict';
 
 require('ft-next-wrapper');
+require('next-header');
 require('next-article-card-component');
 var flags = require('next-feature-flags-client');
 

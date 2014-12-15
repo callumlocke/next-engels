@@ -20,8 +20,7 @@
 			{{>ft-next-wrapper/templates/tracking}}
 		{{/flags.analytics.isSwitchedOn}}
 
-		{% include "../../next-header/templates/main.html" %}
-		{{!next-header/templates/main}}
+		{{>next-header/templates/main}}
 
 		{{#flags.ads.isSwitchedOn}}
 		<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
