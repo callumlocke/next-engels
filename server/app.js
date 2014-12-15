@@ -9,8 +9,6 @@ Metrics.init({ app: 'engels', flushEvery: 30000 });
 var port = process.env.PORT || 3001;
 var app = module.exports = express();
 
-app.set('views', __dirname + '/../templates');
-
 app.get('/__gtg', function(req, res) {
 	res.status(200).end();
 });
