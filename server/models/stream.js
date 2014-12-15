@@ -98,9 +98,7 @@ Stream.prototype.getItemsForView = function (items) {
 	}.bind(this));
 };
 
-
-
-
+// REVIEW:MA This is view logic.
 Stream.prototype.getTiled = function (rows, cols) {
 	var layout = [];
 	// column divided into 6 vertically as divisible by 2 or 3
@@ -190,8 +188,6 @@ Stream.prototype.getTiled = function (rows, cols) {
 		layout.push(row);
 	}
 	return layout;
-
-
 };
 
 
