@@ -52,7 +52,7 @@
 
 		{{#if @root.flags.alphasurvey.isSwitchedOn}}
 		{{>ft-next-wrapper/templates/survey}}
-		{{/flags.alphasurvey.isSwitchedOn}}
+		{{/if}}
 
 		{{#if @root.flags.javascript.isSwitchedOn}}
 		<script src="/{{__name}}/main.js"></script>
@@ -62,6 +62,6 @@
 			html.classList.add('js-success');
 		}())
 		</script>
-		{{/flags.javascript.isSwitchedOn}}
+		{{/if}}
 	</body>
 </html>
