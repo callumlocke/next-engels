@@ -5,7 +5,7 @@
 		<meta name="theme-color" content="#fff1e0"/>
 		<link rel="stylesheet" href="/{{__name}}/main.css"/>
 		<title>Financial Times</title>
-		{{#flags.javascript.isSwitchedOn}}
+		{{#if @root.flags.javascript.isSwitchedOn}}
 		<script>
 			(function () {
 				var html = document.querySelector('html');
@@ -13,20 +13,20 @@
 				html.classList.add('js');
 			}())
 		</script>
-		{{/flags.javascript.isSwitchedOn}}
+		{{/if}}
 	</head>
 	<body>
-		{{#flags.analytics.isSwitchedOn}}
+		{{#if @root.flags.analytics.isSwitchedOn}}
 			{{>ft-next-wrapper/templates/tracking}}
-		{{/flags.analytics.isSwitchedOn}}
+		{{/if}}
 
 		{{>next-header/templates/main}}
 
-		{{#flags.ads.isSwitchedOn}}
+		{{#if @root.flags.ads.isSwitchedOn}}
 		<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
 			<div class="dummy-ad dummy-ad--banner">Slot 1</div>
 		</aside>
-		{{/flags.ads.isSwitchedOn}}
+		{{/if}}
 
 		<div class="o-grid-row">
 			<div class="stream__container" data-o-grid-colspan="S12 M12 L12 XL12">
@@ -42,19 +42,19 @@
 			</div>
 		</div>
 
-		{{#flags.ads.isSwitchedOn}}
+		{{#if @root.flags.ads.isSwitchedOn}}
 		<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
 			<div class="dummy-ad dummy-ad--banner">Slot 2</div>
 		</aside>
-		{{/flags.ads.isSwitchedOn}}
+		{{/if}}
 
 		<script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0"></script>
 
-		{{#flags.alphasurvey.isSwitchedOn}}
+		{{#if @root.flags.alphasurvey.isSwitchedOn}}
 		{{>ft-next-wrapper/templates/survey}}
 		{{/flags.alphasurvey.isSwitchedOn}}
 
-		{{#flags.javascript.isSwitchedOn}}
+		{{#if @root.flags.javascript.isSwitchedOn}}
 		<script src="/{{__name}}/main.js"></script>
 		<script>
 		(function () {
