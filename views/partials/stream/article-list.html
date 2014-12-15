@@ -3,14 +3,14 @@
 	{{#each this}}
 	<div class="stream__column" data-column="{{@index}}">
 		{{#each this}}
-		{{! TODO:MA Fix me.  Should be "parent index-current index"
+		{{! TODO:MA Fix me.  Should be "parent index-current index" }}
 		<div class="stream__article-wrapper" data-track-pos="{{@index}}-{{@index}}">
 			{{^isFeature}}
-				{{>next-article-card-component/templates/news}}
+				{{>next-article-card-component/templates/news-mustache}}
 			{{/isFeature}}
 			{{#isFeature}}
 				{{! TODO:MA Change back to '>next-article-card-component/templates/feature'}}
-				{{>next-article-card-component/templates/news}}
+				{{>next-article-card-component/templates/news-mustache}}
 			{{/isFeature}}
 		</div>
 		{{/each}}
