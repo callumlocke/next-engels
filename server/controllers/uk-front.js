@@ -58,6 +58,7 @@ module.exports = function(req, res) {
 		segments.push({
 			title: 'FT New Themes',
 			type: 'curated-topics',
+			isCuratedTopic: true,
 			items: topics.map(function (topic) {
 				return {
 					title: topic.name,

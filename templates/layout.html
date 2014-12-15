@@ -30,13 +30,15 @@
 
 		<div class="o-grid-row">
 			<div class="stream__container" data-o-grid-colspan="S12 M12 L12 XL12">
-			{% for segment in segments %}
-				{% if segment.type === 'tiled-article-stream' %}
-				{% include "components/tiled-article-stream.html" with {stream: segment} %}
-				{% elseif segment.type === 'curated-topics' %}
-				{% include "components/curated-topics.html" with {topics: segment} %}
-				{% endif %}
-			{% endfor %}
+			{{#segments}}
+			{{! MA: Hack for now - should be improved more when we've got nicer Handlebars helpers }}
+				{{^isCuratedTopic}}
+					{{>tiled-article-stream}}
+				{{/isCuratedTopic}}
+				{{#isCuratedTopic}}
+					{{>curated-topics}}
+				{{/isCuratedTopic}}
+			{{/segments}}
 			</div>
 		</div>
 
