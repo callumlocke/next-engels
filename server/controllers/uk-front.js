@@ -60,6 +60,7 @@ module.exports = function(req, res) {
 
 	res.set(cacheControl);
 	res.render('layout', {
-		segments: segments
+		segments: segments,
+		defaultHeaderPanel: 'search'
 	});
 };
