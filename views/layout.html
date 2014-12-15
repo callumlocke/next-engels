@@ -1,0 +1,67 @@
+<html class="no-js">
+	<head>
+		<link rel="stylesheet" href="//build.origami.ft.com/bundles/css?modules=o-fonts@^1.4.1,o-grid@^2.1.5">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="theme-color" content="#fff1e0"/>
+		<link rel="stylesheet" href="/{{__name}}/main.css"/>
+		<title>Financial Times</title>
+		{{#if @root.flags.javascript.isSwitchedOn}}
+		<script>
+			(function () {
+				var html = document.querySelector('html');
+				html.classList.remove('no-js');
+				html.classList.add('js');
+			}())
+		</script>
+		{{/if}}
+	</head>
+	<body>
+		{{#if @root.flags.analytics.isSwitchedOn}}
+			{{>ft-next-wrapper/templates/tracking}}
+		{{/if}}
+
+		{{>next-header/templates/main}}
+
+		{{#if @root.flags.ads.isSwitchedOn}}
+		<aside class="display-ad display-ad--banner display-ad--slot1 fixedsticky" data-display-ad="slot1">
+			<div class="dummy-ad dummy-ad--banner">Slot 1</div>
+		</aside>
+		{{/if}}
+
+		<div class="o-grid-row">
+			<div class="stream__container" data-o-grid-colspan="S12 M12 L12 XL12">
+			{{#segments}}
+			{{! MA: Hack for now - should be improved more when we've got nicer Handlebars helpers }}
+				{{^isCuratedTopic}}
+					{{>tiled-article-stream}}
+				{{/isCuratedTopic}}
+				{{#isCuratedTopic}}
+					{{>curated-topics}}
+				{{/isCuratedTopic}}
+			{{/segments}}
+			</div>
+		</div>
+
+		{{#if @root.flags.ads.isSwitchedOn}}
+		<aside class="display-ad display-ad--banner display-ad--slot2 fixedsticky" data-display-ad="slot2">
+			<div class="dummy-ad dummy-ad--banner">Slot 2</div>
+		</aside>
+		{{/if}}
+
+		<script src="//build.origami.ft.com/bundles/js?modules=o-date@^1.0.0"></script>
+
+		{{#if @root.flags.alphasurvey.isSwitchedOn}}
+		{{>ft-next-wrapper/templates/survey}}
+		{{/if}}
+
+		{{#if @root.flags.javascript.isSwitchedOn}}
+		<script src="/{{__name}}/main.js"></script>
+		<script>
+		(function () {
+			var html = document.querySelector('html');
+			html.classList.add('js-success');
+		}())
+		</script>
+		{{/if}}
+	</body>
+</html>
