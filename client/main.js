@@ -4,6 +4,7 @@
 require('ft-next-wrapper');
 require('next-header');
 require('next-article-card-component');
+require('o-date');
 var flags = require('next-feature-flags-client');
 var $ = require('jquery');
 
