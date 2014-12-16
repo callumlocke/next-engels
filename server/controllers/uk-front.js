@@ -1,7 +1,7 @@
 'use strict';
 
-var Search  = require('../jobs/search');
-var Topic  = require('../jobs/topic');
+var Search = require('../jobs/search');
+var Topic = require('../jobs/topic');
 var Metrics = require('next-metrics');
 var Stream = require('../models/stream');
 var cacheControl = require('../utils/cache-control');
@@ -60,6 +60,7 @@ module.exports = function(req, res) {
 
 	res.set(cacheControl);
 	res.render('layout', {
-		segments: segments
+		segments: segments,
+		defaultHeaderPanel: 'search'
 	});
 };

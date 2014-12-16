@@ -4,9 +4,8 @@
 require('ft-next-wrapper');
 require('next-header');
 require('next-article-card-component');
+require('o-date');
 var flags = require('next-feature-flags-client');
-
-document.querySelector('[data-o-component="o-header"]').setAttribute('data-panel', 'search');
 var $ = require('jquery');
 
 flags.init()

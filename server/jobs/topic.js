@@ -1,7 +1,7 @@
 /*global console*/
 'use strict';
 
-var ft	  = require('../utils/api').ft;
+var ft = require('../utils/api').ft;
 var raven = require('express-errors-handler');
 
 

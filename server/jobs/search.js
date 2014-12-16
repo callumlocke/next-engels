@@ -1,8 +1,8 @@
 /*global console*/
 'use strict';
 
-var Stream  = require('../models/stream');
-var ft	  = require('../utils/api').ft;
+var Stream = require('../models/stream');
+var ft = require('../utils/api').ft;
 var raven = require('express-errors-handler');
 
 var Search = function() {
