@@ -2,7 +2,7 @@
   "name": "next-engels",
   "dependencies": {
     "filament-sticky": "https://github.com/Financial-Times/fixed-sticky.git#scss",
-    "ft-next-wrapper": "https://github.com/Financial-Times/next-wrapper.git#v5.0.6",
+    "ft-next-wrapper": "https://github.com/Financial-Times/next-wrapper.git#v5.0.7",
     "next-article-card-component": "https://github.com/Financial-Times/next-article-card-component.git#mustache",
     "next-user-preferences": "https://github.com/Financial-Times/next-user-preferences.git#^v2.1.0",
     "jquery": "~2.1.1",
