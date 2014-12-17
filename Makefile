@@ -14,7 +14,7 @@ endif
 	@origami-build-tools install
 
 test:
-	@origami-build-tools verify
+	origami-build-tools verify
 	# Run all tests except for smoke tests
 	export HOSTEDGRAPHITE_APIKEY=123; export ENVIRONMENT=production; ./node_modules/.bin/mocha --reporter spec -i -g 'smoke tests' tests/server/
 
