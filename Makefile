@@ -58,7 +58,6 @@ watch:
 clean:
 	# Clean+install dependencies
 	git clean -fxd
-	$(MAKE) install
 
 deploy:
 
@@ -72,4 +71,4 @@ deploy:
 		--commit `git rev-parse HEAD` \
 		--verbose
 
-clean-deploy: clean deploy
+clean-deploy: clean install deploy
