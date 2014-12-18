@@ -31,10 +31,6 @@ module.exports = function(req, res) {
 	var highlights = Stream.merge(bigRead.stream, lunch.stream, globalInsight.stream);
 	var segments = [
 		{
-			title: 'Top stories',
-			items: topStories.stream.getTiled(1, 3)
-		},
-		{
 			title: 'FT Highlights',
 			items: highlights.getTiled(1, 3)
 		},
