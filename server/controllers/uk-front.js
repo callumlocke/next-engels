@@ -32,7 +32,7 @@ module.exports = function(req, res) {
 	var segments = [
 		{
 			title: 'Top stories',
-			items: topStories.getTiled(1, 3)
+			items: topStories.stream.getTiled(1, 3)
 		},
 		{
 			title: 'FT Highlights',
